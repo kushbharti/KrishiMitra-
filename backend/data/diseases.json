@@ -1,0 +1,407 @@
+[
+  {
+    "id": "leaf_rust",
+    "name": "Leaf Rust",
+    "affected_crops": ["wheat", "barley"],
+    "symptoms": [
+      "Orange-brown pustules on leaf surface",
+      "Yellowing (chlorosis) around pustules",
+      "Premature leaf drop and wilting",
+      "Reduced grain fill in severe cases"
+    ],
+    "cause": "Fungal pathogen Puccinia triticina, spreads in warm humid conditions (15–25°C). Wind-dispersed spores travel long distances.",
+    "treatment_steps": [
+      "Apply propiconazole fungicide at 0.1% concentration immediately",
+      "Spray tebuconazole 250 EC at 1 ml/litre of water",
+      "Remove and destroy heavily infected plant material",
+      "Avoid overhead irrigation to reduce leaf wetness"
+    ],
+    "prevention_tips": [
+      "Use rust-resistant wheat varieties (HD-2967, PBW-343)",
+      "Practice crop rotation with non-host crops",
+      "Apply balanced fertilizers — avoid excess nitrogen",
+      "Monitor fields regularly especially during humid spells"
+    ],
+    "confidence_threshold": 0.75,
+    "color_patterns": ["orange", "brown", "yellow"],
+    "severity": "High"
+  },
+  {
+    "id": "powdery_mildew",
+    "name": "Powdery Mildew",
+    "affected_crops": ["wheat", "barley", "grapes", "peas"],
+    "symptoms": [
+      "White powdery coating on leaf surface and stems",
+      "Yellowing and curling of infected leaves",
+      "Stunted plant growth",
+      "Premature defoliation in severe infections"
+    ],
+    "cause": "Fungal pathogen Blumeria graminis / Erysiphe species. Thrives in dry weather with high humidity — cool temperatures 15–22°C.",
+    "treatment_steps": [
+      "Apply sulfur-based fungicide (wettable sulfur) at 3 g/litre",
+      "Spray hexaconazole or propiconazole at recommended rates",
+      "Remove and destroy infected plant debris after harvest",
+      "Improve air circulation between plants"
+    ],
+    "prevention_tips": [
+      "Plant mildew-resistant varieties",
+      "Avoid dense planting — maintain proper row spacing",
+      "Do not apply excess nitrogen fertilizer",
+      "Early season monitoring and preventive sprays"
+    ],
+    "confidence_threshold": 0.75,
+    "color_patterns": ["white", "gray", "yellow"],
+    "severity": "Medium"
+  },
+  {
+    "id": "rice_blast",
+    "name": "Rice Blast",
+    "affected_crops": ["rice"],
+    "symptoms": [
+      "Diamond-shaped lesions with gray centers and brown borders on leaves",
+      "White to gray patches on flower neck (neck rot)",
+      "Lesions on leaf collars and internodes",
+      "Panicle collapse in neck blast stage"
+    ],
+    "cause": "Fungal pathogen Magnaporthe oryzae. Favored by moderate temperatures (24–28°C), high humidity, and heavy dew.",
+    "treatment_steps": [
+      "Apply tricyclazole at 0.6 g/litre or isoprothiolane at 1.5 ml/litre",
+      "Spray at tillering and panicle initiation stages",
+      "Avoid water stress — maintain proper field flooding",
+      "Drain water from nursery beds if blast appears"
+    ],
+    "prevention_tips": [
+      "Use blast-resistant rice varieties (IR-64, Swarna)",
+      "Apply balanced silicon fertilization",
+      "Avoid excessive nitrogen application",
+      "Use disease-free seeds and treat with fungicide before sowing"
+    ],
+    "confidence_threshold": 0.72,
+    "color_patterns": ["gray", "brown", "white"],
+    "severity": "High"
+  },
+  {
+    "id": "early_blight",
+    "name": "Early Blight",
+    "affected_crops": ["tomato", "potato", "brinjal"],
+    "symptoms": [
+      "Dark brown concentric ring spots on older leaves",
+      "Target-board appearance: alternating light and dark rings",
+      "Yellowing around lesions",
+      "Fruit lesions — dark, sunken spots with concentric rings"
+    ],
+    "cause": "Fungal pathogen Alternaria solani. Spreads during warm temperatures (24–29°C) with frequent rain and high humidity.",
+    "treatment_steps": [
+      "Apply mancozeb 75 WP at 2.5 g/litre as protective spray",
+      "Use chlorothalonil or copper oxychloride for systemic control",
+      "Remove infected lower leaves immediately",
+      "Avoid overhead irrigation; use drip irrigation instead"
+    ],
+    "prevention_tips": [
+      "Use certified disease-free seeds and transplants",
+      "Maintain proper spacing for air circulation",
+      "Crop rotation — avoid planting solanaceous crops consecutively",
+      "Apply mulch to prevent soil-splash spread"
+    ],
+    "confidence_threshold": 0.70,
+    "color_patterns": ["brown", "dark brown", "yellow"],
+    "severity": "Medium"
+  },
+  {
+    "id": "late_blight",
+    "name": "Late Blight",
+    "affected_crops": ["potato", "tomato"],
+    "symptoms": [
+      "Water-soaked greenish spots on leaf edges and tips",
+      "Spots turn dark brown/black rapidly in wet conditions",
+      "White fluffy fungal growth on underside of leaves",
+      "Tuber rot — brown decay with firm texture"
+    ],
+    "cause": "Oomycete pathogen Phytophthora infestans. Spreads rapidly in cool (10–20°C), wet conditions. Can destroy entire field in days.",
+    "treatment_steps": [
+      "Apply metalaxyl + mancozeb combination at 2.5 g/litre immediately",
+      "Spray cymoxanil + famoxadone (Equation Pro) in severe cases",
+      "Remove and destroy infected plant material far from field",
+      "Improve field drainage to reduce waterlogging"
+    ],
+    "prevention_tips": [
+      "Use certified, blight-resistant potato varieties",
+      "Avoid planting in poorly drained fields",
+      "Begin preventive fungicide spray program before rains",
+      "Monitor weather forecasts — spray before high-risk periods"
+    ],
+    "confidence_threshold": 0.78,
+    "color_patterns": ["dark brown", "black", "white", "green"],
+    "severity": "Critical"
+  },
+  {
+    "id": "fusarium_wilt",
+    "name": "Fusarium Wilt",
+    "affected_crops": ["tomato", "banana", "chickpea", "cotton", "groundnut"],
+    "symptoms": [
+      "One-sided yellowing and wilting of leaves",
+      "Brown discoloration of vascular tissue when stem is cut",
+      "Lower leaves drop first, progressing upward",
+      "Complete plant collapse in severe infection"
+    ],
+    "cause": "Soil-borne fungal pathogen Fusarium oxysporum. Enters through roots, spreads through vascular tissue. Persists in soil for years.",
+    "treatment_steps": [
+      "Apply carbendazim 50 WP at 2 g/litre as soil drench",
+      "Remove and destroy infected plants with roots immediately",
+      "Drench soil with trichoderma-based biocontrol (5 g/litre)",
+      "Improve soil drainage — avoid waterlogging"
+    ],
+    "prevention_tips": [
+      "Use Fusarium-resistant varieties where available",
+      "Soil solarization before planting season",
+      "Long-term crop rotation (3–4 years) with non-host crops",
+      "Treat seeds with trichoderma before sowing"
+    ],
+    "confidence_threshold": 0.68,
+    "color_patterns": ["yellow", "brown", "wilted"],
+    "severity": "High"
+  },
+  {
+    "id": "downy_mildew",
+    "name": "Downy Mildew",
+    "affected_crops": ["grapes", "onion", "bajra", "maize", "cabbage"],
+    "symptoms": [
+      "Yellow patches on upper surface of leaves",
+      "Gray-purple downy fungal growth on leaf undersides",
+      "Leaf distortion and curling",
+      "Stunted growth and premature defoliation"
+    ],
+    "cause": "Oomycete pathogen Plasmopara / Peronospora species. Favored by cool temperatures (15–20°C) with high moisture and fog.",
+    "treatment_steps": [
+      "Apply metalaxyl MZ (Ridomil Gold) at 2 g/litre",
+      "Spray copper oxychloride 50 WP at 3 g/litre as preventive",
+      "Remove infected leaves and improve air circulation",
+      "Avoid overhead irrigation, especially in evening or morning"
+    ],
+    "prevention_tips": [
+      "Plant resistant varieties",
+      "Ensure good air movement in the field",
+      "Avoid irrigation late in the day — keep foliage dry overnight",
+      "Apply preventive copper-based fungicide at early growth stages"
+    ],
+    "confidence_threshold": 0.70,
+    "color_patterns": ["yellow", "gray", "purple"],
+    "severity": "Medium"
+  },
+  {
+    "id": "anthracnose",
+    "name": "Anthracnose",
+    "affected_crops": ["mango", "grapes", "tomato", "chilli", "banana"],
+    "symptoms": [
+      "Sunken, dark brown to black lesions on fruits and leaves",
+      "Salmon-pink spore masses in moist conditions",
+      "Fruit rot with dark concentric rings",
+      "Stem cankers and shoot dieback"
+    ],
+    "cause": "Fungal pathogen Colletotrichum species. Spreads via rain splash and insects. Survives in infected debris and soil.",
+    "treatment_steps": [
+      "Apply carbendazim 50 WP at 1 g/litre or mancozeb at 2.5 g/litre",
+      "Spray thiophanate-methyl for systemic control",
+      "Prune and destroy infected branches and fruit",
+      "Post-harvest treatment with hot water (52°C for 5 minutes) for fruits"
+    ],
+    "prevention_tips": [
+      "Use disease-free planting material",
+      "Avoid overhead irrigation during fruiting stage",
+      "Regular orchard sanitation — remove fallen fruit and debris",
+      "Preventive fungicide spray before rainy season"
+    ],
+    "confidence_threshold": 0.72,
+    "color_patterns": ["black", "brown", "dark brown", "pink"],
+    "severity": "High"
+  },
+  {
+    "id": "bacterial_leaf_spot",
+    "name": "Bacterial Leaf Spot",
+    "affected_crops": ["tomato", "pepper", "cotton", "rice"],
+    "symptoms": [
+      "Water-soaked spots on leaves that turn brown/black",
+      "Spots with yellow halos on leaf surface",
+      "Lesions may merge, causing large necrotic areas",
+      "Fruit spots — raised, scabby, white-to-brown lesions"
+    ],
+    "cause": "Bacterial pathogen Xanthomonas campestris / Pseudomonas syringae. Spreads via rain, insects, tools, and infected seeds.",
+    "treatment_steps": [
+      "Apply copper-based bactericide (copper hydroxide) at 3 g/litre",
+      "Spray streptomycin sulfate at 200 ppm concentration",
+      "Remove infected plant material and sanitize tools",
+      "Reduce overhead irrigation and improve air circulation"
+    ],
+    "prevention_tips": [
+      "Use certified disease-free seeds",
+      "Treat seeds with hot water (50°C for 25 minutes)",
+      "Practice crop rotation — avoid planting same crop family consecutively",
+      "Avoid working in fields when foliage is wet"
+    ],
+    "confidence_threshold": 0.65,
+    "color_patterns": ["brown", "black", "yellow", "water-soaked"],
+    "severity": "Medium"
+  },
+  {
+    "id": "root_rot",
+    "name": "Root Rot",
+    "affected_crops": ["wheat", "chickpea", "soybean", "cotton", "sugarcane"],
+    "symptoms": [
+      "Dark brown to black rotting of root tissue",
+      "Wilting and yellowing of entire plant despite adequate water",
+      "Plant pulls out easily from soil with decayed roots",
+      "Crown and stem base rot near soil line"
+    ],
+    "cause": "Soil-borne fungi (Rhizoctonia solani, Pythium, Phytophthora) thriving in waterlogged or poorly drained soils.",
+    "treatment_steps": [
+      "Seed treatment with thiram or captan at 2.5 g/kg seed",
+      "Soil drench with metalaxyl or carbendazim around root zone",
+      "Improve field drainage — create drainage channels",
+      "Remove and destroy severely affected plants"
+    ],
+    "prevention_tips": [
+      "Avoid waterlogging — proper land leveling and drainage",
+      "Treat seeds with biocontrol agents (Trichoderma viride)",
+      "Practice crop rotation with non-host crops",
+      "Soil solarization in problem fields before planting"
+    ],
+    "confidence_threshold": 0.65,
+    "color_patterns": ["black", "dark brown", "brown"],
+    "severity": "High"
+  },
+  {
+    "id": "mosaic_virus",
+    "name": "Mosaic Virus",
+    "affected_crops": ["tomato", "potato", "cucumber", "tobacco", "bean"],
+    "symptoms": [
+      "Mosaic pattern of light and dark green on leaves",
+      "Leaf puckering, curling, and distortion",
+      "Stunted plant growth and reduced fruit set",
+      "Mottled, misshapen fruits with reduced quality"
+    ],
+    "cause": "Caused by Tobacco Mosaic Virus (TMV), Cucumber Mosaic Virus (CMV) and others. Spreads by aphids, thrips, and mechanical contact.",
+    "treatment_steps": [
+      "No chemical cure — remove and destroy infected plants immediately",
+      "Control aphid vectors with imidacloprid at 0.5 ml/litre",
+      "Apply mineral oil spray to deter aphid feeding and virus spread",
+      "Wash hands and disinfect tools between plants with bleach solution"
+    ],
+    "prevention_tips": [
+      "Use virus-resistant or virus-tolerant varieties",
+      "Control aphid populations early in the season",
+      "Avoid handling plants from infected to healthy sections",
+      "Plant borders of taller crops to reduce aphid migration"
+    ],
+    "confidence_threshold": 0.68,
+    "color_patterns": ["yellow-green", "mottled", "pale green"],
+    "severity": "High"
+  },
+  {
+    "id": "smut",
+    "name": "Smut",
+    "affected_crops": ["wheat", "maize", "bajra", "jowar", "sugarcane"],
+    "symptoms": [
+      "Black powdery masses replacing grain (loose smut in wheat)",
+      "Whip-like curved galls in sugarcane — black spore masses",
+      "Infected ears appear normal initially, then burst with black spores",
+      "Complete replacement of grain with black, sooty fungal material"
+    ],
+    "cause": "Fungal pathogens Ustilago species. Seed-borne and air-borne. Spores infect at seedling stage through soil and seed.",
+    "treatment_steps": [
+      "Seed treatment with carboxin + thiram at 1.5 g/kg seed",
+      "Hot water seed treatment at 52°C for 10 minutes before sowing",
+      "Remove and destroy infected whip ear in sugarcane immediately",
+      "Apply systemic fungicide (triadimefon) at early symptom stage"
+    ],
+    "prevention_tips": [
+      "Use smut-free certified seeds",
+      "Seed treatment is the most effective prevention",
+      "Crop rotation with non-cereal crops",
+      "Avoid replanting ratoon crops in smut-affected sugarcane fields"
+    ],
+    "confidence_threshold": 0.78,
+    "color_patterns": ["black", "dark gray", "sooty"],
+    "severity": "High"
+  },
+  {
+    "id": "cercospora_leaf_spot",
+    "name": "Cercospora Leaf Spot",
+    "affected_crops": ["rice", "maize", "groundnut", "soybean", "sugarbeet"],
+    "symptoms": [
+      "Small circular to oval spots with gray/white centers",
+      "Dark brown to purple borders around spots",
+      "Spots may merge causing irregular brown blotches",
+      "Dark velvety sporulation on leaf undersides in humid conditions"
+    ],
+    "cause": "Fungal pathogen Cercospora species. Spreads in warm (25–30°C), humid conditions via air-borne conidia.",
+    "treatment_steps": [
+      "Apply carbendazim 50 WP at 1 g/litre or chlorothalonil at 2 g/litre",
+      "Spray propiconazole for systemic control in severe cases",
+      "Remove and destroy heavily infected leaves",
+      "Apply preventive sprays at canopy closure stage"
+    ],
+    "prevention_tips": [
+      "Use resistant varieties",
+      "Avoid dense planting and maintain row spacing for air circulation",
+      "Balanced fertilization — avoid excess nitrogen",
+      "Crop rotation with non-host crops"
+    ],
+    "confidence_threshold": 0.68,
+    "color_patterns": ["gray", "white", "brown", "purple"],
+    "severity": "Medium"
+  },
+  {
+    "id": "iron_deficiency",
+    "name": "Iron Deficiency",
+    "affected_crops": ["rice", "wheat", "maize", "groundnut", "soybean"],
+    "symptoms": [
+      "Interveinal chlorosis — leaves turn yellow while veins stay green",
+      "Younger leaves affected first (top of plant)",
+      "In severe cases, leaves turn completely yellow/white",
+      "Stunted plant growth and reduced tillering"
+    ],
+    "cause": "Iron deficiency in calcareous or waterlogged soils with high pH (>7.5). Not enough available iron for chlorophyll production.",
+    "treatment_steps": [
+      "Foliar spray of ferrous sulfate (FeSO4) at 5 g/litre every 7–10 days",
+      "Soil application of iron chelate (Fe-EDTA) at 5 kg/acre",
+      "Acidify soil around roots with sulfur application",
+      "Apply ferric ammonium citrate as foliar spray for quick response"
+    ],
+    "prevention_tips": [
+      "Soil testing before crop planting to check iron and pH levels",
+      "Use iron-efficient varieties for alkaline soils",
+      "Avoid waterlogging which increases soil pH",
+      "Incorporate organic matter to improve iron availability"
+    ],
+    "confidence_threshold": 0.65,
+    "color_patterns": ["yellow", "pale yellow", "white", "green veins"],
+    "severity": "Medium"
+  },
+  {
+    "id": "nitrogen_deficiency",
+    "name": "Nitrogen Deficiency",
+    "affected_crops": ["wheat", "rice", "maize", "cotton", "sugarcane"],
+    "symptoms": [
+      "Pale yellow to light green coloration starting in older lower leaves",
+      "Yellowing progresses upward through the plant canopy",
+      "Thin, spindly stalks and reduced plant vigor",
+      "Premature leaf senescence and poor grain fill"
+    ],
+    "cause": "Insufficient nitrogen in soil due to low organic matter, leaching, or poor fertilizer management.",
+    "treatment_steps": [
+      "Apply urea (46-0-0) at recommended rate based on crop and growth stage",
+      "Use split application — basal + top dressing at tillering",
+      "Foliar spray of urea at 2% concentration for quick green-up",
+      "Apply ammonium sulfate on alkaline soils for better nitrogen availability"
+    ],
+    "prevention_tips": [
+      "Soil test before each season to determine nitrogen requirement",
+      "Incorporate green manure and organic compost before planting",
+      "Use controlled-release nitrogen fertilizers to reduce leaching",
+      "Include legume crop in rotation to fix atmospheric nitrogen naturally"
+    ],
+    "confidence_threshold": 0.62,
+    "color_patterns": ["pale yellow", "light green", "yellow"],
+    "severity": "Medium"
+  }
+]

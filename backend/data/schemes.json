@@ -1,0 +1,1378 @@
+[
+  {
+    "id": "pmkisan",
+    "name": "PM-KISAN",
+    "full_name": "Pradhan Mantri Kisan Samman Nidhi",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "Department of Agriculture and Farmers Welfare, Government of India along with State/UT Nodal Departments",
+    "category": "Income Support",
+    "scheme_type": "Central Sector Scheme",
+    "benefit_summary": "Direct assured financial income support of Rs. 6,000 per year transferred directly into the bank accounts of landholding farmer families across India.",
+    "benefits": [
+      "Financial assistance of Rs. 6,000 per financial year per eligible farmer family.",
+      "Disbursed in three equal installments of Rs. 2,000 every four months directly into the beneficiary's bank account.",
+      "Eliminates middlemen through 100% Direct Benefit Transfer (DBT) linked with PFMS."
+    ],
+    "eligibility": [
+      "All landholding farmer families having cultivable landholding in their names in land records.",
+      "Exclusion criteria apply: Institutional landholders, farmer families holding constitutional posts, present/former Ministers/MPs/MLAs, serving/retired government officers, and pensioners receiving Rs. 10,000+ monthly pension."
+    ],
+    "required_documents": [
+      "Identity Proof",
+      "Land holding ownership documents / Record of Rights (RoR)",
+      "Bank Account details with IFSC Code",
+      "Active mobile number"
+    ],
+    "application_process": [
+      "Visit the official PM-KISAN web portal at pmkisan.gov.in or download the PM-KISAN GoI mobile app.",
+      "Click on 'New Farmer Registration' under the 'Farmers Corner' section.",
+      "Select Rural or Urban Farmer Registration, enter mobile number, select the State, and complete OTP authentication.",
+      "Fill in personal details, district, sub-district, block, and village.",
+      "Enter land survey numbers, khata numbers, and area in hectares, upload the land ownership document (RoR), and submit for State verification."
+    ],
+    "target_beneficiaries": [
+      "Small, marginal, and all landholding farmer families across India"
+    ],
+    "funding_pattern": "100% funded by the Government of India",
+    "central_or_state": "Central",
+    "launch_year": "2019",
+    "official_website": "https://pmkisan.gov.in",
+    "application_url": "https://pmkisan.gov.in",
+    "helpline": "155261",
+    "email": "pmkisan-ict@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://pmkisan.gov.in"
+  },
+  {
+    "id": "pmfby",
+    "name": "PMFBY",
+    "full_name": "Pradhan Mantri Fasal Bima Yojana",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "Empanelled General Insurance Companies / Agriculture Insurance Company of India (AIC)",
+    "category": "Crop Insurance",
+    "scheme_type": "Central Sponsored Scheme",
+    "benefit_summary": "Comprehensive insurance cover against crop failure due to non-preventable natural risks, pests, and diseases from pre-sowing to post-harvest stages at highly subsidized premium rates.",
+    "benefits": [
+      "Maximum premium payable by farmers is capped at 2% for Kharif food/oilseed crops, 1.5% for Rabi food/oilseed crops, and 5% for annual commercial/horticultural crops.",
+      "Actuarial premium difference is funded as subsidy by Central and State Governments without upper capping.",
+      "Provides full sum insured coverage without claim amount reduction.",
+      "Covers prevented sowing, standing crop loss, localized calamities (hailstorm, landslide, inundation), and post-harvest losses up to 14 days."
+    ],
+    "eligibility": [
+      "All farmers including sharecroppers and tenant farmers growing notified crops in notified areas.",
+      "Voluntary enrollment for all farmers (loanee and non-loanee).",
+      "Must possess insurable interest in the notified crop cultivated."
+    ],
+    "required_documents": [
+      "Identity and Address Proof",
+      "Bank Account Passbook copy showing IFSC code and account number",
+      "Land records (RoR / Land Possession Certificate / Khasra / Khatauni copy)",
+      "Sowing certificate or self-declaration of crop sown"
+    ],
+    "application_process": [
+      "Visit pmfby.gov.in or approach nearest Common Service Centre (CSC) or bank branch.",
+      "Click on 'Farmer Corner' and select 'Enroll Now'.",
+      "Enter personal identification details, address, bank account details, and land parcel survey numbers.",
+      "Select notified crop and upload land ownership records and sowing declarations.",
+      "Pay the farmer's share of premium and obtain the application acknowledgment receipt."
+    ],
+    "target_beneficiaries": [
+      "All landholding farmers, sharecroppers, and tenant farmers growing notified crops"
+    ],
+    "funding_pattern": "50:50 premium subsidy between Centre and States (90:10 for North Eastern States)",
+    "central_or_state": "Both",
+    "launch_year": "2016",
+    "official_website": "https://pmfby.gov.in",
+    "application_url": "https://pmfby.gov.in/farmerLogin",
+    "helpline": "14447",
+    "email": "help.agri-insurance@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in/schemes/pmfby"
+  },
+  {
+    "id": "kcc",
+    "name": "KCC",
+    "full_name": "Kisan Credit Card Scheme",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "Commercial Banks, Regional Rural Banks (RRBs), Small Finance Banks, and Cooperative Banks",
+    "category": "Credit",
+    "scheme_type": "Central Sector Scheme",
+    "benefit_summary": "Provides farmers with timely institutional credit under a single window for cultivation expenses, post-harvest costs, and working capital for allied activities.",
+    "benefits": [
+      "Short-term crop loans up to Rs. 3 lakh at a concessional interest rate of 7% per annum.",
+      "Additional Prompt Repayment Incentive (PRI) of 3% per annum, bringing effective interest rate down to 4%.",
+      "Collateral-free agricultural credit limit up to Rs. 1.60 lakh (extendable up to Rs. 2 lakh).",
+      "Flexible withdrawal and repayment tied to harvest cycles."
+    ],
+    "eligibility": [
+      "Individual farmers or joint borrowers who are owner-cultivators.",
+      "Tenant farmers, oral lessees, and sharecroppers.",
+      "Self Help Groups (SHGs) or Joint Liability Groups (JLGs) of farmers.",
+      "Farmers engaged in dairy, fisheries, poultry, and animal husbandry."
+    ],
+    "required_documents": [
+      "Standardized KCC Application Form",
+      "Identity Proof and Address Proof",
+      "Land ownership and revenue records (7/12 extract, Khasra, Khatauni)",
+      "Passport size photographs"
+    ],
+    "application_process": [
+      "Visit any Commercial Bank, RRB, or Cooperative Bank branch, or access Jan Samarth portal online.",
+      "Fill out the standardized KCC application form.",
+      "Attach identity proof, address proof, and land ownership records.",
+      "Submit the application to the bank branch manager.",
+      "Upon credit appraisal and land record verification, the KCC credit limit is sanctioned."
+    ],
+    "target_beneficiaries": [
+      "Farmers, sharecroppers, tenant farmers, and livestock/fisheries farmers across India"
+    ],
+    "funding_pattern": "Interest subvention funded by Government of India through RBI and NABARD",
+    "central_or_state": "Central",
+    "launch_year": "1998",
+    "official_website": "https://agriwelfare.gov.in",
+    "application_url": "https://www.myscheme.gov.in/schemes/kcc",
+    "helpline": "1800-180-1551",
+    "email": null,
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in/schemes/kcc"
+  },
+  {
+    "id": "pmksy-pdmc",
+    "name": "PMKSY-PDMC",
+    "full_name": "Pradhan Mantri Krishi Sinchayee Yojana - Per Drop More Crop",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "State Agriculture and Horticulture Departments",
+    "category": "Irrigation",
+    "scheme_type": "Central Sponsored Scheme",
+    "benefit_summary": "Promotes micro-irrigation technologies (Drip and Sprinkler) to enhance on-farm water use efficiency and crop productivity.",
+    "benefits": [
+      "Financial subsidy up to 55% of indicative unit cost for small and marginal farmers.",
+      "Subsidy up to 45% for other category farmers.",
+      "Reduces water consumption, power usage, weed growth, and fertilizer losses via fertigation."
+    ],
+    "eligibility": [
+      "All landholding farmers, sharecroppers, and tenant farmers with valid lease agreements.",
+      "Farmers cultivating horticultural, commercial, or field crops."
+    ],
+    "required_documents": [
+      "Land ownership records (RoR / 7/12 extract / Khatauni)",
+      "Bank Account Passbook copy showing IFSC code",
+      "Caste Certificate (for SC/ST category subsidy allocation)"
+    ],
+    "application_process": [
+      "Visit State-specific horticulture/agriculture micro-irrigation portal.",
+      "Register online with farmer details, land survey numbers, and target crops.",
+      "Select an empanelled micro-irrigation system manufacturer/supplier.",
+      "After field survey and technical approval, administrative sanction is issued.",
+      "Upon installation and joint physical verification, subsidy is transferred via DBT."
+    ],
+    "target_beneficiaries": [
+      "Small, marginal, and all agricultural farmers requiring micro-irrigation"
+    ],
+    "funding_pattern": "60:40 fund sharing between Centre and States (90:10 for NE/Himalayan States)",
+    "central_or_state": "Both",
+    "launch_year": "2015",
+    "official_website": "https://pmksy.gov.in",
+    "application_url": "https://www.myscheme.gov.in/schemes/pmksy-pdmc",
+    "helpline": "1800-180-1551",
+    "email": "pmksy-agri@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://pmksy.gov.in"
+  },
+  {
+    "id": "shc",
+    "name": "Soil Health Card",
+    "full_name": "Soil Health Card Scheme",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "State Agriculture Departments / Soil Testing Laboratories",
+    "category": "Soil Health",
+    "scheme_type": "Central Sponsored Scheme",
+    "benefit_summary": "Issues comprehensive soil health reports with crop-wise nutrient management advice to optimize fertilizer usage.",
+    "benefits": [
+      "Free scientific testing of farm soil samples across 12 key parameters (N, P, K, S, Zn, Fe, Cu, Mn, Bo, pH, EC, OC).",
+      "Customized fertilizer dosage recommendations to prevent soil degradation and lower cultivation costs."
+    ],
+    "eligibility": [
+      "All farmers owning or cultivating agricultural land across India."
+    ],
+    "required_documents": [
+      "Farm survey number / Khata details",
+      "Active mobile number"
+    ],
+    "application_process": [
+      "Soil samples are collected from farmers' fields by department workers or KVK teams using GPS.",
+      "Samples are analyzed in static or mobile soil testing laboratories.",
+      "Results and customized crop recommendations are entered into soilhealth.dac.gov.in.",
+      "Printed Soil Health Cards are distributed directly to farmers."
+    ],
+    "target_beneficiaries": ["All agricultural farmers in India"],
+    "funding_pattern": "60:40 fund sharing between Centre and States (90:10 for NE/Himalayan States)",
+    "central_or_state": "Both",
+    "launch_year": "2015",
+    "official_website": "https://soilhealth.dac.gov.in",
+    "application_url": "https://soilhealth.dac.gov.in",
+    "helpline": "1800-180-1551",
+    "email": "helpdesk-soil@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://soilhealth.dac.gov.in"
+  },
+  {
+    "id": "pkvy",
+    "name": "PKVY",
+    "full_name": "Paramparagat Krishi Vikas Yojana",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "National Centre of Organic Farming (NCOF) / State Agriculture Departments",
+    "category": "Organic Farming",
+    "scheme_type": "Central Sponsored Scheme",
+    "benefit_summary": "Promotes chemical-free organic farming via cluster approach and Participatory Guarantee System (PGS-India) certification.",
+    "benefits": [
+      "Financial assistance of Rs. 50,000 per hectare for 3 years (Rs. 31,000 directly via DBT for organic inputs).",
+      "Free organic certification under PGS-India.",
+      "Support for cluster formation, training, packaging, and marketing of organic produce."
+    ],
+    "eligibility": [
+      "Farmers forming a group or cluster of 20 or more members covering 20-50 hectares."
+    ],
+    "required_documents": [
+      "Land ownership documents / Khasra Khatauni",
+      "Bank Account details with IFSC code",
+      "PGS Cluster agreement declaration"
+    ],
+    "application_process": [
+      "Form a cluster of 20+ farmers and submit proposal to Block/District Agriculture Officer.",
+      "Department registers cluster on PGS-India portal (pgsindia-ncof.gov.in).",
+      "Undergo training and receive DBT installments for organic inputs over 3 years."
+    ],
+    "target_beneficiaries": ["Farmers adopting organic farming in clusters"],
+    "funding_pattern": "60:40 fund sharing between Centre and States (90:10 for NE/Himalayan States)",
+    "central_or_state": "Both",
+    "launch_year": "2015",
+    "official_website": "https://pgsindia-ncof.gov.in",
+    "application_url": "https://pgsindia-ncof.gov.in",
+    "helpline": "1800-180-1551",
+    "email": "ncof@nic.in",
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in/schemes/pkvy"
+  },
+  {
+    "id": "smam",
+    "name": "SMAM",
+    "full_name": "Sub-Mission on Agricultural Mechanization",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "State Agriculture Departments",
+    "category": "Farm Mechanization",
+    "scheme_type": "Central Sponsored Scheme",
+    "benefit_summary": "Provides capital subsidies on agricultural machinery and supports creation of Custom Hiring Centers (CHCs).",
+    "benefits": [
+      "40% to 50% subsidy for individual farmers purchasing tractors, tillers, harvesters, or drones.",
+      "Up to 80% subsidy for FPOs, cooperatives, and rural youth to establish Custom Hiring Centers."
+    ],
+    "eligibility": [
+      "Individual landholding farmers, FPOs, PACS, and registered agricultural cooperatives."
+    ],
+    "required_documents": [
+      "Land ownership documents (7/12 extract / Khatauni)",
+      "Bank Passbook copy with IFSC code",
+      "Approved machinery quotation from empanelled dealer"
+    ],
+    "application_process": [
+      "Register online at agrimachinery.nic.in.",
+      "Select desired farm machinery or CHC setup and upload quotation and land records.",
+      "Upon physical verification after purchase, subsidy is disbursed via DBT."
+    ],
+    "target_beneficiaries": [
+      "Small, marginal, and women farmers, FPOs, and agri-entrepreneurs"
+    ],
+    "funding_pattern": "60:40 fund sharing between Centre and States (90:10 for NE/Himalayan States)",
+    "central_or_state": "Both",
+    "launch_year": "2014",
+    "official_website": "https://agrimachinery.nic.in",
+    "application_url": "https://agrimachinery.nic.in",
+    "helpline": "1800-180-1551",
+    "email": "agrimachinery-agri@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://agrimachinery.nic.in"
+  },
+  {
+    "id": "aif",
+    "name": "AIF",
+    "full_name": "Agriculture Infrastructure Fund",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "National Monitoring Committee / NABARD & Commercial Banks",
+    "category": "Agriculture Infrastructure",
+    "scheme_type": "Central Sector Scheme",
+    "benefit_summary": "Debt financing facility providing interest subvention and credit guarantees for post-harvest management and community farming assets.",
+    "benefits": [
+      "3% interest subvention per annum on loans up to Rs. 2 crore for up to 7 years.",
+      "Credit guarantee coverage under CGTMSE for loans up to Rs. 2 crore without external collateral.",
+      "Funding for godowns, cold chains, silos, assaying units, and solar farming assets."
+    ],
+    "eligibility": [
+      "Farmers, FPOs, PACS, Marketing Cooperatives, SHGs, Agri Startups, and Agri-entrepreneurs."
+    ],
+    "required_documents": [
+      "Detailed Project Report (DPR)",
+      "Proof of land ownership or registered lease agreement",
+      "Bank statement and financial records",
+      "Entity KYC documents"
+    ],
+    "application_process": [
+      "Apply online on agriinfra.dac.gov.in.",
+      "Complete registration, fill project details, upload DPR, and choose lending bank branch.",
+      "Bank evaluates application and sanctions loan with interest subvention tagging."
+    ],
+    "target_beneficiaries": [
+      "Farmers, FPOs, PACS, SHGs, and Agri Startups across India"
+    ],
+    "funding_pattern": "100% Central Sector Scheme funded by Government of India",
+    "central_or_state": "Central",
+    "launch_year": "2020",
+    "official_website": "https://agriinfra.dac.gov.in",
+    "application_url": "https://agriinfra.dac.gov.in",
+    "helpline": "1800-180-1551",
+    "email": "agriinfra@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://agriinfra.dac.gov.in"
+  },
+  {
+    "id": "nfsm",
+    "name": "NFSM",
+    "full_name": "National Food Security Mission",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "State Agriculture Departments / District Food Security Mission Committees",
+    "category": "Seeds",
+    "scheme_type": "Central Sponsored Scheme",
+    "benefit_summary": "Increases production of rice, wheat, pulses, coarse cereals, and nutri-cereals through high-yielding seed distribution and demonstrations.",
+    "benefits": [
+      "Free or heavily subsidized high-yielding variety seed minikits.",
+      "Subsidies on soil ameliorants, bio-fertilizing agents, and plant protection chemicals.",
+      "Financial assistance for cluster field demonstrations and farm implements."
+    ],
+    "eligibility": [
+      "All landholding farmers cultivating target food grain crops in notified districts."
+    ],
+    "required_documents": [
+      "Land ownership documents / Khasra Khatauni",
+      "Bank Account details",
+      "Identity Proof"
+    ],
+    "application_process": [
+      "Register via State Agriculture DBT portal or Block Agriculture Office.",
+      "Select notified crop seed minikit or demonstration assistance.",
+      "Distribution is carried out through state seed depots and Gram Panchayats."
+    ],
+    "target_beneficiaries": [
+      "Food grain and pulse crop farmers across notified districts"
+    ],
+    "funding_pattern": "60:40 fund sharing between Centre and States (90:10 for NE/Himalayan States)",
+    "central_or_state": "Both",
+    "launch_year": "2007",
+    "official_website": "https://nfsm.gov.in",
+    "application_url": "https://nfsm.gov.in",
+    "helpline": "1800-180-1551",
+    "email": "nfsm-agri@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://nfsm.gov.in"
+  },
+  {
+    "id": "nmsa",
+    "name": "NMSA",
+    "full_name": "National Mission on Sustainable Agriculture",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "State Agriculture Departments",
+    "category": "Natural Farming",
+    "scheme_type": "Central Sponsored Scheme",
+    "benefit_summary": "Promotes climate-resilient agricultural practices, rainfed area development, integrated farming systems, and soil health management.",
+    "benefits": [
+      "Financial subsidies for adopting Integrated Farming System (IFS) models.",
+      "Assistance for vermicompost units, green manuring, and water harvesting structures."
+    ],
+    "eligibility": [
+      "All landholding farmers, with preference given to small/marginal farmers in rainfed regions."
+    ],
+    "required_documents": [
+      "Land revenue records",
+      "Bank details",
+      "Identity Proof"
+    ],
+    "application_process": [
+      "Apply through Block Agriculture Officer or District NMSA Nodal Agency.",
+      "Customized farm integration plan is approved by departmental field teams."
+    ],
+    "target_beneficiaries": [
+      "Rainfed and climate-vulnerable farmers across India"
+    ],
+    "funding_pattern": "60:40 fund sharing between Centre and States (90:10 for NE/Himalayan States)",
+    "central_or_state": "Both",
+    "launch_year": "2014",
+    "official_website": "https://nmsa.dac.gov.in",
+    "application_url": "https://nmsa.dac.gov.in",
+    "helpline": "1800-180-1551",
+    "email": "nmsa-agri@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://nmsa.dac.gov.in"
+  },
+  {
+    "id": "enam",
+    "name": "e-NAM",
+    "full_name": "National Agriculture Market",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "Small Farmers Agribusiness Consortium (SFAC)",
+    "category": "eNAM",
+    "scheme_type": "Central Sector Scheme",
+    "benefit_summary": "Pan-India electronic trading portal networking APMC mandis to build a unified market for agricultural commodities.",
+    "benefits": [
+      "Transparent online price discovery and nationwide competitive bidding.",
+      "Real-time payment directly into farmer bank accounts via Direct Benefit Transfer.",
+      "Free scientific assaying and grading services at registered APMC mandis."
+    ],
+    "eligibility": [
+      "Farmers, FPOs, traders, and commission agents operating in integrated mandis."
+    ],
+    "required_documents": [
+      "Bank Passbook copy showing IFSC code",
+      "Active mobile number",
+      "Mandi license (for traders)"
+    ],
+    "application_process": [
+      "Register on enam.gov.in or e-NAM Mobile App as 'Farmer' or 'FPO'.",
+      "Select state and nearest e-NAM integrated APMC mandi.",
+      "Bring produce to mandi for digital lot entry, quality assaying, and online auction."
+    ],
+    "target_beneficiaries": [
+      "Farmers, FPOs, and agricultural buyers across India"
+    ],
+    "funding_pattern": "100% funded by Government of India for software and mandi integration",
+    "central_or_state": "Central",
+    "launch_year": "2016",
+    "official_website": "https://enam.gov.in",
+    "application_url": "https://enam.gov.in/web/registration/registration-type",
+    "helpline": "1800-270-0224",
+    "email": "enam.helpdesk@gmail.com",
+    "last_updated": "2026",
+    "official_source": "https://enam.gov.in"
+  },
+  {
+    "id": "pmkmy",
+    "name": "PM-KMY",
+    "full_name": "Pradhan Mantri Kisan Maan-Dhan Yojana",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "Life Insurance Corporation of India (LIC) / Common Service Centers (CSC)",
+    "category": "Farmer Pension",
+    "scheme_type": "Central Sector Scheme",
+    "benefit_summary": "Voluntary social security pension scheme offering an assured monthly pension of Rs. 3,000 to small and marginal farmers upon reaching 60 years of age.",
+    "benefits": [
+      "Assured monthly pension of Rs. 3,000 after age 60.",
+      "50% matching monthly contribution by Government of India.",
+      "Spouse receives 50% family pension in the event of subscriber's death."
+    ],
+    "eligibility": [
+      "Small and marginal farmers owning cultivable land up to 2 hectares aged 18 to 40 years."
+    ],
+    "required_documents": [
+      "Bank Account details / IFSC Code",
+      "Land holding ownership record (Khasra / Khatauni)",
+      "Active mobile number"
+    ],
+    "application_process": [
+      "Visit nearest CSC center or self-enroll at maandhan.in.",
+      "Submit land holding proof and bank account details.",
+      "Sign auto-debit mandate form for monthly contribution (Rs. 55 to Rs. 200 based on age)."
+    ],
+    "target_beneficiaries": ["Small and marginal farmers aged 18 to 40 years"],
+    "funding_pattern": "100% Central Sector Scheme with 50:50 matching monthly contribution",
+    "central_or_state": "Central",
+    "launch_year": "2019",
+    "official_website": "https://www.pmkmy.gov.in",
+    "application_url": "https://maandhan.in",
+    "helpline": "1800-266-6868",
+    "email": "support@maandhan.in",
+    "last_updated": "2026",
+    "official_source": "https://www.pmkmy.gov.in"
+  },
+  {
+    "id": "midh",
+    "name": "MIDH",
+    "full_name": "Mission for Integrated Development of Horticulture",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "National Horticulture Board (NHB) / State Horticulture Missions",
+    "category": "Horticulture",
+    "scheme_type": "Central Sponsored Scheme",
+    "benefit_summary": "Promotes holistic development of fruits, vegetables, mushrooms, spices, flowers, and aromatic plants.",
+    "benefits": [
+      "40% to 50% capital subsidy for high-density orchards, polyhouses, and pack houses.",
+      "Assistance for cold storage units, tissue culture units, and beekeeping."
+    ],
+    "eligibility": [
+      "Farmers, FPOs, SHGs, and agricultural entrepreneurs possessing suitable land."
+    ],
+    "required_documents": [
+      "Detailed Project Report (DPR)",
+      "Land records or registered lease deed",
+      "Bank Account Passbook"
+    ],
+    "application_process": [
+      "Apply online on State Horticulture Mission web portal or nhb.gov.in.",
+      "Upload DPR and land records for field appraisal and administrative approval."
+    ],
+    "target_beneficiaries": [
+      "Horticulture growers and post-harvest infrastructure developers"
+    ],
+    "funding_pattern": "60:40 fund sharing between Centre and States (90:10 for NE/Himalayan States)",
+    "central_or_state": "Both",
+    "launch_year": "2014",
+    "official_website": "https://midh.gov.in",
+    "application_url": "https://midh.gov.in",
+    "helpline": "1800-180-1551",
+    "email": "midh-agri@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://midh.gov.in"
+  },
+  {
+    "id": "rad",
+    "name": "RAD",
+    "full_name": "Rainfed Area Development",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "implementing_agency": "State Agriculture Departments under NMSA",
+    "category": "Natural Farming",
+    "scheme_type": "Central Sponsored Scheme",
+    "benefit_summary": "Focuses on Integrated Farming System (IFS) models integrating crops with livestock, horticulture, and fishery in rainfed districts.",
+    "benefits": [
+      "Up to 50% financial subsidy for combining field cropping with livestock, poultry, or fishery.",
+      "Assistance for farm ponds and soil conservation assets."
+    ],
+    "eligibility": [
+      "Landholding farmers in notified rainfed and drought-prone districts."
+    ],
+    "required_documents": [
+      "Land revenue records (7/12 extract / Khatauni)",
+      "Bank Passbook copy"
+    ],
+    "application_process": [
+      "Apply through District Agriculture Officer in rainfed districts.",
+      "Customized IFS model plan is verified and approved on site."
+    ],
+    "target_beneficiaries": ["Rainfed agricultural farmers"],
+    "funding_pattern": "60:40 fund sharing between Centre and States (90:10 for NE/Himalayan States)",
+    "central_or_state": "Both",
+    "launch_year": "2014",
+    "official_website": "https://nmsa.dac.gov.in",
+    "application_url": "https://nmsa.dac.gov.in",
+    "helpline": "1800-180-1551",
+    "email": "nmsa-agri@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in/schemes/rad"
+  },
+  {
+    "id": "pmmsy",
+    "name": "PMMSY",
+    "full_name": "Pradhan Mantri Matsya Sampada Yojana",
+    "ministry": "Ministry of Fisheries, Animal Husbandry and Dairying",
+    "department": "Department of Fisheries",
+    "implementing_agency": "Department of Fisheries / State Fisheries Departments / NFDB",
+    "category": "Fisheries",
+    "scheme_type": "Central Sponsored Scheme",
+    "benefit_summary": "Drives sustainable development of marine, inland, and aquaculture fisheries infrastructure.",
+    "benefits": [
+      "40% financial grant for General category and 60% for SC/ST and Women beneficiaries.",
+      "Support for fish ponds, biofloc units, RAS, hatcheries, and deep-sea vessels."
+    ],
+    "eligibility": [
+      "Fishers, fish farmers, SHGs, JLGs, FPOs, and fisheries cooperatives."
+    ],
+    "required_documents": [
+      "Land records / registered lease deed for aquaculture",
+      "Detailed Project Report (DPR)",
+      "Bank details"
+    ],
+    "application_process": [
+      "Submit application on state fisheries portal or NFDB website.",
+      "District Fisheries Officer conducts site inspection prior to approval."
+    ],
+    "target_beneficiaries": [
+      "Fish farmers, traditional fishers, and aquaculture entrepreneurs"
+    ],
+    "funding_pattern": "60:40 fund sharing between Centre and States (90:10 for NE/Himalayan States)",
+    "central_or_state": "Both",
+    "launch_year": "2020",
+    "official_website": "https://pmmsy.dof.gov.in",
+    "application_url": "https://pmmsy.dof.gov.in",
+    "helpline": "1800-425-1660",
+    "email": "pmmsy-dof@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://pmmsy.dof.gov.in"
+  },
+  {
+    "id": "rythu-bandhu",
+    "name": "Rythu Bandhu",
+    "full_name": "Agriculture Investment Support Scheme (Rythu Bandhu)",
+    "ministry": "Department of Agriculture, Government of Telangana",
+    "department": "Department of Agriculture",
+    "implementing_agency": "Department of Agriculture, Telangana",
+    "category": "Income Support",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Direct crop investment support of Rs. 10,000 per acre per year (Rs. 5,000 per season) transferred directly to landowning farmers.",
+    "benefits": [
+      "Direct financial grant of Rs. 5,000 per acre per crop season for purchasing seeds, fertilizers, and farm inputs.",
+      "100% direct bank transfer without middleman intervention."
+    ],
+    "eligibility": [
+      "Landowning resident farmers of Telangana with agricultural Pattadar Passbooks."
+    ],
+    "required_documents": [
+      "Pattadar Passbook / Dharani land record details",
+      "Aadhaar-seeded Bank Passbook"
+    ],
+    "application_process": [
+      "Enrollment is automatic based on Dharani integrated land portal data.",
+      "New land buyers submit Pattadar details to local Agricultural Extension Officer (AEO)."
+    ],
+    "target_beneficiaries": ["Landowning farmers in Telangana"],
+    "funding_pattern": "100% State funded scheme by Government of Telangana",
+    "central_or_state": "State",
+    "launch_year": "2018",
+    "official_website": "https://rythubandhu.telangana.gov.in",
+    "application_url": "https://rythubandhu.telangana.gov.in",
+    "helpline": "1800-425-2938",
+    "email": "agri-telangana@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in"
+  },
+  {
+    "id": "kalia-odisha",
+    "name": "KALIA",
+    "full_name": "Krushak Assistance for Livelihood and Income Augmentation",
+    "ministry": "Department of Agriculture and Farmers Empowerment, Government of Odisha",
+    "department": "Department of Agriculture and Farmers Empowerment",
+    "implementing_agency": "Directorate of Agriculture and Food Production, Odisha",
+    "category": "Income Support",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Direct financial assistance for small, marginal farmers, and landless agricultural households for cultivation and livelihood.",
+    "benefits": [
+      "Financial assistance of Rs. 10,000 per family per year for small and marginal farmers.",
+      "Financial support of Rs. 12,500 for landless agricultural households for allied activities (goat rearing, duckery, fishery).",
+      "Annual grant of Rs. 10,000 for vulnerable agricultural households and landless laborers."
+    ],
+    "eligibility": [
+      "Small, marginal farmers, landless agricultural households, and vulnerable farming families in Odisha."
+    ],
+    "required_documents": [
+      "Land Record / Ration Card",
+      "Bank Account details",
+      "State Domicile proof"
+    ],
+    "application_process": [
+      "Apply online on kalia.odisha.gov.in or complete Gram Panchayat inclusion forms.",
+      "Verification is conducted by District Level Nodal Officers."
+    ],
+    "target_beneficiaries": [
+      "Small farmers, marginal farmers, landless agricultural laborers, and vulnerable families in Odisha"
+    ],
+    "funding_pattern": "100% State funded scheme by Government of Odisha",
+    "central_or_state": "State",
+    "launch_year": "2018",
+    "official_website": "https://kalia.odisha.gov.in",
+    "application_url": "https://kalia.odisha.gov.in",
+    "helpline": "1800-572-1122",
+    "email": "support.kalia@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://kalia.odisha.gov.in"
+  },
+  {
+    "id": "ysr-rythu-bharosa",
+    "name": "YSR Rythu Bharosa",
+    "full_name": "YSR Rythu Bharosa - PM KISAN",
+    "ministry": "Department of Agriculture, Government of Andhra Pradesh",
+    "department": "Department of Agriculture",
+    "implementing_agency": "Department of Agriculture, Andhra Pradesh",
+    "category": "Income Support",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Financial assistance of Rs. 13,500 per year provided to farmer families (including tenant farmers) in Andhra Pradesh.",
+    "benefits": [
+      "Annual benefit of Rs. 13,500 per family disbursed in three seasonal installments.",
+      "Includes coverage for landless tenant farmers (CCRC holders) and ROFR tribal farmers."
+    ],
+    "eligibility": [
+      "Farmer families owning land and tenant farmers possessing Crop Cultivator Rights Cards (CCRC) in AP."
+    ],
+    "required_documents": [
+      "Land Records / CCRC Tenant Card",
+      "Aadhaar-linked Bank Account details"
+    ],
+    "application_process": [
+      "Register through local Rythu Bharosa Kendras (RBKs) / Village Agriculture Assistants.",
+      "Data is verified via state land registration systems."
+    ],
+    "target_beneficiaries": [
+      "Landowning and tenant farmer families in Andhra Pradesh"
+    ],
+    "funding_pattern": "Combination of State budget top-up (Rs. 7,500) and Central PM-KISAN (Rs. 6,000)",
+    "central_or_state": "Both",
+    "launch_year": "2019",
+    "official_website": "https://rythubharosa.ap.gov.in",
+    "application_url": "https://rythubharosa.ap.gov.in",
+    "helpline": "155251",
+    "email": "aprythubharosa@gmail.com",
+    "last_updated": "2026",
+    "official_source": "https://rythubharosa.ap.gov.in"
+  },
+  {
+    "id": "mkay-jharkhand",
+    "name": "Mukhyamantri Krishi Ashirwad Yojana",
+    "full_name": "Mukhyamantri Krishi Ashirwad Yojana Jharkhand",
+    "ministry": "Department of Agriculture, Animal Husbandry & Cooperative, Government of Jharkhand",
+    "department": "Department of Agriculture",
+    "implementing_agency": "Directorate of Agriculture, Jharkhand",
+    "category": "Income Support",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Financial grant of Rs. 5,000 to Rs. 25,000 per year per farmer for purchasing seeds, fertilizers, and field inputs.",
+    "benefits": [
+      "Financial assistance of Rs. 5,000 per acre per year (up to maximum 5 acres / Rs. 25,000).",
+      "Disbursed in two equal seasonal installments prior to Kharif and Rabi sowing."
+    ],
+    "eligibility": [
+      "Small and marginal farmers residing in Jharkhand with agricultural land up to 5 acres."
+    ],
+    "required_documents": [
+      "Land record (Khasra / Khatauni)",
+      "Bank Passbook copy",
+      "State Domicile Certificate"
+    ],
+    "application_process": [
+      "Apply through District Agriculture Office or local Pragya Kendra (CSC).",
+      "Verification is conducted by Block Development Officers."
+    ],
+    "target_beneficiaries": [
+      "Small and marginal farmers owning up to 5 acres in Jharkhand"
+    ],
+    "funding_pattern": "100% State funded scheme by Government of Jharkhand",
+    "central_or_state": "State",
+    "launch_year": "2019",
+    "official_website": "https://jharkhand.gov.in",
+    "application_url": "https://www.myscheme.gov.in",
+    "helpline": "1800-123-1136",
+    "email": "krishi.jharkhand@gmail.com",
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in"
+  },
+  {
+    "id": "bhavantar-mp",
+    "name": "Bhavantar Bhugtan Yojana",
+    "full_name": "Bhavantar Bhugtan Yojana Madhya Pradesh",
+    "ministry": "Farmer Welfare and Agriculture Development Department, Government of Madhya Pradesh",
+    "department": "Department of Agriculture, Madhya Pradesh",
+    "implementing_agency": "MP State Agricultural Marketing Board (Mandi Board)",
+    "category": "MSP related support",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Price deficit financing scheme that compensates farmers when modal mandi trade prices fall below the Minimum Support Price (MSP).",
+    "benefits": [
+      "Direct compensation equal to the difference between Minimum Support Price (MSP) and actual modal selling price.",
+      "Protects farmers from distress selling during post-harvest market gluts."
+    ],
+    "eligibility": [
+      "Farmers registered on e-Uparjan portal selling notified agricultural oilseeds and pulses in MP mandis."
+    ],
+    "required_documents": [
+      "e-Uparjan Registration slip",
+      "Mandi sale receipt / slip",
+      "Bank Account details"
+    ],
+    "application_process": [
+      "Register online on e-Uparjan MP portal prior to harvest season.",
+      "Sell produce in designated APMC mandi and obtain digital sale slip.",
+      "Price differential is automatically computed and credited via DBT."
+    ],
+    "target_beneficiaries": [
+      "Oilseed and pulse growing farmers in Madhya Pradesh"
+    ],
+    "funding_pattern": "100% State funded scheme by Government of Madhya Pradesh",
+    "central_or_state": "State",
+    "launch_year": "2017",
+    "official_website": "https://mpeuparjan.nic.in",
+    "application_url": "https://mpeuparjan.nic.in",
+    "helpline": "1800-233-0263",
+    "email": "support-euparjan@mp.gov.in",
+    "last_updated": "2026",
+    "official_source": "https://mpeuparjan.nic.in"
+  },
+  {
+    "id": "mjsky-maharashtra",
+    "name": "Mahatma Jyotirao Phule Shetkari Karjmukti Yojna",
+    "full_name": "Mahatma Jyotirao Phule Shetkari Karjmukti Yojna Maharashtra",
+    "ministry": "Cooperation, Marketing and Textiles Department, Government of Maharashtra",
+    "department": "Department of Cooperation",
+    "implementing_agency": "Cooperation Department, Maharashtra State",
+    "category": "Loans",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Provides crop loan debt relief and write-off up to Rs. 2 lakh for distressed farmer accounts.",
+    "benefits": [
+      "Complete write-off/waiver of short-term crop loans up to Rs. 2,00,000.",
+      "Incentive grant up to Rs. 50,000 for farmers who repay crop loans promptly."
+    ],
+    "eligibility": [
+      "Farmers in Maharashtra holding overdue short-term crop loan accounts in commercial or cooperative banks."
+    ],
+    "required_documents": [
+      "Bank Passbook copy showing loan account number",
+      "Land revenue extract (7/12 & 8A)"
+    ],
+    "application_process": [
+      "Biometric authentication is conducted at CSC / Bank branch.",
+      "Loan list is verified on MahaDBT portal and settled directly with bank branch."
+    ],
+    "target_beneficiaries": [
+      "Distressed agricultural borrowers in Maharashtra"
+    ],
+    "funding_pattern": "100% State funded scheme by Government of Maharashtra",
+    "central_or_state": "State",
+    "launch_year": "2019",
+    "official_website": "https://mjpsky.maharashtra.gov.in",
+    "application_url": "https://mjpsky.maharashtra.gov.in",
+    "helpline": "1800-102-3404",
+    "email": "contact.mjpsky@maharashtra.gov.in",
+    "last_updated": "2026",
+    "official_source": "https://mjpsky.maharashtra.gov.in"
+  },
+  {
+    "id": "rgkny-chhattisgarh",
+    "name": "Rajiv Gandhi Kisan Nyay Yojana",
+    "full_name": "Rajiv Gandhi Kisan Nyay Yojana Chhattisgarh",
+    "ministry": "Department of Agriculture Development and Farmer Welfare, Government of Chhattisgarh",
+    "department": "Department of Agriculture",
+    "implementing_agency": "Directorate of Agriculture, Chhattisgarh",
+    "category": "Income Support",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Input incentive assistance up to Rs. 10,000 per acre for farmers cultivating paddy, maize, pulses, oilseeds, and sugarcane.",
+    "benefits": [
+      "Direct input subsidy grant of Rs. 9,000 to Rs. 10,000 per acre.",
+      "Higher incentive for crop diversification away from water-intensive paddy."
+    ],
+    "eligibility": [
+      "All resident farmers cultivating registered Kharif crops in Chhattisgarh."
+    ],
+    "required_documents": [
+      "e-Girdawari crop registration proof",
+      "Bank Account details",
+      "Identity Proof"
+    ],
+    "application_process": [
+      "Register on RGKNY portal via local Primary Agricultural Credit Society (PACS).",
+      "Field crop verification is conducted through e-Girdawari mobile app.",
+      "Incentive is credited in 4 quarterly installments via DBT."
+    ],
+    "target_beneficiaries": [
+      "Paddy, maize, sugarcane, and pulse growers in Chhattisgarh"
+    ],
+    "funding_pattern": "100% State funded scheme by Government of Chhattisgarh",
+    "central_or_state": "State",
+    "launch_year": "2020",
+    "official_website": "https://rgkny.cg.nic.in",
+    "application_url": "https://rgkny.cg.nic.in",
+    "helpline": "1800-233-3941",
+    "email": "agri.cg@nic.in",
+    "last_updated": "2026",
+    "official_source": "https://rgkny.cg.nic.in"
+  },
+  {
+    "id": "mmksy-gujarat",
+    "name": "Mukhyamantri Kisan Sahay Yojana",
+    "full_name": "Mukhyamantri Kisan Sahay Yojana Gujarat",
+    "ministry": "Agriculture, Farmers Welfare and Cooperation Department, Government of Gujarat",
+    "department": "Directorate of Agriculture, Gujarat",
+    "implementing_agency": "Agriculture Department, Gujarat",
+    "category": "Crop Insurance",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Zero-premium state crop protection scheme providing direct financial compensation for crop losses caused by drought, excessive rain, or unseasonal rainfall.",
+    "benefits": [
+      "Financial assistance of Rs. 20,000 per hectare (up to 4 ha) for crop losses between 33% and 60%.",
+      "Financial assistance of Rs. 25,000 per hectare (up to 4 ha) for crop losses above 60%.",
+      "No premium payment required from farmers."
+    ],
+    "eligibility": [
+      "All landholding farmers registered in Gujarat land revenue records (8-A / 7-12)."
+    ],
+    "required_documents": [
+      "7/12 and 8-A land revenue extracts",
+      "Bank Passbook copy",
+      "Village Form 16 crop entry proof"
+    ],
+    "application_process": [
+      "Apply online on e-Kutaun / i-Khedut portal when disaster is declared in notified talukas.",
+      "District Collector and revenue officers assess loss surveyed via drone/field visits."
+    ],
+    "target_beneficiaries": ["All landholding farmers across Gujarat"],
+    "funding_pattern": "100% State funded scheme by Government of Gujarat",
+    "central_or_state": "State",
+    "launch_year": "2020",
+    "official_website": "https://ikhedut.gujarat.gov.in",
+    "application_url": "https://ikhedut.gujarat.gov.in",
+    "helpline": "1800-180-1551",
+    "email": "dir-agri@gujarat.gov.in",
+    "last_updated": "2026",
+    "official_source": "https://ikhedut.gujarat.gov.in"
+  },
+  {
+    "id": "fruits-karnataka",
+    "name": "FRUITS Portal",
+    "full_name": "Farmer Registration and Unified Beneficiary Information System (FRUITS)",
+    "ministry": "Department of Agriculture, Government of Karnataka",
+    "department": "Department of Agriculture",
+    "implementing_agency": "e-Governance Department and Agriculture Department, Karnataka",
+    "category": "Digital Agriculture",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Unified digital portal assigning a unique FID (Farmer ID) to integrate land records, bank accounts, and agricultural subsidy delivery.",
+    "benefits": [
+      "Single-window registration eliminating repeated document submission for state agricultural schemes.",
+      "Direct verification of land records (Bhoomi) for instant loan and subsidy sanctions."
+    ],
+    "eligibility": [
+      "All resident farmers residing and holding agricultural land in Karnataka."
+    ],
+    "required_documents": [
+      "Bhoomi RTC land document details",
+      "Bank Passbook copy"
+    ],
+    "application_process": [
+      "Visit fruits.karnataka.gov.in or approach local Raitha Samparka Kendra (RSK).",
+      "Submit land RTC and bank details to generate unique Farmer ID (FID)."
+    ],
+    "target_beneficiaries": ["All agricultural farmers in Karnataka"],
+    "funding_pattern": "100% State digital infrastructure scheme by Government of Karnataka",
+    "central_or_state": "State",
+    "launch_year": "2020",
+    "official_website": "https://fruits.karnataka.gov.in",
+    "application_url": "https://fruits.karnataka.gov.in",
+    "helpline": "1800-425-3553",
+    "email": "fruits-agri@karnataka.gov.in",
+    "last_updated": "2026",
+    "official_source": "https://fruits.karnataka.gov.in"
+  },
+  {
+    "id": "solar-pump-gujarat",
+    "name": "Solar Agriculture Pump Scheme",
+    "full_name": "Off-Grid Solar Agriculture Pump Incentive Scheme",
+    "ministry": "Energy and Petrochemicals Department, Government of Gujarat",
+    "department": "Gujarat Urja Vikas Nigam Limited (GUVNL)",
+    "implementing_agency": "GEDA / Discoms",
+    "category": "Solar Pumps",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Provides up to 90% capital subsidy for installing standalone off-grid solar agriculture pumps for farm irrigation.",
+    "benefits": [
+      "90% subsidy on capital cost of 3 HP to 7.5 HP solar water pumps.",
+      "Farmer contribution restricted to 10% of system cost.",
+      "Assured daytime irrigation power without dependence on grid power."
+    ],
+    "eligibility": [
+      "Farmers having agricultural land with valid water source but no grid electricity connection."
+    ],
+    "required_documents": [
+      "7/12 & 8-A land extract",
+      "Water source availability proof (borewell/well permission)",
+      "Bank details"
+    ],
+    "application_process": [
+      "Apply online on i-Khedut portal under solar pump component.",
+      "Pay 10% beneficiary contribution after field feasibility clearance."
+    ],
+    "target_beneficiaries": [
+      "Farmers without grid electricity connections requiring irrigation pumps"
+    ],
+    "funding_pattern": "State top-up combined with Central PM-KUSUM Component-B",
+    "central_or_state": "Both",
+    "launch_year": "2019",
+    "official_website": "https://ikhedut.gujarat.gov.in",
+    "application_url": "https://ikhedut.gujarat.gov.in",
+    "helpline": "1800-180-1551",
+    "email": "geda@gujarat.gov.in",
+    "last_updated": "2026",
+    "official_source": "https://ikhedut.gujarat.gov.in"
+  },
+  {
+    "id": "micro-irrigation-bihar",
+    "name": "Micro Irrigation State Subsidy",
+    "full_name": "State Micro Irrigation Top-Up Scheme Bihar",
+    "ministry": "Department of Agriculture, Government of Bihar",
+    "department": "Directorate of Horticulture, Bihar",
+    "implementing_agency": "Horticulture Department, Bihar",
+    "category": "Irrigation",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Provides additional state top-up subsidy making drip and sprinkler irrigation systems up to 90% subsidized for small farmers.",
+    "benefits": [
+      "Additional 35% state subsidy on top of Central PMKSY grant, bringing total subsidy to 90%.",
+      "Drastic reduction in water consumption and diesel pumping costs."
+    ],
+    "eligibility": [
+      "Landholding farmers in Bihar cultivating fruits, vegetables, or field crops."
+    ],
+    "required_documents": [
+      "Bihar Agriculture DBT Registration Number",
+      "Land Possession Certificate (LPC) / Revenue receipt",
+      "Bank details"
+    ],
+    "application_process": [
+      "Register on dbtagriculture.bihar.gov.in and apply under Micro-Irrigation component.",
+      "Select approved vendor for installation and field verification."
+    ],
+    "target_beneficiaries": ["Small and marginal farmers in Bihar"],
+    "funding_pattern": "State top-up grant matching PMKSY Central allocation",
+    "central_or_state": "Both",
+    "launch_year": "2020",
+    "official_website": "https://dbtagriculture.bihar.gov.in",
+    "application_url": "https://dbtagriculture.bihar.gov.in",
+    "helpline": "1800-180-1551",
+    "email": "dbtagri-bih@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://dbtagriculture.bihar.gov.in"
+  },
+  {
+    "id": "chc-west-bengal",
+    "name": "Farm Equipment & Implements Bank",
+    "full_name": "Custom Hiring Centre & Farm Machinery Bank Scheme West Bengal",
+    "ministry": "Department of Agriculture, Government of West Bengal",
+    "department": "Department of Agriculture",
+    "implementing_agency": "Directorate of Agriculture, West Bengal",
+    "category": "Farm Mechanization",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Financial support for establishing machinery hubs to rent tractors, power tillers, and reapers at low rates to small farmers.",
+    "benefits": [
+      "Subsidy up to 80% for SHGs, FPOs, and cooperatives to set up Farm Machinery Banks (up to Rs. 10 lakh).",
+      "50% subsidy for individual progressive farmers purchasing high-value implements."
+    ],
+    "eligibility": [
+      "Registered Farmers Groups, SHG Federations, FPOs, and individual farmers in West Bengal."
+    ],
+    "required_documents": [
+      "Group Registration Certificate / SHG Resolution",
+      "Bank Account details",
+      "Land details"
+    ],
+    "application_process": [
+      "Apply online on Matir Katha portal (matirkatha.gov.in).",
+      "District Level Committee inspects site and approves equipment sanction."
+    ],
+    "target_beneficiaries": [
+      "Small farmers, SHGs, and agricultural cooperatives in West Bengal"
+    ],
+    "funding_pattern": "100% State Plan Scheme funded by Government of West Bengal",
+    "central_or_state": "State",
+    "launch_year": "2018",
+    "official_website": "https://matirkatha.gov.in",
+    "application_url": "https://matirkatha.gov.in",
+    "helpline": "1800-102-0686",
+    "email": "matirkatha@gmail.com",
+    "last_updated": "2026",
+    "official_source": "https://matirkatha.gov.in"
+  },
+  {
+    "id": "protected-cultivation-odisha",
+    "name": "Protected Cultivation Polyhouse Scheme",
+    "full_name": "Protected Cultivation and Polyhouse Construction Scheme Odisha",
+    "ministry": "Department of Agriculture and Farmers Empowerment, Government of Odisha",
+    "department": "Directorate of Horticulture",
+    "implementing_agency": "Directorate of Horticulture, Odisha",
+    "category": "Horticulture",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Provides 75% financial assistance for constructing naturally ventilated polyhouses, shade-net houses, and greenhouses for high-value crops.",
+    "benefits": [
+      "75% capital subsidy for erecting greenhouse and shade-net structures.",
+      "50% subsidy on high-quality planting material and drip automation."
+    ],
+    "eligibility": [
+      "Farmers owning at least 500 sq. meters suitable agricultural land in Odisha."
+    ],
+    "required_documents": [
+      "Land RoR extract",
+      "Bank Passbook copy",
+      "Horticulture registration"
+    ],
+    "application_process": [
+      "Apply through Odisha Horticulture portal (mukhya.odisha.gov.in).",
+      "Assistant Director of Horticulture conducts site inspection before structure erection."
+    ],
+    "target_beneficiaries": ["Progressive horticulture farmers in Odisha"],
+    "funding_pattern": "100% State funded scheme under State Horticulture Mission",
+    "central_or_state": "State",
+    "launch_year": "2019",
+    "official_website": "https://mukhya.odisha.gov.in",
+    "application_url": "https://mukhya.odisha.gov.in",
+    "helpline": "1800-345-6770",
+    "email": "horticulture.odisha@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://mukhya.odisha.gov.in"
+  },
+  {
+    "id": "cattle-subsidy-haryana",
+    "name": "Cattle & Dairy Animal Subsidy",
+    "full_name": "Hi-Tech & Mini Dairy Units Scheme Haryana",
+    "ministry": "Department of Animal Husbandry and Dairying, Government of Haryana",
+    "department": "Department of Animal Husbandry",
+    "implementing_agency": "Directorate of Animal Husbandry, Haryana",
+    "category": "Dairy",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Capital subsidy of 25% to 50% for establishing 4, 10, and 20 indigenous milch cow/buffalo dairy units.",
+    "benefits": [
+      "25% capital subsidy for General category and 50% for SC/ST category beneficiaries.",
+      "Free insurance coverage for purchased dairy animals for first 3 years."
+    ],
+    "eligibility": ["Resident farmers and unemployed youth in Haryana."],
+    "required_documents": [
+      "Haryana Parivar Pehchan Patra (PPP)",
+      "Bank details",
+      "Veterinary health certificate"
+    ],
+    "application_process": [
+      "Apply online on Saral Haryana portal (saralharyana.gov.in).",
+      "District Veterinary Officer inspects shed and animal purchase."
+    ],
+    "target_beneficiaries": [
+      "Dairy farmers and rural unemployed youth in Haryana"
+    ],
+    "funding_pattern": "100% State funded scheme by Government of Haryana",
+    "central_or_state": "State",
+    "launch_year": "2020",
+    "official_website": "https://pashudhanharyana.gov.in",
+    "application_url": "https://saralharyana.gov.in",
+    "helpline": "1800-180-2008",
+    "email": "pashudhan.haryana@gov.in",
+    "last_updated": "2026",
+    "official_source": "https://pashudhanharyana.gov.in"
+  },
+  {
+    "id": "seed-minikit-cg",
+    "name": "Seed Minikit Distribution Scheme",
+    "full_name": "Certificated Seed Minikit Free Distribution Scheme Chhattisgarh",
+    "ministry": "Department of Agriculture, Government of Chhattisgarh",
+    "department": "Directorate of Agriculture",
+    "implementing_agency": "Chhattisgarh Rajya Beej Evam Krishi Vikas Nigam",
+    "category": "Seeds",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Free distribution of certified high-yielding hybrid seed kits for Kharif and Rabi crops.",
+    "benefits": [
+      "100% free supply of certified seeds for paddy, pulses, and oilseeds.",
+      "Enhances seed replacement rate (SRR) and crop yield."
+    ],
+    "eligibility": [
+      "Small and marginal farmers holding cultivable land in Chhattisgarh."
+    ],
+    "required_documents": ["Aadhaar Card", "Rin Pustika land record copy"],
+    "application_process": [
+      "Distribution lists are approved by Gram Sabha / Senior Agricultural Development Officer (SADO).",
+      "Seed kits are collected directly from local PACS depots."
+    ],
+    "target_beneficiaries": ["Small and marginal farmers in Chhattisgarh"],
+    "funding_pattern": "100% State funded scheme by Government of Chhattisgarh",
+    "central_or_state": "State",
+    "launch_year": "2018",
+    "official_website": "https://agriportal.cg.nic.in",
+    "application_url": "https://agriportal.cg.nic.in",
+    "helpline": "1800-233-3941",
+    "email": "agri.cg@nic.in",
+    "last_updated": "2026",
+    "official_source": "https://agriportal.cg.nic.in"
+  },
+  {
+    "id": "magel-tyala-shettale",
+    "name": "Magel Tyala Shettale",
+    "full_name": "Chief Minister Sustainable Agriculture Irrigation Scheme - Magel Tyala Shettale (Individual Farm Pond)",
+    "ministry": "Department of Agriculture, Animal Husbandry, Dairy Development & Fisheries, Government of Maharashtra",
+    "department": "Department of Agriculture",
+    "implementing_agency": "Department of Agriculture, Maharashtra State",
+    "category": "Water Conservation",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Provides direct financial subsidy ranging from Rs. 14,433 to Rs. 75,000 to farmers in Maharashtra for excavating individual farm ponds.",
+    "benefits": [
+      "Direct assistance between Rs. 14,433 and Rs. 75,000 depending on storage dimensions.",
+      "Enables on-farm rainwater harvesting and protective irrigation."
+    ],
+    "eligibility": [
+      "Farmer holding minimum 0.20 ha land in Konkan or 0.40 ha in rest of Maharashtra."
+    ],
+    "required_documents": [
+      "Land ownership records (7/12 extract and 8-A revenue certificate)",
+      "Bank Account Passbook copy",
+      "Self-declaration regarding non-availment of prior pond subsidy"
+    ],
+    "application_process": [
+      "Log in to MahaDBT portal (mahadbt.maharashtra.gov.in).",
+      "Select 'Chief Minister Sustainable Agriculture Irrigation Scheme' -> 'Individual Farm Pond'.",
+      "Submit application and participate in online lottery selection."
+    ],
+    "target_beneficiaries": ["Rainfed agricultural farmers across Maharashtra"],
+    "funding_pattern": "100% State funded scheme by Government of Maharashtra",
+    "central_or_state": "State",
+    "launch_year": "2022",
+    "official_website": "https://www.myscheme.gov.in/schemes/chief-minister-sustainable-agriculture-irrigation-scheme",
+    "application_url": "https://mahadbt.maharashtra.gov.in",
+    "helpline": "022-49150800",
+    "email": null,
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in/schemes/chief-minister-sustainable-agriculture-irrigation-scheme"
+  },
+  {
+    "id": "fpy-mp",
+    "name": "Fal Podharopan Yojana",
+    "full_name": "Fal Podharopan Yojana Madhya Pradesh",
+    "ministry": "Horticulture and Food Processing Department, Government of Madhya Pradesh",
+    "department": "Horticulture and Food Processing Department",
+    "implementing_agency": "Directorate of Horticulture and Food Processing, Madhya Pradesh",
+    "category": "Horticulture",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Provides 40% to 50% subsidy over three years to establish commercial fruit orchards.",
+    "benefits": [
+      "Subsidy disbursed over three years in 60:20:20 ratio.",
+      "Covers 14 commercial fruit crops including mango, guava, orange, pomegranate, and banana."
+    ],
+    "eligibility": [
+      "Permanent resident farmer of MP owning between 0.25 and 4 hectares."
+    ],
+    "required_documents": [
+      "Land ownership records (B-1 / Khasra / Khatauni)",
+      "Bank Account Passbook copy"
+    ],
+    "application_process": [
+      "Apply online via MP Horticulture portal (MPFSTS) or myScheme.",
+      "Enter land survey numbers, select fruit species, and upload documents for site clearance."
+    ],
+    "target_beneficiaries": [
+      "Farmers in Madhya Pradesh establishing fruit orchards"
+    ],
+    "funding_pattern": "100% State funded scheme by Government of Madhya Pradesh",
+    "central_or_state": "State",
+    "launch_year": null,
+    "official_website": "https://www.myscheme.gov.in/schemes/fpy",
+    "application_url": "https://www.myscheme.gov.in/schemes/fpy",
+    "helpline": null,
+    "email": null,
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in/schemes/fpy"
+  },
+  {
+    "id": "mbyavyb",
+    "name": "Anjeer Vikas Yojana",
+    "full_name": "Mukhyamantri Bagwani Mission: Anjeer Vikas Yojana",
+    "ministry": "Department of Agriculture, Government of Bihar",
+    "department": "Directorate of Horticulture",
+    "implementing_agency": "Department of Agriculture, Bihar",
+    "category": "Horticulture",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Promotes commercial fig (anjeer) cultivation by providing up to Rs. 50,000 per hectare over three years plus planting material.",
+    "benefits": [
+      "Rs. 30,000/ha grant in 1st year and Rs. 10,000/ha/year in 2nd and 3rd years.",
+      "Direct supply of high-quality fig planting saplings."
+    ],
+    "eligibility": [
+      "Landowning farmers in Bihar cultivating between 0.25 acres and 10 acres."
+    ],
+    "required_documents": [
+      "DBT Registration Number of Bihar Agriculture Department",
+      "Land Possession Certificate / Rasid",
+      "Bank Passbook"
+    ],
+    "application_process": [
+      "Log in to dbtagriculture.bihar.gov.in using DBT Registration Number.",
+      "Select 'Mukhyamantri Bagwani Mission: Anjeer Vikas Yojana' and submit land details."
+    ],
+    "target_beneficiaries": [
+      "Landowning farmers in Bihar cultivating fig orchards"
+    ],
+    "funding_pattern": "100% State funded scheme under Mukhyamantri Bagwani Mission",
+    "central_or_state": "State",
+    "launch_year": null,
+    "official_website": "https://www.myscheme.gov.in/schemes/mbyavyb",
+    "application_url": "https://dbtagriculture.bihar.gov.in",
+    "helpline": "1800-180-1551",
+    "email": null,
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in/schemes/mbyavyb"
+  },
+  {
+    "id": "aass-meghalaya",
+    "name": "Agriculture Academic Studies Scheme",
+    "full_name": "Agriculture Academic Studies Scheme Meghalaya",
+    "ministry": "Department of Agriculture & Farmers' Welfare, Government of Meghalaya",
+    "department": "Department of Agriculture & Farmers' Welfare",
+    "implementing_agency": "Department of Agriculture & Farmers' Welfare, Meghalaya",
+    "category": "Agricultural Education",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Sponsors permanent resident science students of Meghalaya for B.Sc. Agriculture / Horticulture degree courses with monthly stipends.",
+    "benefits": [
+      "Full academic sponsorship against State quota seats in recognized Agricultural Universities.",
+      "Monthly student stipend of Rs. 1,200 and annual book grant of Rs. 1,200."
+    ],
+    "eligibility": [
+      "Permanent Residents of Meghalaya who passed 10+2 Science and qualified ICAR AIEEA."
+    ],
+    "required_documents": [
+      "Permanent Residential Certificate (PRC)",
+      "Class X & XII Marksheets",
+      "ICAR Entrance Score Card"
+    ],
+    "application_process": [
+      "Apply online on megagriculture.gov.in / megedistrict.gov.in during May-June admission notices.",
+      "Selection is done based on merit and state reservation rules."
+    ],
+    "target_beneficiaries": [
+      "Science students from Meghalaya pursuing agricultural degree education"
+    ],
+    "funding_pattern": "100% State Plan Scheme funded by Government of Meghalaya",
+    "central_or_state": "State",
+    "launch_year": null,
+    "official_website": "https://www.myscheme.gov.in/schemes/aass",
+    "application_url": "https://megedistrict.gov.in",
+    "helpline": null,
+    "email": null,
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in/schemes/aass"
+  },
+  {
+    "id": "sefavc-gujarat",
+    "name": "Value Addition in Crops Scheme",
+    "full_name": "Scheme to Encourage Farmers to Add Value to Crops",
+    "ministry": "Agriculture, Farmers Welfare and Cooperation Department, Government of Gujarat",
+    "department": "Directorate of Agriculture, Gujarat",
+    "implementing_agency": "Agriculture, Farmers Welfare and Cooperation Department, Gujarat",
+    "category": "Farm Mechanization",
+    "scheme_type": "State Scheme",
+    "benefit_summary": "Provides 50% subsidy up to Rs. 10 lakh for machinery and post-harvest crop processing equipment.",
+    "benefits": [
+      "Financial grant equal to 50% of machine cost or up to Rs. 10,00,000.",
+      "Direct DBT transfer into beneficiary bank account."
+    ],
+    "eligibility": ["Active farmers who are permanent residents of Gujarat."],
+    "required_documents": [
+      "7/12 land extract / Khedut Khatauni",
+      "Machinery purchase quotation",
+      "Bank details"
+    ],
+    "application_process": [
+      "Apply online on ikhedut.gujarat.gov.in under Agricultural Value Addition component.",
+      "Submit physical application printout to District Agriculture Officer."
+    ],
+    "target_beneficiaries": [
+      "Farmers in Gujarat undertaking post-harvest crop value addition"
+    ],
+    "funding_pattern": "100% State funded scheme by Government of Gujarat",
+    "central_or_state": "State",
+    "launch_year": null,
+    "official_website": "https://www.myscheme.gov.in/schemes/sefavc",
+    "application_url": "https://ikhedut.gujarat.gov.in",
+    "helpline": "1800-180-1551",
+    "email": null,
+    "last_updated": "2026",
+    "official_source": "https://www.myscheme.gov.in/schemes/sefavc"
+  }
+]

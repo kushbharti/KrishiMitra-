@@ -1,0 +1,182 @@
+[
+  {
+    "id": "fungal_high_humidity",
+    "risk_name": "High Fungal Disease Risk",
+    "condition": {
+      "humidity_min": 80,
+      "humidity_max": 100,
+      "temperature_min": 18,
+      "temperature_max": 32,
+      "rainfall": "moderate"
+    },
+    "severity": "High",
+    "affected_crops": ["wheat", "rice", "tomato", "grapes", "potato"],
+    "description": "High humidity combined with warm temperatures creates ideal conditions for fungal diseases like blight, mildew, and rust to spread rapidly in the field.",
+    "recommended_action": "Apply preventive fungicide spray (mancozeb or copper oxychloride at 2.5 g/litre). Improve field drainage, avoid overhead irrigation, and inspect crops daily."
+  },
+  {
+    "id": "blast_risk_rice",
+    "risk_name": "Rice Blast Risk",
+    "condition": {
+      "humidity_min": 85,
+      "humidity_max": 100,
+      "temperature_min": 24,
+      "temperature_max": 29,
+      "rainfall": "heavy"
+    },
+    "severity": "Critical",
+    "affected_crops": ["rice"],
+    "description": "High humidity with warm night temperatures (above 24°C) and heavy rainfall creates ideal blast infection conditions. Night dew on leaves prolongs spore infection period.",
+    "recommended_action": "Spray tricyclazole at 0.6 g/litre immediately. Drain excess water from fields. Monitor neck emergence stage carefully — blast at this stage causes maximum yield loss."
+  },
+  {
+    "id": "drought_stress",
+    "risk_name": "Drought Stress Risk",
+    "condition": {
+      "humidity_min": 0,
+      "humidity_max": 30,
+      "temperature_min": 35,
+      "temperature_max": 50,
+      "rainfall": "none"
+    },
+    "severity": "Critical",
+    "affected_crops": ["rice", "sugarcane", "banana", "tomato", "groundnut"],
+    "description": "Extreme heat with very low humidity and no rainfall causes severe water stress. Plants will wilt rapidly with significant crop loss potential if irrigation is not provided within 24–48 hours.",
+    "recommended_action": "Start emergency irrigation immediately. Apply mulch to retain soil moisture. Spray anti-transpirants on foliage. Prioritize high-value crops first. Consider contingency crop planning."
+  },
+  {
+    "id": "frost_risk",
+    "risk_name": "Frost and Cold Wave Risk",
+    "condition": {
+      "humidity_min": 60,
+      "humidity_max": 100,
+      "temperature_min": 0,
+      "temperature_max": 8,
+      "rainfall": "none"
+    },
+    "severity": "High",
+    "affected_crops": ["tomato", "potato", "banana", "ginger", "turmeric"],
+    "description": "Very low temperatures with high humidity at night cause frost formation on plant surfaces, damaging tender crops, flower buds, and recently transplanted seedlings.",
+    "recommended_action": "Cover tender crops with straw/polythene sheets at night. Apply light irrigation in the evening to maintain soil warmth. Harvest any mature fruits or vegetables immediately."
+  },
+  {
+    "id": "whitefly_aphid_risk",
+    "risk_name": "Whitefly and Aphid Outbreak Risk",
+    "condition": {
+      "humidity_min": 40,
+      "humidity_max": 70,
+      "temperature_min": 25,
+      "temperature_max": 35,
+      "rainfall": "light"
+    },
+    "severity": "Medium",
+    "affected_crops": ["cotton", "tomato", "cabbage", "cauliflower", "mustard"],
+    "description": "Warm, dry conditions with minimal rainfall favour rapid multiplication of sucking pests like whitefly, aphids, and thrips. These pests also spread mosaic virus.",
+    "recommended_action": "Install yellow sticky traps (10/acre). Spray imidacloprid 0.3 ml/litre or neem oil 5 ml/litre. Yellow leaf colour change is early warning sign — check undersides of leaves daily."
+  },
+  {
+    "id": "locust_favorable",
+    "risk_name": "Locust Activity Risk",
+    "condition": {
+      "humidity_min": 25,
+      "humidity_max": 60,
+      "temperature_min": 25,
+      "temperature_max": 38,
+      "rainfall": "light"
+    },
+    "severity": "High",
+    "affected_crops": ["wheat", "maize", "soybean", "cotton", "groundnut"],
+    "description": "Hot and dry conditions with light rains create favourable conditions for locust breeding and swarming in desert-bordering areas. Swarms can destroy entire fields within hours.",
+    "recommended_action": "Report locust sightings to district agricultural officer immediately. Participate in coordinated spraying drives. Protect crop boundaries with netting if possible. Monitor cloud formation at dawn."
+  },
+  {
+    "id": "late_blight_risk",
+    "risk_name": "Late Blight Disease Risk",
+    "condition": {
+      "humidity_min": 85,
+      "humidity_max": 100,
+      "temperature_min": 10,
+      "temperature_max": 20,
+      "rainfall": "moderate"
+    },
+    "severity": "Critical",
+    "affected_crops": ["potato", "tomato"],
+    "description": "Cool, wet conditions are ideal for Late Blight (Phytophthora infestans). This disease can spread across an entire field in 3–5 days in these conditions and cause 100% crop loss.",
+    "recommended_action": "Apply metalaxyl + mancozeb combination spray immediately. Inspect entire field for water-soaked black lesions. Remove infected plants — do not compost. Improve field drainage urgently."
+  },
+  {
+    "id": "heat_stress_wheat",
+    "risk_name": "Heat Stress During Grain Fill",
+    "condition": {
+      "humidity_min": 20,
+      "humidity_max": 45,
+      "temperature_min": 33,
+      "temperature_max": 50,
+      "rainfall": "none"
+    },
+    "severity": "High",
+    "affected_crops": ["wheat", "mustard", "chickpea", "lentil"],
+    "description": "High temperatures during flowering and grain filling stage cause forced maturity, shrivelled grains, and up to 30% yield reduction in Rabi crops.",
+    "recommended_action": "Apply protective irrigation immediately (if available). Spray potassium chloride (0.5%) + salicylic acid (0.1%) mixture as heat stress mitigator. Harvest as soon as crops approach maturity."
+  },
+  {
+    "id": "waterlogging_risk",
+    "risk_name": "Waterlogging and Root Asphyxiation Risk",
+    "condition": {
+      "humidity_min": 80,
+      "humidity_max": 100,
+      "temperature_min": 20,
+      "temperature_max": 35,
+      "rainfall": "heavy"
+    },
+    "severity": "High",
+    "affected_crops": ["cotton", "soybean", "groundnut", "chickpea", "mustard"],
+    "description": "Heavy rainfall causes waterlogging in clay-heavy soils, depriving crop roots of oxygen. Plants show wilting within 24–48 hours despite saturated soil.",
+    "recommended_action": "Open drainage channels urgently — create bunds to divert water. Do not fertilize waterlogged field. Spray nutrient solution on foliage. Assess re-sowing if 50%+ stand is damaged."
+  },
+  {
+    "id": "stem_borer_risk",
+    "risk_name": "Stem Borer Pest Risk",
+    "condition": {
+      "humidity_min": 70,
+      "humidity_max": 90,
+      "temperature_min": 26,
+      "temperature_max": 34,
+      "rainfall": "moderate"
+    },
+    "severity": "Medium",
+    "affected_crops": ["rice", "maize", "sugarcane", "bajra", "jowar"],
+    "description": "Warm and humid conditions after the monsoon onset trigger mass emergence of stem borer moths (Scirpophaga) for egg-laying. Dead heart symptoms appear 15–20 days later.",
+    "recommended_action": "Apply carbofuran 3G granules at 10 kg/acre in field water. Set up pheromone traps (5/acre). Use light traps at night. Chlorpyrifos 2 ml/litre spray around crop base."
+  },
+  {
+    "id": "low_risk_favorable",
+    "risk_name": "Favorable Growth Conditions",
+    "condition": {
+      "humidity_min": 50,
+      "humidity_max": 75,
+      "temperature_min": 18,
+      "temperature_max": 28,
+      "rainfall": "light"
+    },
+    "severity": "Low",
+    "affected_crops": ["wheat", "maize", "soybean", "cotton", "vegetables"],
+    "description": "Current weather conditions are mild and suitable for crop growth. Moderate temperature with comfortable humidity supports photosynthesis and nutrient uptake.",
+    "recommended_action": "No immediate weather-related risk. Continue regular crop monitoring. This is an ideal time to apply scheduled fertilizers and maintain irrigation schedule."
+  },
+  {
+    "id": "thunderstorm_lodging_risk",
+    "risk_name": "Storm Lodging Risk for Tall Crops",
+    "condition": {
+      "humidity_min": 70,
+      "humidity_max": 100,
+      "temperature_min": 22,
+      "temperature_max": 33,
+      "rainfall": "heavy"
+    },
+    "severity": "Medium",
+    "affected_crops": ["wheat", "maize", "sugarcane", "rice", "jowar"],
+    "description": "Heavy rainfall combined with strong winds can cause lodging (stem bending/breaking) in tall cereal crops at grain-filling stage, making harvest difficult and reducing quality.",
+    "recommended_action": "Apply silicon-based fertilizer to strengthen cell walls before storm season. Consider windbreak plantings on field perimeter. Harvest mature crop promptly. Brush lodged plants upright if mild lodging occurs."
+  }
+]

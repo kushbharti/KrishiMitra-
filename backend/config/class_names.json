@@ -1,0 +1,129 @@
+{
+  "0": { "crop": "Apple", "disease": "Apple Scab", "healthy": false },
+  "1": { "crop": "Apple", "disease": "Black Rot", "healthy": false },
+  "2": { "crop": "Apple", "disease": "Cedar Apple Rust", "healthy": false },
+  "3": { "crop": "Apple", "disease": "Healthy", "healthy": true },
+  "4": { "crop": "Blueberry", "disease": "Healthy", "healthy": true },
+  "5": { "crop": "Cashew", "disease": "Healthy", "healthy": true },
+  "6": { "crop": "Cashew", "disease": "Leaf Miner", "healthy": false },
+  "7": { "crop": "Cashew", "disease": "Red Rust", "healthy": false },
+  "8": { "crop": "Cassava", "disease": "Brown Spot", "healthy": false },
+  "9": { "crop": "Cassava", "disease": "Healthy", "healthy": true },
+  "10": { "crop": "Cassava", "disease": "Mosaic Disease", "healthy": false },
+  "11": { "crop": "Cherry", "disease": "Healthy", "healthy": true },
+  "12": { "crop": "Cherry", "disease": "Powdery Mildew", "healthy": false },
+  "13": { "crop": "Chilli", "disease": "Healthy Leaf", "healthy": true },
+  "14": {
+    "crop": "Chilli",
+    "disease": "Nutrition Deficiency",
+    "healthy": false
+  },
+  "15": { "crop": "Chilli", "disease": "White Spot", "healthy": false },
+  "16": { "crop": "Citrus", "disease": "Black Spot", "healthy": false },
+  "17": { "crop": "Citrus", "disease": "Citrus Canker", "healthy": false },
+  "18": { "crop": "Citrus", "disease": "Healthy", "healthy": true },
+  "19": {
+    "crop": "Corn / Maize",
+    "disease": "Cercospora Leaf Spot (Gray Leaf Spot)",
+    "healthy": false
+  },
+  "20": { "crop": "Corn / Maize", "disease": "Common Rust", "healthy": false },
+  "21": {
+    "crop": "Corn / Maize",
+    "disease": "Northern Leaf Blight",
+    "healthy": false
+  },
+  "22": { "crop": "Cotton", "disease": "Bacterial Blight", "healthy": false },
+  "23": { "crop": "Cotton", "disease": "Curl Virus", "healthy": false },
+  "24": { "crop": "Cotton", "disease": "Healthy Leaf", "healthy": true },
+  "25": { "crop": "Grape", "disease": "Black Rot", "healthy": false },
+  "26": {
+    "crop": "Grape",
+    "disease": "Esca (Black Measles)",
+    "healthy": false
+  },
+  "27": { "crop": "Grape", "disease": "Healthy", "healthy": true },
+  "28": { "crop": "Grape", "disease": "Leaf Blight", "healthy": false },
+  "29": {
+    "crop": "Grape",
+    "disease": "Isariopsis Leaf Spot",
+    "healthy": false
+  },
+  "30": { "crop": "Groundnut", "disease": "Healthy Leaf", "healthy": true },
+  "31": { "crop": "Groundnut", "disease": "Late Leaf Spot", "healthy": false },
+  "32": {
+    "crop": "Groundnut",
+    "disease": "Nutrition Deficiency",
+    "healthy": false
+  },
+  "33": { "crop": "Tomato", "disease": "Leaf Blight", "healthy": false },
+  "34": { "crop": "Corn / Maize", "disease": "Healthy", "healthy": true },
+  "35": { "crop": "Corn / Maize", "disease": "Leaf Spot", "healthy": false },
+  "36": { "crop": "Corn / Maize", "disease": "Streak Virus", "healthy": false },
+  "37": {
+    "crop": "Orange",
+    "disease": "Huanglongbing (Citrus Greening)",
+    "healthy": false
+  },
+  "38": { "crop": "Papaya", "disease": "Bacterial Spot", "healthy": false },
+  "39": { "crop": "Papaya", "disease": "Healthy", "healthy": true },
+  "40": { "crop": "Papaya", "disease": "Ringspot Virus", "healthy": false },
+  "41": { "crop": "Peach", "disease": "Bacterial Spot", "healthy": false },
+  "42": { "crop": "Peach", "disease": "Healthy", "healthy": true },
+  "43": {
+    "crop": "Bell Pepper",
+    "disease": "Bacterial Spot",
+    "healthy": false
+  },
+  "44": { "crop": "Bell Pepper", "disease": "Healthy", "healthy": true },
+  "45": { "crop": "Potato", "disease": "Early Blight", "healthy": false },
+  "46": { "crop": "Potato", "disease": "Healthy", "healthy": true },
+  "47": { "crop": "Potato", "disease": "Late Blight", "healthy": false },
+  "48": { "crop": "Raspberry", "disease": "Healthy", "healthy": true },
+  "49": { "crop": "Rice", "disease": "Brown Spot", "healthy": false },
+  "50": { "crop": "Rice", "disease": "Healthy", "healthy": true },
+  "51": { "crop": "Rice", "disease": "Leaf Blast", "healthy": false },
+  "52": { "crop": "Tomato", "disease": "Septoria Leaf Spot", "healthy": false },
+  "53": {
+    "crop": "Soybean",
+    "disease": "Caterpillar Damage",
+    "healthy": false
+  },
+  "54": {
+    "crop": "Soybean",
+    "disease": "Diabrotica Speciosa",
+    "healthy": false
+  },
+  "55": { "crop": "Soybean", "disease": "Healthy", "healthy": true },
+  "56": { "crop": "Squash", "disease": "Powdery Mildew", "healthy": false },
+  "57": { "crop": "Strawberry", "disease": "Healthy", "healthy": true },
+  "58": { "crop": "Strawberry", "disease": "Leaf Scorch", "healthy": false },
+  "59": { "crop": "Sugarcane", "disease": "Brown Spot", "healthy": false },
+  "60": { "crop": "Sugarcane", "disease": "Grassy Shoot", "healthy": false },
+  "61": { "crop": "Sugarcane", "disease": "Healthy Leaves", "healthy": true },
+  "62": { "crop": "Tomato", "disease": "Bacterial Spot", "healthy": false },
+  "63": { "crop": "Tomato", "disease": "Early Blight", "healthy": false },
+  "64": { "crop": "Tomato", "disease": "Healthy", "healthy": true },
+  "65": { "crop": "Tomato", "disease": "Late Blight", "healthy": false },
+  "66": { "crop": "Tomato", "disease": "Leaf Mold", "healthy": false },
+  "67": { "crop": "Tomato", "disease": "Septoria Leaf Spot", "healthy": false },
+  "68": {
+    "crop": "Tomato",
+    "disease": "Spider Mites (Two-Spotted Spider Mite)",
+    "healthy": false
+  },
+  "69": { "crop": "Tomato", "disease": "Target Spot", "healthy": false },
+  "70": {
+    "crop": "Tomato",
+    "disease": "Tomato Mosaic Virus",
+    "healthy": false
+  },
+  "71": {
+    "crop": "Tomato",
+    "disease": "Tomato Yellow Leaf Curl Virus",
+    "healthy": false
+  },
+  "72": { "crop": "Wheat", "disease": "Brown Rust", "healthy": false },
+  "73": { "crop": "Wheat", "disease": "Healthy", "healthy": true },
+  "74": { "crop": "Wheat", "disease": "Yellow Rust", "healthy": false }
+}

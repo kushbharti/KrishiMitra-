@@ -1,0 +1,186 @@
+{
+  "Wheat___Brown_Rust": {
+    "symptoms": [
+      "Small, circular to oval orange-brown pustules (uredinia) scattered randomly across the upper leaf surface.",
+      "As the disease matures, pustules turn dark glossy black (telia) and leaf sheaths begin to dry out.",
+      "Severe infections cause premature leaf senescence, drastically reducing grain yield and kernel weight."
+    ],
+    "causes": "Caused by the fungus Puccinia triticina. It thrives in warm, humid weather (15°C to 25°C) with at least 6 hours of continuous leaf wetness from dew or light rain.",
+    "treatment": [
+      "Apply systemic triazole fungicides immediately upon spotting early pustules on the flag leaf.",
+      "Prioritize protecting the flag leaf (topmost leaf), as it contributes up to 75% of the grain-filling energy.",
+      "Avoid excess nitrogen fertilization during an active outbreak, as dense canopies trap moisture and accelerate spore germination."
+    ],
+    "prevention": [
+      "Plant certified rust-resistant wheat cultivars suited for your regional growing zone.",
+      "Eradicate volunteer wheat plants and grassy weeds during the off-season to eliminate overwintering green bridges.",
+      "Maintain balanced soil nutrition with adequate potassium and phosphorus to strengthen cell wall resistance."
+    ],
+    "fungicide": "Propiconazole (25% EC at 1 ml/liter of water) or Tebuconazole 25.9% EC. Spray at 10-15 day intervals if weather remains humid.",
+    "severity": "High",
+    "recovery_tips": "If sprayed early, new emerging leaves will remain green. Boost crop recovery by applying a foliar spray of 2% Potassium Nitrate (KNO3) during the boot stage to aid grain filling."
+  },
+  "Wheat___Yellow_Rust": {
+    "symptoms": [
+      "Bright yellow to neon-orange pustules arranged in highly visible, straight parallel stripes along the leaf veins.",
+      "Yellow dust (spores) easily rubs off onto fingers, clothing, or farm equipment when brushing past infected plants.",
+      "In severe cases, stripes merge into large chlorotic (yellowed) patches, causing rapid dehydration and stunting."
+    ],
+    "causes": "Caused by the fungus Puccinia striiformis f. sp. tritici (Stripe Rust). Unlike Brown Rust, Yellow Rust is a cool-weather disease, favoring temperatures between 10°C and 15°C with intermittent moisture.",
+    "treatment": [
+      "Stripe rust spreads exponentially faster than brown rust; initiate chemical sprays at the very first sign of stripe lesions.",
+      "Use dual-action strobilurin + triazole premixes for immediate curative knockdown and extended residual protection.",
+      "Ensure high water volume (400-500 liters/hectare) during spraying to penetrate deep into the lower wheat canopy."
+    ],
+    "prevention": [
+      "Utilize multi-gene adult plant resistance (APR) varieties rather than single-gene resistant varieties.",
+      "Alter sowing dates slightly to avoid aligning the vulnerable seedling stage with peak regional spore release periods.",
+      "Monitor regional agricultural extension weather alerts during cool, wet spring months."
+    ],
+    "fungicide": "Azoxystrobin 18.2% + Cyproconazole 7.3% SC, or Pyraclostrobin + Epoxiconazole applied at recommended agricultural rates.",
+    "severity": "Critical",
+    "recovery_tips": "Yellow rust can destroy a crop within 3 weeks if unchecked. Once halted by fungicides, avoid drought stress by maintaining light, consistent irrigation during heading and flowering."
+  },
+  "Wheat___Healthy": {
+    "symptoms": [
+      "Vibrant green, uniform leaf blades without pustules, lesions, yellow stripes, or necrotic tip burn.",
+      "Stems and leaf sheaths are clean and structural turgor is strong.",
+      "Normal grain head emergence and flowering progression."
+    ],
+    "causes": "Optimal soil nutrition, balanced moisture, good field drainage, and absence of fungal pathogen pressure.",
+    "treatment": [
+      "No therapeutic chemical treatment required.",
+      "Continue standard agronomic monitoring every 5-7 days."
+    ],
+    "prevention": [
+      "Maintain crop rotation schedules (e.g., wheat-pulse or wheat-oilseed rotation).",
+      "Apply basal micro-nutrients like Zinc and Boron during soil preparation to maintain natural plant immunity."
+    ],
+    "fungicide": "None required. Avoid unnecessary prophylactic fungicide applications to prevent fungal resistance buildup.",
+    "severity": "Low",
+    "recovery_tips": "Your wheat crop is in excellent health! Ensure timely irrigation at critical growth stages: Crown Root Initiation (CRI), Flowering, and Grain Filling."
+  },
+  "Tomato___Early_blight": {
+    "symptoms": [
+      "Dark brown to black circular spots with concentric rings (target-board appearance) on older lower leaves.",
+      "Yellowing of leaf tissue surrounding the dark lesions.",
+      "Premature defoliation starting from the base of the plant upward."
+    ],
+    "causes": "Caused by the fungus Alternaria solani. It overwinters in infected plant debris and soil, spreading via wind, rain splash, and overhead irrigation.",
+    "treatment": [
+      "Prune and remove infected lower leaves immediately to reduce spore load; sterilize pruning shears between cuts.",
+      "Apply protective copper-based fungicides or targeted chemical sprays.",
+      "Improve air circulation around plants by staking and spacing appropriately."
+    ],
+    "prevention": [
+      "Practice a 2-3 year crop rotation away from solanaceous crops (potatoes, tomatoes, peppers).",
+      "Use drip irrigation or soaker hoses instead of overhead watering to keep foliage dry.",
+      "Apply organic mulch around the base of plants to prevent soilborne spores from splashing onto leaves."
+    ],
+    "fungicide": "Chlorothalonil 75% WP (2 g/liter) or Mancozeb 75% WP. Apply every 7-10 days during humid weather.",
+    "severity": "High",
+    "recovery_tips": "Feed recovering plants with a balanced liquid seaweed or compost tea boost. Ensure consistent soil moisture without waterlogging to minimize physiological stress."
+  },
+  "Tomato___Late_blight": {
+    "symptoms": [
+      "Large, irregular water-soaked dark green to purplish-brown lesions on leaves and stems.",
+      "White fungal growth visible on the underside of leaves during humid mornings.",
+      "Rapid browning and shriveling of foliage, emitting a distinct odor of decay."
+    ],
+    "causes": "Caused by the water mold oomycete Phytophthora infestans. Thrives in cool, consistently wet, and humid weather conditions.",
+    "treatment": [
+      "Remove and destroy severely infected plant parts immediately; do not put them in compost piles.",
+      "Apply systemic oomycete-targeted fungicides as soon as symptoms appear.",
+      "In severe neighborhood outbreaks, terminate heavily infected crops to prevent regional windborne spread."
+    ],
+    "prevention": [
+      "Plant certified disease-resistant tomato varieties (e.g., varieties with Ph-2 and Ph-3 resistance genes).",
+      "Avoid planting tomatoes near potatoes, which act as primary carriers and overwintering hosts.",
+      "Ensure full sun exposure and wide planting rows for rapid morning foliage drying."
+    ],
+    "fungicide": "Metalaxyl 8% + Mancozeb 64% WP (2.5 g/liter), or Dimethomorph + Pyraclostrobin formulations.",
+    "severity": "Critical",
+    "recovery_tips": "Late blight is notoriously difficult to cure once established. If caught early, prune aggressively into healthy tissue and maintain strict chemical protection on new growth."
+  },
+  "Potato___Early_Blight": {
+    "symptoms": [
+      "Target-like concentric dark brown rings on older potato foliage.",
+      "Lesions are restricted by leaf veins, giving them an angular, geometric appearance.",
+      "Infected tubers develop dark, sunken, leathery dry rot lesions under the skin."
+    ],
+    "causes": "Caused by Alternaria solani. Accelerated by nitrogen deficiency, drought stress, and heavy fruiting/tuber load.",
+    "treatment": [
+      "Maintain optimal soil nitrogen and fertility levels to delay natural plant senescence.",
+      "Spray foliar fungicides when plants reach flowering stage or upon first lesion appearance.",
+      "Allow tubers to mature completely and skin to set before harvesting to prevent harvest bruising."
+    ],
+    "prevention": [
+      "Use certified disease-free seed potatoes.",
+      "Destroy potato cull piles and volunteer weeds before planting.",
+      "Maintain consistent soil moisture through automated irrigation scheduling."
+    ],
+    "fungicide": "Azoxystrobin 23% SC or Difenoconazole 25% EC applied at 14-day intervals.",
+    "severity": "High",
+    "recovery_tips": "Avoid harvesting potatoes in wet soil. Store harvested potatoes in a well-ventilated, dark, cool curing room at 12°C to 15°C for two weeks to allow skin healing."
+  },
+  "Potato___Late_Blight": {
+    "symptoms": [
+      "Pale green to dark brown water-soaked spots surrounded by a pale yellow halo on leaf tips.",
+      "Under humid conditions, a delicate white fungal mold forms around the border of lesions on leaf undersides.",
+      "Tubers show reddish-brown to purplish irregular sunken discoloration that extends into the flesh as rot."
+    ],
+    "causes": "Caused by Phytophthora infestans. Can destroy entire potato fields within days during cool, rainy weather.",
+    "treatment": [
+      "Spray curative translaminar fungicides immediately upon weather warnings.",
+      "If more than 10% of foliage is destroyed, desiccate (burn down) potato haulms (vines) using herbicide 2 weeks before harvest to prevent tuber infection.",
+      "Do not harvest until vines are completely dead and dry."
+    ],
+    "prevention": [
+      "Earth up (hill) potato rows adequately with soil to create a physical barrier between rain-washed spores and developing tubers.",
+      "Destroy all infected cull piles, as they are the primary breeding ground for new spring outbreaks."
+    ],
+    "fungicide": "Cymoxanil + Mancozeb, or Mefenoxam + Chlorothalonil. Rotate chemical groups to prevent resistance.",
+    "severity": "Critical",
+    "recovery_tips": "Do not wash potatoes before storing if blight was present in the field. Keep storage relative humidity below 85% and ensure continuous forced-air ventilation."
+  },
+  "Corn___Common_Rust": {
+    "symptoms": [
+      "Small, powdery, cinnamon-brown to golden-brown pustules erupting on both top and bottom leaf surfaces.",
+      "Pustules turn dark brown to black as the corn plant matures toward harvest.",
+      "Severe infections cause leaves to yellow, wither, and die prematurely, resulting in poorly filled ears."
+    ],
+    "causes": "Caused by the fungus Puccinia sorghi. Favored by high relative humidity (above 95%) and moderate temperatures (16°C to 25°C).",
+    "treatment": [
+      "Apply foliar fungicides if pustules appear before or during the tasseling/silking stage.",
+      "If the crop has already reached the dent or mature dough stage, chemical treatment is generally not economically necessary."
+    ],
+    "prevention": [
+      "Plant hybrid corn varieties bred with specific single-leaf (Rp) or adult plant rust resistance.",
+      "Plant early in the season to ensure crops pass the vulnerable silking stage before peak summer spore migrations."
+    ],
+    "fungicide": "Pyraclostrobin + Metconazole, or Azoxystrobin applied at V8 to VT (tasseling) growth stages.",
+    "severity": "Medium",
+    "recovery_tips": "Ensure adequate potassium supply, which helps regulate stomatal closure and maintains stalk strength to prevent lodging (falling over) in rust-stressed corn."
+  },
+  "Rice___Leaf_Blast": {
+    "symptoms": [
+      "Spindle-shaped or diamond-shaped leaf spots with gray-white centers and brownish-red borders.",
+      "Lesions enlarge and coalesce, causing entire leaves to shrivel and turn grey.",
+      "Can also attack the node below the grain panicle ('Neck Blast'), causing the entire grain head to fall over and die."
+    ],
+    "causes": "Caused by the fungus Magnaporthe oryzae. Highly favored by excessive nitrogen fertilizer, stagnant water, and prolonged leaf wetness.",
+    "treatment": [
+      "Drain standing field water for 2-3 days if irrigation control is available, as flooded stagnant water encourages spore proliferation.",
+      "Apply systemic anti-blast fungicides immediately upon spotting diamond-shaped lesions.",
+      "Split nitrogen fertilizer applications into 3 smaller doses rather than one large basal dumping."
+    ],
+    "prevention": [
+      "Burn or plow under infected rice straw and stubble after harvest.",
+      "Treat seeds with protective fungicides or biocontrol agents (Bacillus subtilis) before sowing.",
+      "Maintain continuous water flow rather than deep stagnant flooding during humid months."
+    ],
+    "fungicide": "Tricyclazole 75% WP (0.6 g/liter) or Isoprothiolane 40% EC (1.5 ml/liter) applied at active tillering and panicle initiation.",
+    "severity": "Critical",
+    "recovery_tips": "Apply a foliar spray of Silicon (Silicic acid or Potassium Silicate), which deposits in rice leaf epidermal cells and forms a hardened barrier against further fungal penetration."
+  }
+}

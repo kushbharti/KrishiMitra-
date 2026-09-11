@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #ecf0f1;
+    --foreground: #2b2118;
+    --card: #ffffff;
+    --card-foreground: #2b2118;
+    --primary: #49a078;
+    --primary-foreground: #ffffff;
+    --secondary: #9cc5a1;
+    --secondary-foreground: #216869;
+    --muted: #e2e8e9;
+    --muted-foreground: #475b63;
+    --accent: #bd5532;
+    --accent-foreground: #ffffff;
+    --border: #d8e0e2;
+    --radius: 1.25rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-slate-200/80;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-[#ECF0F1] text-[#2B2118] antialiased selection:bg-[#9CC5A1]/40 selection:text-[#216869];
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* AI Assistant Chat Bubbles */
+.chat-bubble-user {
+  background: linear-gradient(135deg, #216869, #49a078);
+  color: #ffffff;
+  border-radius: 1.25rem 1.25rem 0.25rem 1.25rem;
+  box-shadow: 0 4px 12px rgba(73, 160, 120, 0.2);
+}
+
+.chat-bubble-ai {
+  background: #ffffff;
+  border: 1px solid #d8e0e2;
+  border-radius: 1.25rem 1.25rem 1.25rem 0.25rem;
+  color: #2b2118;
+  box-shadow: 0 2px 8px rgba(43, 33, 24, 0.04);
+}
+
+/* Standardized Custom Animations for Premium UI Feel */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.75);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 95%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    opacity: 0.8;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scan {
+  animation: scanLine 2.5s ease-in-out infinite;
+}
+
+.typing-dot {
+  animation: pulseDot 1.4s infinite ease-in-out;
+}
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(71, 91, 99, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(73, 160, 120, 0.6);
+}
