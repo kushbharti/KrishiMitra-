@@ -304,21 +304,24 @@ export async function getCalendarCrops(
 export async function sendChatMessage(
   message: string,
   history: ChatMessage[],
+  language: "en" | "hi" | "mr" = "en",
 ): Promise<string> {
   const res = await fetchWithAuth("/api/assistant/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       message,
+      language,
       conversation_history: history.map((m) => ({
         role: m.role,
         content: m.content,
       })),
     }),
   });
-  const data = await handleResponse<{ response: string; model: string }>(res);
+  const data = await handleResponse<{ response: string; model: string; language: string }>(res);
   return data.response;
 }
+
 
 // ─── Weather Risk ──────────────────────────────────────────────────────────
 export interface LiveWeatherRequest {
