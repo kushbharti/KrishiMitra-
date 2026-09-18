@@ -45,17 +45,17 @@ export default function AdminLayout({
             {
               icon: Users,
               label: "Farmers Directory",
-              href: "/admin/dashboard",
+              href: "/admin/farmers",
             },
             {
               icon: Activity,
               label: "Telemetry",
-              href: "/admin/dashboard",
+              href: "/admin/telemetry",
             },
             {
               icon: FileText,
-              label: "Audit Logs",
-              href: "/admin/dashboard",
+              label: "AI Logs",
+              href: "/admin/ai-logs",
             },
           ].map((action, i) => (
             <Link
