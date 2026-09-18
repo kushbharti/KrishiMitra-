@@ -1,4 +1,4 @@
-﻿"""
+"""
 KrishiMitra AI Assistant - Backend Module
 =========================================
 Supports:
@@ -17,10 +17,11 @@ SECURITY: API keys are NEVER logged or returned to the frontend.
 import os
 import httpx
 import logging
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, Field, field_validator
 from typing import List, Optional
 from dotenv import load_dotenv
+from datetime import datetime
 
 load_dotenv()
 
@@ -199,19 +200,19 @@ class ChatResponse(BaseModel):
 # -----------------------------------------------------------------------
 
 @router.post("/chat", response_model=ChatResponse)
-async def chat_with_assistant(request: ChatRequest) -> ChatResponse:
+async def chat_with_assistant(request_body: ChatRequest, http_request: Request) -> ChatResponse:
     """Send a message to KrishiMitra AI and receive a structured agricultural response."""
 
-    lang = request.language
+    lang = request_body.language
 
-    message = request.message.strip()
+    message = request_body.message.strip()
     if not message:
         raise HTTPException(status_code=400, detail=_err(lang, "empty"))
 
     raw_history: List[Message] = (
-        request.conversation_history
-        if request.conversation_history is not None
-        else (request.history or [])
+        request_body.conversation_history
+        if request_body.conversation_history is not None
+        else (request_body.history or [])
     )
 
     api_key, endpoint, model = _resolve_provider()
@@ -265,12 +266,34 @@ async def chat_with_assistant(request: ChatRequest) -> ChatResponse:
             actual_model = data.get("model", model)
             logger.info("[Assistant] OK: model=%s lang=%s", actual_model, lang)
 
-            return ChatResponse(
+            chat_response = ChatResponse(
                 response=reply_text,
                 model=actual_model,
                 provider=provider_label,
                 language=lang,
             )
+
+            # Log AI consultation (non-critical, best-effort)
+            try:
+                from db.mongodb import get_database as _get_db
+                db = _get_db()
+                access_token = http_request.cookies.get("access_token")
+                if access_token:
+                    from services.jwt_service import JWTService
+                    payload = JWTService.verify_access_token(access_token)
+                    user_id = payload.get("sub") if payload else None
+                    if user_id:
+                        await db.ai_logs.insert_one({
+                            "user_id": user_id,
+                            "message_preview": message[:100],
+                            "language": lang,
+                            "model": actual_model,
+                            "timestamp": datetime.utcnow(),
+                        })
+            except Exception as log_err:
+                logger.warning("[Assistant] AI log write failed (non-critical): %s", log_err)
+
+            return chat_response
 
         except HTTPException:
             raise

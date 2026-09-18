@@ -1,9 +1,12 @@
-from fastapi import APIRouter, File, UploadFile, Form, HTTPException, Depends
+from fastapi import APIRouter, File, UploadFile, Form, HTTPException, Depends, Request
 from schemas.disease import SupportedCropsResponse, DiseasePredictionResponse
 from services.disease_service import DiseaseModelService, get_disease_service
-
+from db.mongodb import get_database
 from utils.data_loader import load_json
+from datetime import datetime
+import logging
 
+logger = logging.getLogger(__name__)
 router = APIRouter()
 
 @router.get("/supported-crops", response_model=SupportedCropsResponse)
@@ -18,9 +21,11 @@ async def get_supported_crops(service: DiseaseModelService = Depends(get_disease
 
 @router.post("/predict", response_model=DiseasePredictionResponse)
 async def predict_disease(
+    request: Request,
     crop: str = Form(..., description="The name of the selected supported crop"),
     image: UploadFile = File(..., description="The leaf image to analyze"),
-    service: DiseaseModelService = Depends(get_disease_service)
+    service: DiseaseModelService = Depends(get_disease_service),
+    db=Depends(get_database),
 ):
     """Analyze uploaded leaf image against the selected crop model and return top 4 predictions."""
     
@@ -67,8 +72,33 @@ async def predict_disease(
     # 4. Perform Inference
     try:
         result = service.predict(image_bytes=contents, selected_crop=crop)
-        return DiseasePredictionResponse(**result)
+        prediction_response = DiseasePredictionResponse(**result)
     except HTTPException:
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Model inference failed: {str(e)}")
+
+    # 5. Save scan log to MongoDB (optional — if user is authenticated)
+    try:
+        access_token = request.cookies.get("access_token")
+        if access_token:
+            from services.jwt_service import JWTService
+            payload = JWTService.verify_access_token(access_token)
+            user_id = payload.get("sub") if payload else None
+            if user_id:
+                top_pred = prediction_response.details
+                severity = top_pred.severity if top_pred else "Unknown"
+                disease_name = top_pred.disease_name if top_pred else "Unknown"
+                await db.scan_logs.insert_one({
+                    "user_id": user_id,
+                    "crop": crop,
+                    "disease": disease_name,
+                    "confidence": round(prediction_response.confidence, 2),
+                    "severity": severity,
+                    "healthy": prediction_response.details.healthy,
+                    "timestamp": datetime.utcnow(),
+                })
+    except Exception as log_err:
+        logger.warning(f"[Disease] Scan log write failed (non-critical): {log_err}")
+
+    return prediction_response

@@ -3,7 +3,6 @@ import {
   IncomeRequest,
   IncomeResult,
   CropRecommendation,
-   CropData,
   CalendarCrop,
   ChatMessage,
   WeatherInput,
@@ -184,110 +183,14 @@ export const formatINR = (amount: number) => {
   }).format(amount);
 };
 
-// Real-world static data based on 2026-27 MSP and typical India-level estimates
-const STATIC_CROP_DATA: Record<string, CropData> = {
-  wheat: {
-    id: "wheat", name: "Wheat", season: "Rabi",
-    yieldPerAcre: 14, costPerAcre: 15000, pricePerQuintal: 2585,
-    water_need: "Medium", risk_level: "Low",
-    source: "Government of India / PIB", sourceYear: "2026-27", geography: "India",
-    notes: "Reference price based on official Rabi MSP", isVerified: true
-  },
-  rice: {
-    id: "rice", name: "Rice (Paddy)", season: "Kharif",
-    yieldPerAcre: 16, costPerAcre: 18000, pricePerQuintal: 2441,
-    water_need: "High", risk_level: "Medium",
-    source: "Government of India / PIB", sourceYear: "2026-27", geography: "India",
-    notes: "Reference price based on official Kharif MSP", isVerified: true
-  },
-  cotton: {
-    id: "cotton", name: "Cotton", season: "Kharif",
-    yieldPerAcre: 8, costPerAcre: 22000, pricePerQuintal: 8267,
-    water_need: "Medium", risk_level: "High",
-    source: "Government of India / PIB", sourceYear: "2026-27", geography: "India",
-    notes: "Reference price based on Medium Staple MSP", isVerified: true
-  },
-  soybean: {
-    id: "soybean", name: "Soybean", season: "Kharif",
-    yieldPerAcre: 6, costPerAcre: 12000, pricePerQuintal: 5708,
-    water_need: "Low", risk_level: "Medium",
-    source: "Government of India / PIB", sourceYear: "2026-27", geography: "India",
-    notes: "Reference price based on official Kharif MSP", isVerified: true
-  },
-  maize: {
-    id: "maize", name: "Maize", season: "Kharif",
-    yieldPerAcre: 12, costPerAcre: 14000, pricePerQuintal: 2410,
-    water_need: "Medium", risk_level: "Low",
-    source: "Government of India / PIB", sourceYear: "2026-27", geography: "India",
-    notes: "Reference price based on official Kharif MSP", isVerified: true
-  },
-  chickpea: {
-    id: "chickpea", name: "Gram (Chickpea)", season: "Rabi",
-    yieldPerAcre: 6, costPerAcre: 11000, pricePerQuintal: 5875,
-    water_need: "Low", risk_level: "Medium",
-    source: "Government of India / PIB", sourceYear: "2026-27", geography: "India",
-    notes: "Reference price based on official Rabi MSP", isVerified: true
-  },
-  mustard: {
-    id: "mustard", name: "Rapeseed/Mustard", season: "Rabi",
-    yieldPerAcre: 6, costPerAcre: 10000, pricePerQuintal: 6200,
-    water_need: "Low", risk_level: "Low",
-    source: "Government of India / PIB", sourceYear: "2026-27", geography: "India",
-    notes: "Reference price based on official Rabi MSP", isVerified: true
-  },
-  tomato: {
-    id: "tomato", name: "Tomato", season: "All",
-    yieldPerAcre: 100, costPerAcre: 45000, pricePerQuintal: 1500, // Highly volatile
-    water_need: "High", risk_level: "High",
-    source: "Agmarknet / State Mandi Averages", sourceYear: "2025-26", geography: "India",
-    notes: "No official MSP. Based on historical average wholesale prices.", isVerified: false
-  },
-  // Note: For a production app, fill out the rest of CROP_LIST here. 
-  // Any missing crop in this record will fall back to a safely flagged "unverified" state.
-};
-
+/** Calls the real backend /api/income/calculate endpoint with full crops.json data. */
 export const calculateIncome = async (request: IncomeRequest): Promise<IncomeResult> => {
-  // Simulate network delay to preserve existing loading UI behavior
-  await new Promise((resolve) => setTimeout(resolve, 600));
-
-  const recommendations: CropRecommendation[] = Object.values(STATIC_CROP_DATA)
-    .filter(crop => {
-      if (request.season !== "All" && crop.season !== "All" && crop.season !== request.season) return false;
-      if (request.selected_crop && request.selected_crop !== crop.id) return false;
-      return true;
-    })
-    .map(crop => {
-      const total_revenue = crop.yieldPerAcre * crop.pricePerQuintal * request.land_size_acres;
-      const total_cost = crop.costPerAcre * request.land_size_acres;
-      const total_profit = total_revenue - total_cost;
-
-      return {
-        id: crop.id,
-        name: crop.name,
-        season: crop.season,
-        water_need: crop.water_need,
-        risk_level: crop.risk_level,
-        total_revenue,
-        total_cost,
-        total_profit,
-        recommended: false, // Calculated below
-        source: crop.source,
-        sourceYear: crop.sourceYear,
-        geography: crop.geography,
-        isVerified: crop.isVerified
-      };
-    });
-
-  // Sort by highest profit to determine recommendation
-  recommendations.sort((a, b) => b.total_profit - a.total_profit);
-  if (recommendations.length > 0) {
-    recommendations[0].recommended = true;
-  }
-
-  return {
-    land_size_acres: request.land_size_acres,
-    recommendations
-  };
+  const res = await fetchWithAuth("/api/income/calculate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(request),
+  });
+  return handleResponse<IncomeResult>(res);
 };
 
 // ─── Crop Calendar ─────────────────────────────────────────────────────────
@@ -390,3 +293,30 @@ export async function getSchemes({
   return response.json();
 }
 
+// ─── Farmer Dashboard Stats ────────────────────────────────────────────────
+export interface DashboardStats {
+  scan_count: number;
+  disease_count: number;
+  ai_consultation_count: number;
+  eligible_schemes_count: number;
+  last_updated: string;
+}
+
+export interface RecentScan {
+  id: string;
+  crop: string;
+  disease: string;
+  confidence: number;
+  severity: string;
+  timestamp: string;
+}
+
+export async function getDashboardStats(): Promise<DashboardStats> {
+  const res = await fetchWithAuth("/api/dashboard/stats");
+  return handleResponse<DashboardStats>(res);
+}
+
+export async function getRecentScans(limit = 4): Promise<RecentScan[]> {
+  const res = await fetchWithAuth(`/api/dashboard/recent-scans?limit=${limit}`);
+  return handleResponse<RecentScan[]>(res);
+}

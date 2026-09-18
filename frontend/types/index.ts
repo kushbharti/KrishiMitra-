@@ -4,7 +4,8 @@
 
 /** The authenticated user as returned by /api/auth/me and /api/profile/me */
 export interface AuthUser {
-  _id: string;
+  _id?: string;
+  id?: string;
   email: string;
   name: string;
   picture?: string;
@@ -108,18 +109,19 @@ export interface CropData {
 export interface CropRecommendation {
   id: string;
   name: string;
+  category: string;
   season: string;
   water_need: string;
   risk_level: string;
+  revenue_per_acre: number;
+  cost_per_acre: number;
+  profit_per_acre: number;
   total_revenue: number;
   total_cost: number;
   total_profit: number;
+  soil_types: string[];
   recommended: boolean;
-  // Metadata for transparency
-  source: string;
-  sourceYear: string;
-  geography: string;
-  isVerified: boolean;
+  rank: number;
 }
 
 export interface IncomeRequest {
@@ -131,6 +133,9 @@ export interface IncomeRequest {
 export interface IncomeResult {
   land_size_acres: number;
   recommendations: CropRecommendation[];
+  best_crop: string;
+  best_crop_profit: number;
+  season_filter: string;
 }
 
 // =============================================

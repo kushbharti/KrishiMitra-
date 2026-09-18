@@ -18,6 +18,7 @@ from modules.ai_assistant import router as assistant_router
 from modules.schemes import router as schemes_router
 from modules.profile import router as profile_router
 from modules.admin import router as admin_router
+from modules.dashboard import router as dashboard_router
 from api.weather_api import router as weather_router
 from services.disease_service import get_disease_service
 
@@ -87,6 +88,7 @@ app.include_router(calendar_router, prefix="/api/calendar", tags=["Crop Calendar
 app.include_router(assistant_router, prefix="/api/assistant", tags=["AI Assistant"])
 app.include_router(weather_router, prefix="/api/weather", tags=["Weather Risk"])
 app.include_router(schemes_router, prefix="/api/schemes", tags=["Government Schemes"])
+app.include_router(dashboard_router, prefix="/api/dashboard", tags=["Farmer Dashboard"])
 
 @app.get("/", tags=["Health"])
 async def health_check():

@@ -66,13 +66,13 @@ export default function SystemSettingsPage() {
   useEffect(() => {
     if (activeSection === "system" && !systemStatus) {
       setStatusLoading(true);
-      fetch("/api/admin/system-status")
+      fetch("/api/admin/system-status", { credentials: "include" })
         .then(r => r.ok ? r.json() : null)
         .then(data => { if (data) setSystemStatus(data); })
         .catch(() => {})
         .finally(() => setStatusLoading(false));
     }
-  }, [activeSection]);
+  }, [activeSection, systemStatus]);
 
   const [settings, setSettings] = useState({
     platformName: "KrishiMitra",

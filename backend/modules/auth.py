@@ -32,7 +32,7 @@ async def sync_user_route(request: Request, response: Response, body: Optional[F
             raise HTTPException(status_code=400, detail="Authentication token is required.")
 
         print("[Backend Auth] Verifying Firebase token...")
-        decoded_token = firebase_auth.verify_id_token(token)
+        decoded_token = firebase_auth.verify_id_token(token, clock_skew_seconds=60)
         uid = decoded_token.get("uid")
         email = decoded_token.get("email")
         name = decoded_token.get("name", "")
@@ -84,9 +84,9 @@ async def sync_user_route(request: Request, response: Response, body: Optional[F
             "token": access_token,
             "user": {"id": user_id, "email": email, "name": name, "role": role}
         }
-    except firebase_auth.InvalidIdTokenError:
-        print("[Backend Auth Error] Invalid Firebase Token.")
-        raise HTTPException(status_code=401, detail="Invalid Firebase Token.")
+    except firebase_auth.InvalidIdTokenError as e:
+        print(f"[Backend Auth Error] Invalid Firebase Token: {str(e)}")
+        raise HTTPException(status_code=401, detail=f"Invalid Firebase Token: {str(e)}")
     except Exception as e:
         print(f"[Backend Auth Error] {str(e)}")
         raise HTTPException(status_code=500, detail=f"Database sync failed: {str(e)}")

@@ -224,6 +224,13 @@ export default function DashboardPage() {
   const [chatInput, setChatInput] = useState("");
   const [timeStr, setTimeStr] = useState<string>("");
 
+  // Real dashboard stats from backend
+  const [dashStats, setDashStats] = useState<{ scan_count: number; disease_count: number; ai_consultation_count: number; eligible_schemes_count: number } | null>(null);
+  const [recentScans, setRecentScans] = useState<Array<{ id: string; crop: string; disease: string; confidence: number; severity: string; timestamp: string }>>([]);
+  const [topSchemes, setTopSchemes] = useState<Array<{ id: string; name: string; category: string; benefit_summary: string }>>([]);
+  const [weatherData, setWeatherData] = useState<{ temperature: number; humidity: number; rainfall: string; risk_count?: number; overall_risk?: string } | null>(null);
+  const [dataLoading, setDataLoading] = useState(true);
+
   useEffect(() => {
     // Generate dynamic time respecting user locale/timezone
     const updateTime = () => {
@@ -242,6 +249,65 @@ export default function DashboardPage() {
     const interval = setInterval(updateTime, 60000);
     return () => clearInterval(interval);
   }, []);
+
+  // Fetch all real dashboard data once user is loaded
+  useEffect(() => {
+    if (loading) return;
+    setDataLoading(true);
+
+    const fetchAll = async () => {
+      try {
+        // Parallel: stats + recent scans + schemes + weather
+        const [statsRes, scansRes, schemesRes] = await Promise.allSettled([
+          fetch("/api/dashboard/stats", { credentials: "include" }),
+          fetch("/api/dashboard/recent-scans?limit=4", { credentials: "include" }),
+          fetch("/api/schemes?limit=4&page=1", { credentials: "include" }),
+        ]);
+
+        if (statsRes.status === "fulfilled" && statsRes.value.ok) {
+          const s = await statsRes.value.json();
+          setDashStats(s);
+        }
+        if (scansRes.status === "fulfilled" && scansRes.value.ok) {
+          const s = await scansRes.value.json();
+          setRecentScans(Array.isArray(s) ? s : []);
+        }
+        if (schemesRes.status === "fulfilled" && schemesRes.value.ok) {
+          const s = await schemesRes.value.json();
+          setTopSchemes(s.schemes?.slice(0, 4) || []);
+        }
+
+        // Fetch weather for user location
+        const location = user?.district
+          ? `${user.district}, ${user.state || "India"}`
+          : "Maharashtra, India";
+        const wRes = await fetch("/api/weather/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ location, day: "today" }),
+        });
+        if (wRes.ok) {
+          const wd = await wRes.json();
+          if (wd.liveTelemetry) {
+            setWeatherData({
+              temperature: wd.liveTelemetry.temperature,
+              humidity: wd.liveTelemetry.humidity,
+              rainfall: wd.liveTelemetry.rainfall,
+              risk_count: wd.result?.risk_count,
+              overall_risk: wd.result?.overall_risk,
+            });
+          }
+        }
+      } catch {
+        // Silently degrade — fallback to static values shown below
+      } finally {
+        setDataLoading(false);
+      }
+    };
+
+    fetchAll();
+  }, [loading, user]);
 
   // Determine dynamic location
   const locationStr = user?.district 
@@ -306,35 +372,35 @@ export default function DashboardPage() {
     },
   ];
 
-  // Multilingual KPI Cards (Sharp industry-level borders, zero puffiness)
+  // KPI Cards — now powered by real backend data with safe fallbacks
   const statsMetrics = [
     {
-      label: t.dashboard?.stats?.crops || "Crops Monitored",
-      value: 25,
-      trend: 8,
+      label: t.dashboard?.stats?.crops || "Total Scans",
+      value: dashStats?.scan_count ?? 0,
+      trend: 0,
       icon: Target,
       color: "text-[#216869]",
       bg: "bg-[#216869]/10",
     },
     {
       label: t.dashboard?.stats?.diseases || "Diseases Detected",
-      value: 15,
-      trend: -12,
+      value: dashStats?.disease_count ?? 0,
+      trend: 0,
       icon: Activity,
       color: "text-[#BD5532]",
       bg: "bg-[#BD5532]/10",
     },
     {
       label: t.dashboard?.stats?.schemes || "Eligible Schemes",
-      value: 10,
-      trend: 2,
+      value: dashStats?.eligible_schemes_count ?? 0,
+      trend: 0,
       icon: Landmark,
       color: "text-[#49A078]",
       bg: "bg-[#49A078]/10",
     },
     {
       label: t.nav?.weather || "Weather Alerts",
-      value: 2,
+      value: weatherData?.risk_count ?? 0,
       trend: 0,
       icon: Umbrella,
       color: "text-sky-600",
@@ -342,20 +408,19 @@ export default function DashboardPage() {
     },
     {
       label: t.nav?.assistant || "AI Consultations",
-      value: 341,
-      trend: 24,
+      value: dashStats?.ai_consultation_count ?? 0,
+      trend: 0,
       icon: Bot,
       color: "text-indigo-600",
       bg: "bg-indigo-500/10",
     },
     {
-      label: t.nav?.income || "Est. Profit",
-      value: 245000,
-      trend: 18,
+      label: t.nav?.income || "Land Size (acres)",
+      value: user?.land_size_acres ?? 0,
+      trend: 0,
       icon: TrendingUp,
       color: "text-emerald-600",
       bg: "bg-emerald-500/10",
-      isCurrency: true,
     },
   ];
 
@@ -577,7 +642,7 @@ export default function DashboardPage() {
                   <div>
                     <div className="flex items-center gap-1.5 text-sky-400 text-[10px] font-bold font-mono uppercase tracking-wider mb-1">
                       <MapPin size={12} />
-                      <span>{t.dashboardExtra?.solapurMicroclimate || "Solapur District, MH"}</span>
+                      <span>{locationStr || "India"}</span>
                     </div>
                     <h2 className="text-base font-bold text-white tracking-tight">
                       {t.nav?.weather || "Weather Risk Analysis"}
@@ -596,14 +661,16 @@ export default function DashboardPage() {
                   <div>
                     <div className="flex items-start">
                       <span className="text-4xl font-extrabold font-mono tracking-tighter">
-                        28
+                        {weatherData ? weatherData.temperature : "—"}
                       </span>
                       <span className="text-lg font-bold text-slate-400 mt-1">
                         °C
                       </span>
                     </div>
                     <p className="text-slate-300 font-medium text-xs mt-1">
-                      {t.dashboardExtra?.partlyCloudy || "Feels like 31°C • Moderate Humidity"}
+                      {weatherData
+                        ? `Humidity ${weatherData.humidity}% • ${weatherData.rainfall.charAt(0).toUpperCase() + weatherData.rainfall.slice(1)} Rainfall`
+                        : (t.dashboardExtra?.partlyCloudy || "Loading weather data...")}
                     </p>
                   </div>
                   <CloudSun
@@ -620,25 +687,25 @@ export default function DashboardPage() {
                       {t.dashboardExtra?.humidity || "Humidity"}
                     </span>
                     <span className="text-xs font-bold text-white font-mono">
-                      72%
+                      {weatherData ? `${weatherData.humidity}%` : "—"}
                     </span>
                   </div>
                   <div className="bg-slate-900/90 border border-slate-800/80 rounded-xl p-2.5 flex flex-col items-center justify-center gap-1">
                     <Wind size={14} className="text-sky-400" />
                     <span className="text-[10px] font-semibold text-slate-400 uppercase">
-                      {t.dashboardExtra?.wind || "Wind"}
+                      Rainfall
                     </span>
-                    <span className="text-xs font-bold text-white font-mono">
-                      14 km/h
+                    <span className="text-xs font-bold text-white font-mono capitalize">
+                      {weatherData?.rainfall ?? "—"}
                     </span>
                   </div>
                   <div className="bg-slate-900/90 border border-slate-800/80 rounded-xl p-2.5 flex flex-col items-center justify-center gap-1">
                     <Umbrella size={14} className="text-sky-400" />
                     <span className="text-[10px] font-semibold text-slate-400 uppercase">
-                      {t.dashboardExtra?.rainProb || "Rain Prob."}
+                      Risk Level
                     </span>
                     <span className="text-xs font-bold text-white font-mono">
-                      40%
+                      {weatherData?.overall_risk ?? "—"}
                     </span>
                   </div>
                 </div>
@@ -834,77 +901,81 @@ export default function DashboardPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 text-xs font-semibold">
-                    {RECENT_SCANS.map((scan) => (
-                      <tr
-                        key={scan.id}
-                        className="hover:bg-slate-50/60 transition-colors group"
-                      >
-                        <td className="py-2.5 pl-5">
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-lg overflow-hidden border border-slate-200 bg-slate-50 shrink-0">
-                              <img
-                                src={scan.image}
-                                alt={scan.crop}
-                                className="w-full h-full object-cover"
-                              />
+                    {recentScans.length > 0 ? (
+                      recentScans.map((scan) => (
+                        <tr
+                          key={scan.id}
+                          className="hover:bg-slate-50/60 transition-colors group"
+                        >
+                          <td className="py-2.5 pl-5">
+                            <div className="flex items-center gap-2.5">
+                              <div className="w-8 h-8 rounded-lg overflow-hidden border border-slate-200 bg-slate-50 shrink-0 flex items-center justify-center">
+                                <Leaf className="w-4 h-4 text-emerald-600" />
+                              </div>
+                              <span className="font-bold text-slate-900 text-xs">
+                                {scan.crop}
+                              </span>
                             </div>
-                            <span className="font-bold text-slate-900 text-xs">
-                              {scan.crop}
-                            </span>
-                          </div>
-                        </td>
-                        <td className="py-2.5">
-                          <div className="flex items-center gap-1.5">
-                            {scan.disease === "Healthy" ? (
-                              <CheckCircle2
-                                size={14}
-                                className="text-emerald-500 shrink-0"
-                              />
-                            ) : (
-                              <AlertTriangle
-                                size={14}
-                                className="text-rose-500 shrink-0"
-                              />
-                            )}
+                          </td>
+                          <td className="py-2.5">
+                            <div className="flex items-center gap-1.5">
+                              {scan.disease === "Healthy" || scan.disease.toLowerCase() === "healthy" ? (
+                                <CheckCircle2
+                                  size={14}
+                                  className="text-emerald-500 shrink-0"
+                                />
+                              ) : (
+                                <AlertTriangle
+                                  size={14}
+                                  className="text-rose-500 shrink-0"
+                                />
+                              )}
+                              <span
+                                className={
+                                  scan.disease === "Healthy" || scan.disease.toLowerCase() === "healthy"
+                                    ? "text-emerald-700 font-bold"
+                                    : "text-slate-900 font-bold"
+                                }
+                              >
+                                {scan.disease}
+                              </span>
+                            </div>
+                          </td>
+                          <td className="py-2.5">
+                            <div className="flex items-center gap-2 w-24">
+                              <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div
+                                  className="h-full bg-emerald-500 rounded-full"
+                                  style={{ width: `${scan.confidence}%` }}
+                                />
+                              </div>
+                              <span className="font-mono text-slate-700 font-bold text-[11px]">
+                                {scan.confidence}%
+                              </span>
+                            </div>
+                          </td>
+                          <td className="py-2.5 text-right pr-5">
                             <span
-                              className={
-                                scan.disease === "Healthy"
-                                  ? "text-emerald-700 font-bold"
-                                  : "text-slate-900 font-bold"
-                              }
+                              className={`px-2 py-0.5 text-[9px] font-bold font-mono rounded-md uppercase tracking-wider ${
+                                scan.severity === "High" || scan.severity === "Critical"
+                                  ? "bg-rose-100 text-rose-700 border border-rose-200/60"
+                                  : scan.severity === "Moderate"
+                                    ? "bg-amber-100 text-amber-700 border border-amber-200/60"
+                                    : "bg-emerald-100 text-emerald-700 border border-emerald-200/60"
+                              }`}
                             >
-                              {scan.disease}
+                              {scan.severity}
                             </span>
-                          </div>
-                        </td>
-                        <td className="py-2.5">
-                          <div className="flex items-center gap-2 w-24">
-                            <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                              <div
-                                className="h-full bg-emerald-500 rounded-full"
-                                style={{ width: `${scan.confidence}%` }}
-                              />
-                            </div>
-                            <span className="font-mono text-slate-700 font-bold text-[11px]">
-                              {scan.confidence}%
-                            </span>
-                          </div>
-                        </td>
-                        <td className="py-2.5 text-right pr-5">
-                          <span
-                            className={`px-2 py-0.5 text-[9px] font-bold font-mono rounded-md uppercase tracking-wider ${
-                              scan.severity === "High"
-                                ? "bg-rose-100 text-rose-700 border border-rose-200/60"
-                                : scan.severity === "Moderate"
-                                  ? "bg-amber-100 text-amber-700 border border-amber-200/60"
-                                  : "bg-emerald-100 text-emerald-700 border border-emerald-200/60"
-                            }`}
-                          >
-                            {scan.severity}
-                          </span>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={4} className="py-8 text-center text-slate-400 font-medium">
+                          No recent scans found. Start by scanning a crop.
                         </td>
                       </tr>
-                    ))}
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -1090,7 +1161,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                  {SCHEMES.map((scheme) => (
+                  {topSchemes.map((scheme) => (
                     <div
                       key={scheme.id}
                       className="p-4 rounded-xl border border-slate-200/80 bg-slate-50/50 hover:bg-white hover:border-slate-300 transition-all duration-150 flex flex-col justify-between group shadow-2xs"
@@ -1098,19 +1169,19 @@ export default function DashboardPage() {
                       <div>
                         <div className="flex justify-between items-start mb-2.5">
                           <span className="text-[9px] font-bold font-mono uppercase tracking-wider text-slate-500 bg-slate-200/60 px-2 py-0.5 rounded">
-                            {scheme.tag}
+                            {scheme.category}
                           </span>
                           <span
-                            className={`px-2 py-0.5 text-[9px] font-bold font-mono uppercase tracking-wider rounded border ${scheme.statusColor}`}
+                            className={`px-2 py-0.5 text-[9px] font-bold font-mono uppercase tracking-wider rounded border text-emerald-700 border-emerald-200/60`}
                           >
-                            {scheme.status}
+                            Eligible
                           </span>
                         </div>
                         <h3 className="font-bold text-slate-900 text-sm mb-1 group-hover:text-emerald-700 transition-colors">
-                          {scheme.title}
+                          {scheme.name}
                         </h3>
                         <p className="text-xs text-slate-500 font-normal leading-relaxed">
-                          {scheme.benefit}
+                          {scheme.benefit_summary}
                         </p>
                       </div>
 

@@ -28,7 +28,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { getSchemes } from "@/lib/api";
-import { SchemeResult, Scheme } from "@/types";
+import { SchemeResult, GovernmentScheme as Scheme } from "@/types";
 import SchemeListSkeleton from "@/components/schemes/SchemeListSkeleton";
 import SchemesPagination from "@/components/schemes/SchemesPagination";
 import ErrorBanner from "@/components/shared/ErrorBanner";
