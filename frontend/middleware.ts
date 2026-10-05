@@ -49,19 +49,15 @@ export function middleware(request: NextRequest) {
     role = payload?.role as string | undefined;
   }
   
-  console.log(`[Middleware] Path: ${pathname}, Token: ${!!token}, Role: ${role}`);
-
+  
   // 4. RULE: Admin route protection
   if (pathname.startsWith("/admin")) {
     if (!token) {
-      console.log(`[Middleware] Redirecting to /login because no token`);
       return NextResponse.redirect(new URL("/login", request.url));
     }
     if (role !== "ADMIN") {
-      console.log(`[Middleware] Redirecting to /dashboard because role is ${role}`);
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
-    console.log(`[Middleware] Allowing Admin access to ${pathname}`);
     return NextResponse.next();
   }
 

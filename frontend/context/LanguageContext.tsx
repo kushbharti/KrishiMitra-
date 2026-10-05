@@ -28,10 +28,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  // Default to 'en' — matches SSR default, so no hydration mismatch.
+  // Language preference is applied asynchronously after mount via useEffect.
   const [language, setLanguageState] = useState<Language>("en");
-  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
+    // Restore persisted preference after hydration (client-only, non-blocking)
     try {
       const stored = localStorage.getItem("krishimitra_language") as Language;
       if (stored && dictionaries[stored]) {
@@ -42,8 +44,6 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
         "Failed to read language preference from localStorage:",
         error,
       );
-    } finally {
-      setMounted(true);
     }
   }, []);
 
@@ -65,14 +65,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
     t: dictionaries[language] || en,
   };
 
+  // Always render children immediately — no mounted gate.
+  // The initial 'en' default is identical on server and client, so there is
+  // no hydration mismatch. The language preference update happens silently
+  // after mount without blocking the initial paint.
   return (
     <LanguageContext.Provider value={value}>
-      {/* Protects against Next.js SSR hydration mismatches */}
-      {mounted ? (
-        children
-      ) : (
-        <div className="min-h-screen bg-[#ECF0F1] transition-opacity duration-200 opacity-0" />
-      )}
+      {children}
     </LanguageContext.Provider>
   );
 };

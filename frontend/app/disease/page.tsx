@@ -25,7 +25,7 @@ import { fetchSupportedCrops, predictDisease } from "@/lib/api";
 import { DiseasePredictionResponse, TopPrediction } from "@/types";
 import ErrorBanner from "@/components/shared/ErrorBanner";
 import { useTranslation } from "@/context/LanguageContext";
-import { getCropAdvisory } from "@/lib/advisoryHelper"; // <-- NEW IMPORT
+import { loadDiseaseDatabase, getCropAdvisoryFromDb, getCropAdvisory } from "@/lib/advisoryHelper"; // Advisory DB (lazy-loaded)
 
 // Royalty-free agricultural imagery mapping
 const REAL_CROP_IMAGES: Record<string, string> = {
@@ -74,8 +74,14 @@ export default function DiseaseDetectionPage() {
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  // Advisory state — populated lazily after detection completes
+  const [advisory, setAdvisory] = useState<ReturnType<typeof getCropAdvisory> | null>(null);
 
-  // Load supported crops
+  // Load supported crops once on mount.
+  // Note: we intentionally do NOT include t.disease?.errorLoadCrops as a
+  // dependency — that translation string changes on every language switch,
+  // which would cause a redundant re-fetch of the crop list. The error message
+  // is read at the time the error is caught, so it is always current.
   useEffect(() => {
     let isMounted = true;
     const loadCrops = async () => {
@@ -95,7 +101,8 @@ export default function DiseaseDetectionPage() {
     };
     loadCrops();
     return () => { isMounted = false; };
-  }, [t.disease?.errorLoadCrops]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Image Processing & Validation
   const validateAndProcessFile = useCallback((file: File) => {
@@ -131,10 +138,21 @@ export default function DiseaseDetectionPage() {
     setIsAnalyzing(true);
     setErrorMessage(null);
     setPredictionResult(null);
+    setAdvisory(null);
     try {
       const result = await predictDisease(targetCrop, fileToAnalyze);
       setPredictionResult(result);
       setSelectedPredIndex(0);
+      // Lazily load the advisory database and resolve the advisory for the top prediction
+      if (result.predictions?.[0]) {
+        try {
+          const db = await loadDiseaseDatabase();
+          setAdvisory(getCropAdvisoryFromDb(db, result.predictions[0].disease, language));
+        } catch {
+          // Advisory load failed — fallback to synchronous lookup (uses cached db if available)
+          setAdvisory(getCropAdvisory(result.predictions[0].disease, language));
+        }
+      }
     } catch (err: unknown) {
       setErrorMessage(err instanceof Error ? err.message : t.common?.error || "Model inference failed.");
     } finally {
@@ -158,13 +176,19 @@ export default function DiseaseDetectionPage() {
     handleClearImage();
   };
 
-  // Extract the Active Prediction and Mapped JSON Advisory
+  // When the user switches prediction index, re-resolve advisory from the cached DB
+  const handlePredIndexChange = (idx: number) => {
+    setSelectedPredIndex(idx);
+    if (predictionResult?.predictions[idx]) {
+      const resolved = getCropAdvisory(predictionResult.predictions[idx].disease, language);
+      setAdvisory(resolved);
+    }
+  };
+
+  // Extract the Active Prediction
   const activePred: TopPrediction | undefined =
     predictionResult?.predictions[selectedPredIndex] ||
     predictionResult?.predictions[0];
-    
-  // Load the full multilingual advisory from the JSON using the helper
-  const advisory = activePred ? getCropAdvisory(activePred.disease, language) : null;
 
   const severityColors: Record<string, string> = {
     Critical: "bg-red-500 text-white animate-pulse",

@@ -11,6 +11,20 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  // Optimize large barrel-export libraries: Next.js will tree-shake these
+  // packages at compile time instead of bundling their entire export surface.
+  // This significantly reduces both dev compilation time and production bundle size
+  // for lucide-react (577 icons), framer-motion, and recharts.
+  experimental: {
+    optimizePackageImports: [
+      "lucide-react",
+      "framer-motion",
+      "recharts",
+      "@radix-ui/react-slider",
+    ],
+  },
+
   images: {
     remotePatterns: [
       {

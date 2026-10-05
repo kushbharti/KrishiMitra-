@@ -30,21 +30,28 @@ export default function BackgroundCarousel() {
     return () => clearInterval(interval);
   }, [shouldReduceMotion]);
 
+  // Only render the active + previous slide (max 2 DOM nodes).
+  // The rest are not rendered at all — browsers don't load images that are
+  // never in the DOM, which eliminates 6 unnecessary network requests.
+  const visibleIndices = new Set([bgIndex, prevIndex]);
+
   return (
     <div className="fixed inset-0 z-0 overflow-hidden bg-[#132a1e] pointer-events-none">
       {BACKGROUND_IMAGES.map((imgUrl, idx) => {
+        if (!visibleIndices.has(idx)) return null;
+
         const isActive = idx === bgIndex;
-        const isPrevious = idx === prevIndex;
         return (
           <motion.img
             key={imgUrl}
             src={imgUrl}
+            // Eagerly load the first image; lazy-load all others
+            loading={idx === 0 ? "eager" : "lazy"}
             alt={`Agricultural landscape ${idx + 1}`}
             initial={{ opacity: idx === 0 ? 1 : 0, scale: 1 }}
             animate={{
-              opacity: isActive ? 1 : isPrevious ? 1 : 0,
+              opacity: isActive ? 1 : 0,
               scale: isActive && !shouldReduceMotion ? 1.05 : 1,
-              zIndex: isActive ? 2 : isPrevious ? 1 : 0,
             }}
             transition={{
               opacity: { duration: 0.8, ease: "easeInOut" },

@@ -110,7 +110,7 @@ def _build_system_prompt(lang: str) -> str:
         )
 
     return (
-        f"You are KrishiMitra AI, the AgroVision farming assistant for Indian farmers.\n\n"
+        f"You are KrishiMitra AI, the KrishiMitra farming assistant for Indian farmers.\n\n"
         f"{lang_rule}\n"
         f"Response language: {lang_name}. This overrides the language the user wrote in.\n\n"
         f"YOUR EXPERTISE:\n"

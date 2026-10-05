@@ -1,12 +1,10 @@
-"use client";
-
 import React from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import { usePathname } from "next/navigation";
+import type { Metadata } from "next";
 import "./globals.css";
-import TopBar from "@/components/layout/TopBar";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { AuthProvider } from "@/context/AuthContext";
+import ClientLayout from "@/components/layout/ClientLayout";
 
 // Enterprise developer font stack with crisp geometric tracking
 const plusJakarta = Plus_Jakarta_Sans({
@@ -16,18 +14,17 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
 });
 
+export const metadata: Metadata = {
+  title: "KrishiMitra – AI-Powered Smart Farming Platform",
+  description:
+    "Detect crop diseases, forecast microclimates, discover government subsidies, and maximize mandi profits from one unified platform.",
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-
-  // Public marketing and auth routes render without the workspace TopBar
-  const isPublicRoute =
-    pathname === "/" || pathname === "/login" || pathname === "/register";
-  const isAdminRoute = pathname.startsWith("/admin");
-
   return (
     <html
       lang="en"
@@ -39,21 +36,7 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <AuthProvider>
-          {isPublicRoute || isAdminRoute ? (
-            /* PUBLIC OR ADMIN ROUTE: Render without Farmer TopBar. 
-               Admin routing handles its own layout internally. */
-            <main className={`min-h-screen w-full font-sans ${isPublicRoute ? "bg-[#0A100D] overflow-x-hidden" : ""}`}>
-              {children}
-            </main>
-          ) : (
-            /* AUTHENTICATED FARMER ROUTE: Navbar-driven SaaS Workspace Layout */
-            <div className="flex flex-col min-h-screen w-full font-sans">
-              <TopBar />
-              <main className="flex-1 w-full overflow-auto bg-[#ECF0F1]">
-                {children}
-              </main>
-            </div>
-          )}
+            <ClientLayout>{children}</ClientLayout>
           </AuthProvider>
         </LanguageProvider>
       </body>

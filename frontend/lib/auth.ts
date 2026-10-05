@@ -11,11 +11,9 @@ import {
 
 async function exchangeTokenWithBackend(user: User, role?: string, retry = false) {
   try {
-    console.log(`[Auth Flow] 1. Requesting Firebase ID Token (force-refresh=${!retry})...`);
     // Always force refresh to avoid stale/expired tokens
     const idToken = await user.getIdToken(true);
     
-    console.log("[Auth Flow] 2. Sending Token to Next.js API Route (/api/auth/sync)...");
     const res = await fetch("/api/auth/sync", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -26,16 +24,14 @@ async function exchangeTokenWithBackend(user: User, role?: string, retry = false
     if (!res.ok) {
       // If token was rejected and we haven't retried yet, force a new token and retry once
       if (!retry && (data.detail?.includes("Invalid Firebase Token") || res.status === 401)) {
-        console.warn("[Auth Flow] Token rejected — forcing re-authentication and retrying...");
         await user.reload(); // Reload user state from Firebase
         return exchangeTokenWithBackend(user, role, true); // retry once
       }
       throw new Error(data.detail || "Authentication synchronization failed.");
     }
-    console.log("[Auth Flow] 3. Sync complete and cookie locked by Next.js.");
     return data;
   } catch (error) {
-    console.error("[Auth Flow] Error during sync:", error);
+    console.error("[Auth] Sync error:", error);
     throw error;
   }
 }

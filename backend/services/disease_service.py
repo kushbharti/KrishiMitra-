@@ -37,7 +37,7 @@ class DiseaseModelService:
         if hasattr(self, "_initialized") and self._initialized:
             return
 
-        print(f"[AgroVision AI] Loading exported ONNX model from: {MODEL_PATH}")
+        print(f"[KrishiMitra AI] Loading exported ONNX model from: {MODEL_PATH}")
         self.session = self._load_onnx_session()
 
         try:
@@ -45,10 +45,10 @@ class DiseaseModelService:
             expected_h = int(input_shape[2])
             expected_w = int(input_shape[3])
             self.input_size = (expected_h, expected_w)
-            print(f"[AgroVision AI] Auto-detected model input dimensions: {expected_h}x{expected_w}")
+            print(f"[KrishiMitra AI] Auto-detected model input dimensions: {expected_h}x{expected_w}")
         except (IndexError, ValueError, TypeError):
             self.input_size = (300, 300)
-            print(f"[AgroVision AI WARNING] Defaulting input dimensions to {self.input_size}")
+            print(f"[KrishiMitra AI WARNING] Defaulting input dimensions to {self.input_size}")
 
         self.class_names = self._load_json(os.path.join(CONFIG_DIR, "class_names.json"))
         self.supported_crops_data = self._load_json(os.path.join(CONFIG_DIR, "supported_crops.json"))
@@ -72,7 +72,7 @@ class DiseaseModelService:
 
     def _load_json(self, path: str) -> Dict[str, Any]:
         if not os.path.exists(path):
-            raise RuntimeError(f"[AgroVision AI Error] Configuration file missing at: {path}")
+            raise RuntimeError(f"[KrishiMitra AI Error] Configuration file missing at: {path}")
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
@@ -88,13 +88,13 @@ class DiseaseModelService:
             )
             session = ort.InferenceSession(MODEL_PATH, providers=providers)
             self.input_name = session.get_inputs()[0].name
-            print(f"[AgroVision AI] ONNX Session initialized with providers: {session.get_providers()}")
+            print(f"[KrishiMitra AI] ONNX Session initialized with providers: {session.get_providers()}")
             return session
         except Exception as e:
             error_msg = str(e)
             if "External data path does not exist" in error_msg or "ValidateExternalDataPathFromDir" in error_msg:
                 print("\n" + "="*80)
-                print("[AgroVision CRITICAL ERROR] Missing ONNX External Weights File!")
+                print("[KrishiMitra CRITICAL ERROR] Missing ONNX External Weights File!")
                 print(f"Please copy 'agrovision_model.onnx.data' into this folder: {BASE_DIR}")
                 print("="*80 + "\n")
             raise RuntimeError(f"Model initialization failure: {error_msg}")
@@ -289,7 +289,7 @@ class DiseaseModelService:
             msg = f"Detected {top_pred['disease']} with {top_pred['confidence']}% confidence. Review treatment steps below."
 
         elapsed = time.time() - start_time
-        print(f"[AgroVision AI] Inference completed in {elapsed:.3f}s. Match: {crop_match} ({selected_crop} vs {detected_crop})")
+        print(f"[KrishiMitra AI] Inference completed in {elapsed:.3f}s. Match: {crop_match} ({selected_crop} vs {detected_crop})")
 
         return {
             "success": True,

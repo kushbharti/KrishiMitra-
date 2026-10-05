@@ -1,4 +1,17 @@
-import database from "../public/data/crop_diseases_75.json";
+/**
+ * Advisory Helper — lazy-loaded disease database
+ *
+ * Performance improvement: instead of statically importing the 316KB JSON
+ * into the JS bundle (which bloated every disease-page chunk), we now fetch
+ * it from /public/data/ at runtime as a plain HTTP request.
+ *
+ * Benefits:
+ *   - The disease page JS bundle is ~300KB smaller
+ *   - The JSON is fetched lazily, only when a prediction result exists
+ *   - Browsers cache the JSON automatically (static file, long cache lifetime)
+ *   - Compilation is faster because webpack/turbopack doesn't need to parse
+ *     and serialize the entire 316KB JSON structure into the module graph
+ */
 
 export interface TreatmentRemedy {
   name: string;
@@ -27,7 +40,42 @@ export interface DiseaseRecord {
   prevention: string[];
 }
 
-export function getCropAdvisory(
+// Module-level cache so the JSON is only fetched once per browser session
+let dbCache: Record<string, Record<string, DiseaseRecord>> | null = null;
+let dbFetchPromise: Promise<Record<string, Record<string, DiseaseRecord>>> | null = null;
+
+/**
+ * Loads the disease database from the public static file.
+ * The result is cached in memory so subsequent calls are instant.
+ */
+export async function loadDiseaseDatabase(): Promise<Record<string, Record<string, DiseaseRecord>>> {
+  if (dbCache) return dbCache;
+  if (dbFetchPromise) return dbFetchPromise;
+
+  dbFetchPromise = fetch("/data/crop_diseases_75.json")
+    .then((res) => {
+      if (!res.ok) throw new Error("Failed to load disease database");
+      return res.json() as Promise<Record<string, Record<string, DiseaseRecord>>>;
+    })
+    .then((data) => {
+      dbCache = data;
+      dbFetchPromise = null;
+      return data;
+    })
+    .catch((err) => {
+      dbFetchPromise = null;
+      throw err;
+    });
+
+  return dbFetchPromise;
+}
+
+/**
+ * Looks up a disease advisory record by canonical disease key and language.
+ * Returns a fallback record if the key is not found.
+ */
+export function getCropAdvisoryFromDb(
+  db: Record<string, Record<string, DiseaseRecord>>,
   canonicalKey: string,
   lang: string = "en",
 ): DiseaseRecord {
@@ -43,8 +91,6 @@ export function getCropAdvisory(
     .replace(/[\s()/-]+/g, "_")
     .replace(/^_+|_+$/g, "");
 
-  const db = database as Record<string, Record<string, DiseaseRecord>>;
-
   // 2. Direct match attempt
   if (db[cleanKey] && db[cleanKey][lang]) {
     return db[cleanKey][lang];
@@ -53,7 +99,7 @@ export function getCropAdvisory(
     return db[cleanKey]["en"];
   }
 
-  // 3. Fuzzy/Substring matching fallback (e.g., matching "brown_rust" inside "wheat_brown_rust")
+  // 3. Fuzzy/Substring matching fallback
   for (const dbKey of Object.keys(db)) {
     if (dbKey.includes(cleanKey) || cleanKey.includes(dbKey)) {
       if (db[dbKey][lang]) return db[dbKey][lang];
@@ -69,6 +115,22 @@ export function getCropAdvisory(
       return db["crop_healthy"]["en"];
   }
 
+  return getFallbackRecord(canonicalKey, lang);
+}
+
+/**
+ * Synchronous wrapper that uses the cached database if available,
+ * otherwise returns a fallback. Use `loadDiseaseDatabase()` first to ensure
+ * the cache is populated.
+ */
+export function getCropAdvisory(
+  canonicalKey: string,
+  lang: string = "en",
+): DiseaseRecord {
+  if (dbCache) {
+    return getCropAdvisoryFromDb(dbCache, canonicalKey, lang);
+  }
+  // Database not yet loaded — return fallback immediately
   return getFallbackRecord(canonicalKey, lang);
 }
 

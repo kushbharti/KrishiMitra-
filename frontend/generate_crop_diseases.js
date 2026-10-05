@@ -1,5 +1,5 @@
 // /**
-//  * AgroVision Complete Multilingual Agronomic Database Generator
+//  * KrishiMitra Complete Multilingual Agronomic Database Generator
 //  * Generates the full 75-class crop_diseases_75.json with EN, HI, and MR.
 //  */
 
@@ -5092,7 +5092,7 @@
 // // 5. Verification & Output
 // const totalKeys = Object.keys(finalJSON).length;
 // console.log(`\n==================================================`);
-// console.log(`AgroVision Database Verification:`);
+// console.log(`KrishiMitra Database Verification:`);
 // console.log(`Total Classes Processed: ${totalKeys} / 75`);
 // console.log(`Healthy Classes: ${HEALTHY_CLASSES.length}`);
 // console.log(`Disease Classes: ${Object.keys(DISEASES).length}`);

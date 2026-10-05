@@ -37,7 +37,6 @@ export async function fetchWithAuth(
   }
 
   try {
-    console.log(`[API] Fetching ${url} (via Next.js Proxy)...`);
     const response = await fetch(url, {
       ...options,
       headers,
@@ -46,7 +45,6 @@ export async function fetchWithAuth(
 
     // Controlled 401 token refresh: if session/token is stale, refresh Firebase ID token once & retry
     if (response.status === 401 && !isRetry && url !== "/api/auth/sync" && url !== "/api/auth/me") {
-      console.warn(`[API] Received 401 on ${url}. Attempting controlled token refresh retry...`);
       const firebaseUser = auth.currentUser;
       if (firebaseUser) {
         try {
@@ -58,11 +56,10 @@ export async function fetchWithAuth(
             credentials: "include",
           });
           if (syncRes.ok) {
-            console.log(`[API] Session sync refreshed successfully. Retrying request to ${url}...`);
             return await fetchWithAuth(endpoint, options, true);
           }
-        } catch (refreshErr) {
-          console.error("[API] Automatic token refresh failed:", refreshErr);
+        } catch {
+          // Token refresh failed — fall through to return the original 401
         }
       }
     }
@@ -258,7 +255,7 @@ export async function analyzeWeather({
     const errorData = await response.json().catch(() => ({}));
     throw new Error(
       errorData.detail ||
-        "Failed to fetch weather risk models from AgroVision API.",
+        "Failed to fetch weather risk models from KrishiMitra API.",
     );
   }
   return response.json();

@@ -1,5 +1,5 @@
 """
-MongoDB Atlas connection management for AgroVision / KrishiMitra.
+MongoDB Atlas connection management for KrishiMitra.
 
 Responsibilities
 ----------------

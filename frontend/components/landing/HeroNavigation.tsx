@@ -26,7 +26,7 @@ export default function HeroNavigation({
         </div>
         <div className="flex flex-col text-left">
           <span className="text-xl font-bold tracking-tight leading-none">
-            Agro<span className="text-emerald-400">Vision</span>
+            Krishi<span className="text-emerald-400">Mitra</span>
           </span>
         </div>
       </button>

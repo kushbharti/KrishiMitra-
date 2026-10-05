@@ -2,7 +2,7 @@
 
 > **Grow Smarter. Farm Better. With Precision AI.**
 
-KrishiMitra (formerly AgroVision) is an enterprise-grade, AI-powered agricultural advisory platform designed specifically for smallholder farmers across India. It provides real-time crop disease detection, personalized income advice, localized government schemes, and a 24/7 AI farming assistant—all accessible through a simple, multilingual, and mobile-friendly web interface.
+KrishiMitra is an enterprise-grade, AI-powered agricultural advisory platform designed specifically for smallholder farmers across India. It provides real-time crop disease detection, personalized income advice, localized government schemes, and a 24/7 AI farming assistant—all accessible through a simple, multilingual, and mobile-friendly web interface.
 
 ## 🌟 Key Features
 

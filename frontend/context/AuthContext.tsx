@@ -55,15 +55,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     let isMounted = true;
+    // Track whether the initial cookie check has already resolved,
+    // so we don't fire a second /api/auth/me when Firebase also reports a user.
+    let initialFetchDone = false;
 
-    // 1. Instantly check backend HTTP-only cookie session on app startup
+    // 1. Check backend HTTP-only cookie session on app startup (single call)
     fetchSession().finally(() => {
+      initialFetchDone = true;
       if (isMounted) setLoading(false);
     });
 
-    // 2. Listen for Firebase auth state changes (e.g. login/logout events)
+    // 2. Listen for Firebase auth state changes AFTER the initial fetch.
+    // Only re-fetch session if Firebase signals a NEW login event (i.e., the
+    // initial fetch is already done and Firebase just reported a user change).
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser) {
+      if (firebaseUser && initialFetchDone) {
+        // A new login happened (e.g., Google popup completed) — re-sync.
         await fetchSession();
       }
       if (isMounted) setLoading(false);
