@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import BackgroundCarousel from "@/components/landing/BackgroundCarousel";
 import HeroNavigation from "@/components/landing/HeroNavigation";
 import LeftSection from "@/components/landing/LeftSection";
 import RightSection from "@/components/landing/RightSection";
 
-export default function LandingPage() {
+function LandingPageContent() {
   const searchParams = useSearchParams();
   // Master state tracking the active view inside the Right Glass Panel
   const [authView, setAuthView] = useState<"scanner" | "login" | "signup">(
@@ -51,5 +51,13 @@ useEffect(() => {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LandingPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen w-full bg-[#0A100D]" />}>
+      <LandingPageContent />
+    </Suspense>
   );
 }

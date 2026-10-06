@@ -122,6 +122,10 @@ export interface CropRecommendation {
   soil_types: string[];
   recommended: boolean;
   rank: number;
+  isVerified?: boolean;
+  source?: string;
+  sourceYear?: number;
+  geography?: string;
 }
 
 export interface IncomeRequest {

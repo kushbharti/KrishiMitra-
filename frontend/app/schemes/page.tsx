@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
-import { motion, AnimatePresence, animate } from "framer-motion";
+import { motion, AnimatePresence, animate, type Variants } from "framer-motion";
 import {
   Landmark,
   Search,
@@ -38,12 +38,12 @@ import { useTranslation } from "@/context/LanguageContext";
    ANIMATION & UI HELPER COMPONENTS
    ========================================================================== */
 
-const containerVar = {
+const containerVar: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
 };
 
-const itemVar = {
+const itemVar: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
@@ -612,12 +612,14 @@ export default function SchemesPage() {
 
               {/* Pagination Controls */}
               <div className="pt-4">
-                <SchemesPagination
-                  data={data}
-                  loading={loading}
-                  page={page}
-                  setPage={setPage}
-                />
+                {data && (
+                  <SchemesPagination
+                    data={data}
+                    loading={loading}
+                    page={page}
+                    setPage={setPage}
+                  />
+                )}
               </div>
             </motion.div>
           ) : (

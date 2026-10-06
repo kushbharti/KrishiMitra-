@@ -13,6 +13,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import EmptyState from "@/components/shared/EmptyState";
 import { useTranslation } from "@/context/LanguageContext";
+import type { WeatherResult, WeatherAlert } from "@/types";
 
 interface FarmerAdvisoryListProps {
   result: WeatherResult | null;
@@ -100,7 +101,7 @@ export default function FarmerAdvisoryList({
       </div>
 
       <div className="space-y-4">
-        {result.alerts.map((alert, idx) => {
+        {result.alerts.map((alert: WeatherAlert, idx: number) => {
           const style = getStyle(alert.severity);
           return (
             <motion.div
@@ -144,7 +145,7 @@ export default function FarmerAdvisoryList({
                       <span className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mr-1">
                         {t.weatherExtra?.targetCrops || "Target Crops:"}
                       </span>
-                      {alert.affected_crops.map((crop) => (
+                      {alert.affected_crops.map((crop: string) => (
                         <span
                           key={crop}
                           className="rounded-md bg-gray-100 dark:bg-gray-800 px-2.5 py-1 text-xs font-bold text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-700"

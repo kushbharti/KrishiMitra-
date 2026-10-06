@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion, animate } from "framer-motion";
+import { motion, animate, type Variants } from "framer-motion";
 import {
   Leaf,
   Bot,
@@ -34,6 +34,7 @@ import {
   Sparkles,
   ExternalLink,
   History,
+  type LucideIcon,
 } from "lucide-react";
 import {
   ResponsiveContainer,
@@ -170,12 +171,12 @@ const SCHEMES = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
@@ -210,6 +211,16 @@ const AnimatedCounter = ({
     return () => controls.stop();
   }, [value, isCurrency]);
   return <span ref={ref} className="font-mono" />;
+};
+
+type DashboardStat = {
+  label: string;
+  value: number;
+  trend: number;
+  icon: LucideIcon;
+  color: string;
+  bg: string;
+  isCurrency?: boolean;
 };
 
 /* ==========================================================================
@@ -373,7 +384,7 @@ export default function DashboardPage() {
   ];
 
   // KPI Cards — now powered by real backend data with safe fallbacks
-  const statsMetrics = [
+  const statsMetrics: DashboardStat[] = [
     {
       label: t.dashboard?.stats?.crops || "Total Scans",
       value: dashStats?.scan_count ?? 0,
