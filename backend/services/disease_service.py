@@ -2,13 +2,12 @@ import io
 import json
 import os
 import time
+import threading
 from typing import Any, Dict, List, Tuple
 from fastapi import HTTPException
 import numpy as np
 import onnxruntime as ort
 from PIL import Image
-import torch
-import torchvision.transforms as transforms
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG_DIR = os.path.join(BASE_DIR, "config")
@@ -27,10 +26,13 @@ if not os.path.exists(MODEL_PATH):
 
 class DiseaseModelService:
     _instance = None
+    _lock = threading.Lock()
 
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
-            cls._instance = super(DiseaseModelService, cls).__new__(cls, *args, **kwargs)
+            with cls._lock:
+                if not cls._instance:
+                    cls._instance = super(DiseaseModelService, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
     def __init__(self):
@@ -62,13 +64,24 @@ class DiseaseModelService:
                 self.crop_to_indices[crop] = []
             self.crop_to_indices[crop].append(int(idx_str))
 
-        self.transform = transforms.Compose([
-            transforms.Resize(self.input_size),
-            transforms.ToTensor(),
-            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-        ])
+        # self.transform logic is moved to _preprocess_image method
 
         self._initialized = True
+
+    def _preprocess_image(self, image: Image.Image) -> np.ndarray:
+        image = image.resize(self.input_size)
+        image_array = np.asarray(image, dtype=np.float32) / 255.0
+        mean = np.array([0.485, 0.456, 0.406], dtype=np.float32)
+        std = np.array([0.229, 0.224, 0.225], dtype=np.float32)
+        image_array = (image_array - mean) / std
+        image_array = np.transpose(image_array, (2, 0, 1))
+        image_array = np.expand_dims(image_array, axis=0)
+        return image_array.astype(np.float32)
+
+    def _softmax(self, values: np.ndarray) -> np.ndarray:
+        values = values - np.max(values)
+        exponentials = np.exp(values)
+        return exponentials / np.sum(exponentials)
 
     def _load_json(self, path: str) -> Dict[str, Any]:
         if not os.path.exists(path):
@@ -81,12 +94,16 @@ class DiseaseModelService:
             raise RuntimeError(f"Model file not found at root path: {MODEL_PATH}")
 
         try:
-            providers = (
-                ["CUDAExecutionProvider", "CPUExecutionProvider"]
-                if torch.cuda.is_available()
-                else ["CPUExecutionProvider"]
+            session_options = ort.SessionOptions()
+            session_options.intra_op_num_threads = 1
+            session_options.inter_op_num_threads = 1
+            session_options.execution_mode = ort.ExecutionMode.ORT_SEQUENTIAL
+
+            session = ort.InferenceSession(
+                MODEL_PATH,
+                sess_options=session_options,
+                providers=["CPUExecutionProvider"],
             )
-            session = ort.InferenceSession(MODEL_PATH, providers=providers)
             self.input_name = session.get_inputs()[0].name
             print(f"[KrishiMitra AI] ONNX Session initialized with providers: {session.get_providers()}")
             return session
@@ -122,20 +139,20 @@ class DiseaseModelService:
                 detail="Invalid or corrupted image file. Please upload a valid image (JPG, PNG, WEBP).",
             )
 
-        tensor_img = self.transform(image).unsqueeze(0).numpy().astype(np.float32)
+        tensor_img = self._preprocess_image(image)
 
         try:
             raw_outputs = self.session.run(None, {self.input_name: tensor_img})[0][0]
-            logits = torch.tensor(raw_outputs)
+            logits = np.asarray(raw_outputs, dtype=np.float32)
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Inference execution failed: {str(e)}")
 
         # Step 3 & 4: Run inference across ALL classes and obtain full Softmax probabilities
-        probabilities = torch.nn.functional.softmax(logits, dim=0)
+        probabilities = self._softmax(logits)
 
         # Sort all classes by probability descending
-        sorted_probs, sorted_indices = torch.sort(probabilities, descending=True)
-        all_sorted = [(prob.item(), idx.item()) for prob, idx in zip(sorted_probs, sorted_indices)]
+        sorted_indices = np.argsort(probabilities)[::-1]
+        all_sorted = [(float(probabilities[idx]), int(idx)) for idx in sorted_indices]
 
         # Step 5 & 6: Compare Selected Crop vs Detected Crop (from #1 highest confidence class overall)
         top_prob, top_idx = all_sorted[0]

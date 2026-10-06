@@ -45,13 +45,12 @@ async def lifespan(app: FastAPI):
             print("[WARNING] firebase-service-account.json not found! Authentication will fail.")
 
     # 3. Initialize AI model
-    print("[KrishiMitra] Loading AI Models into memory...")
-    try:
-        get_disease_service()
-        print("[KrishiMitra] Disease Detection Model loaded successfully.")
-    except Exception as e:
-        print(f"[KrishiMitra CRITICAL WARNING] Failed to pre-load Disease Model: {e}")
+    print(
+        "[KrishiMitra] Disease model will load lazily "
+        "when the disease endpoint is first called."
+    )
     
+
     yield
     
     # 4. Shutdown
@@ -91,8 +90,12 @@ app.include_router(schemes_router, prefix="/api/schemes", tags=["Government Sche
 app.include_router(dashboard_router, prefix="/api/dashboard", tags=["Farmer Dashboard"])
 
 @app.get("/", tags=["Health"])
-async def health_check():
+async def root_check():
     return {"status": "KrishiMitra API running", "version": settings.VERSION}
+
+@app.get("/health", tags=["Health"])
+async def health():
+    return {"status": "ok"}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000)
