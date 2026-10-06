@@ -15,7 +15,7 @@ import {
   ProfileUpdateResponse,
 } from "@/types";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const BASE_URL = process.env.NEXT_API_URL || "http://localhost:8000";
 
 // ─── Firebase Auth Fetch Wrapper ───────────────
 export async function fetchWithAuth(
@@ -44,7 +44,12 @@ export async function fetchWithAuth(
     });
 
     // Controlled 401 token refresh: if session/token is stale, refresh Firebase ID token once & retry
-    if (response.status === 401 && !isRetry && url !== "/api/auth/sync" && url !== "/api/auth/me") {
+    if (
+      response.status === 401 &&
+      !isRetry &&
+      url !== "/api/auth/sync" &&
+      url !== "/api/auth/me"
+    ) {
       const firebaseUser = auth.currentUser;
       if (firebaseUser) {
         try {
@@ -181,7 +186,9 @@ export const formatINR = (amount: number) => {
 };
 
 /** Calls the real backend /api/income/calculate endpoint with full crops.json data. */
-export const calculateIncome = async (request: IncomeRequest): Promise<IncomeResult> => {
+export const calculateIncome = async (
+  request: IncomeRequest,
+): Promise<IncomeResult> => {
   const res = await fetchWithAuth("/api/income/calculate", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -218,10 +225,13 @@ export async function sendChatMessage(
       })),
     }),
   });
-  const data = await handleResponse<{ response: string; model: string; language: string }>(res);
+  const data = await handleResponse<{
+    response: string;
+    model: string;
+    language: string;
+  }>(res);
   return data.response;
 }
-
 
 // ─── Weather Risk ──────────────────────────────────────────────────────────
 export interface LiveWeatherRequest {

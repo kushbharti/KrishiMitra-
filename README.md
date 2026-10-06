@@ -54,6 +54,7 @@ graph LR
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 20+
 - Python 3.10+
 - MongoDB Atlas cluster (or local instance)
@@ -71,6 +72,7 @@ pip install -r requirements.txt
 
 **Environment Variables** (`backend/.env`):
 Create a `.env` file in the `backend/` directory:
+
 ```ini
 GROK_API_KEY=your_grok_api_key_here
 OPENWEATHER_API_KEY=your_weather_key
@@ -86,9 +88,11 @@ JWT_REFRESH_SECRET_KEY=generate_a_random_32_char_hex
 Place your `firebase-service-account.json` inside the `backend/` directory.
 
 **Run the Server**:
+
 ```bash
 python main.py
 ```
+
 The API will run on `http://127.0.0.1:8000`.
 
 ### 2. Frontend Setup
@@ -100,8 +104,9 @@ npm install
 
 **Environment Variables** (`frontend/.env.local`):
 Create a `.env.local` file in the `frontend/` directory:
+
 ```ini
-NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
+NEXT_API_URL=http://127.0.0.1:8000
 NEXT_PUBLIC_FIREBASE_API_KEY=your_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_domain
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_id
@@ -110,9 +115,11 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 ```
 
 **Run the Client**:
+
 ```bash
 npm run dev
 ```
+
 The application will run on `http://localhost:3000`.
 
 ---
@@ -127,7 +134,9 @@ The application will run on `http://localhost:3000`.
 6. Next.js **Middleware** reads the cookie to protect specific routes (e.g., `/admin`).
 
 ## 🤝 Contributing
+
 Contributions are welcome! Please follow standard enterprise open-source guidelines when opening pull requests.
 
 ## 📄 License
+
 MIT License. Built with ❤️ for the agricultural community.

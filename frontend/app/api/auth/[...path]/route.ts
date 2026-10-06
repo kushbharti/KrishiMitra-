@@ -20,7 +20,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+const BACKEND_URL = process.env.NEXT_API_URL || "http://127.0.0.1:8000";
 
 async function proxyToBackend(
   request: NextRequest,
@@ -31,7 +31,10 @@ async function proxyToBackend(
 
   // Forward the request body and all relevant headers to FastAPI
   const headers = new Headers();
-  headers.set("Content-Type", request.headers.get("Content-Type") || "application/json");
+  headers.set(
+    "Content-Type",
+    request.headers.get("Content-Type") || "application/json",
+  );
 
   // Forward the cookie from the browser to FastAPI (needed for /me and /logout)
   const cookieHeader = request.headers.get("cookie");
