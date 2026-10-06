@@ -47,11 +47,20 @@ async function proxyToBackend(
       ? await request.text()
       : undefined;
 
-  const backendResponse = await fetch(targetUrl, {
-    method: request.method,
-    headers,
-    body,
-  });
+  let backendResponse: Response;
+  try {
+    backendResponse = await fetch(targetUrl, {
+      method: request.method,
+      headers,
+      body,
+    });
+  } catch (error) {
+    console.error(`[Next.js Proxy] Failed to proxy to ${targetUrl}:`, error);
+    return NextResponse.json(
+      { detail: "Backend is temporarily unreachable. Please try again later." },
+      { status: 503 }
+    );
+  }
 
   // Copy the backend response body
   const responseBody = await backendResponse.text();
