@@ -1,5 +1,34 @@
 from typing import List, Optional
+from enum import Enum
 from pydantic import BaseModel, Field
+
+class LeafValidationStatus(str, Enum):
+    LEAF = "LEAF"
+    NON_LEAF = "NON_LEAF"
+    UNCERTAIN = "UNCERTAIN"
+
+
+class LeafValidationResult(BaseModel):
+    status: LeafValidationStatus = Field(
+        ...,
+        description="Validation outcome: LEAF, NON_LEAF, or UNCERTAIN"
+    )
+    reason: str = Field(
+        ...,
+        description="Concise, objective explanation of what was detected in the image"
+    )
+    suggested_action: Optional[str] = Field(
+        None,
+        description="Actionable farmer-friendly advice if image is rejected or uncertain"
+    )
+
+
+class LeafValidationErrorDetail(BaseModel):
+    error_code: str
+    message: str
+    reason: str
+    suggested_action: Optional[str] = None
+
 
 class SupportedCropsResponse(BaseModel):
     success: bool

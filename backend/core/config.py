@@ -11,6 +11,14 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
 
     # ==========================================
+    # GEMINI VISION AI (IMAGE VALIDATION)
+    # ==========================================
+    GEMINI_API_KEY: str = ""
+    GEMINI_MODEL: str = "gemini-2.5-flash"
+    MAX_IMAGE_SIZE_BYTES: int = 5 * 1024 * 1024
+    IMAGE_VALIDATION_TIMEOUT_SECONDS: float = 12.0
+
+    # ==========================================
     # ADDED FOR AUTHENTICATION
     # ==========================================
     MONGODB_URL: str = "mongodb://localhost:27017" # Replace with your Atlas URI in .env

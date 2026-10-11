@@ -20,6 +20,8 @@ import {
   Activity,
   Award,
   BookOpen,
+  ShieldAlert,
+  XCircle,
 } from "lucide-react";
 import { fetchSupportedCrops, predictDisease } from "@/lib/api";
 import { DiseasePredictionResponse, TopPrediction } from "@/types";
@@ -74,6 +76,11 @@ export default function DiseaseDetectionPage() {
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [validationError, setValidationError] = useState<{
+    message: string;
+    isLeafError: boolean;
+    isUncertain: boolean;
+  } | null>(null);
   // Advisory state — populated lazily after detection completes
   const [advisory, setAdvisory] = useState<ReturnType<typeof getCropAdvisory> | null>(null);
 
@@ -107,6 +114,7 @@ export default function DiseaseDetectionPage() {
   // Image Processing & Validation
   const validateAndProcessFile = useCallback((file: File) => {
     setErrorMessage(null);
+    setValidationError(null);
     const allowedExtensions = ["jpg", "jpeg", "png", "webp"];
     const ext = file.name.split(".").pop()?.toLowerCase() || "";
 
@@ -131,12 +139,14 @@ export default function DiseaseDetectionPage() {
     setPreviewUrl(null);
     setPredictionResult(null);
     setErrorMessage(null);
+    setValidationError(null);
     if (fileInputRef.current) fileInputRef.current.value = "";
   }, []);
 
   const executeDetection = async (targetCrop: string, fileToAnalyze: File) => {
     setIsAnalyzing(true);
     setErrorMessage(null);
+    setValidationError(null);
     setPredictionResult(null);
     setAdvisory(null);
     try {
@@ -154,7 +164,20 @@ export default function DiseaseDetectionPage() {
         }
       }
     } catch (err: unknown) {
-      setErrorMessage(err instanceof Error ? err.message : t.common?.error || "Model inference failed.");
+      const msg = err instanceof Error ? err.message : t.common?.error || "Model inference failed.";
+      const lower = msg.toLowerCase();
+      const isLeafRejection = lower.includes("plant leaf image") || lower.includes("leaf photograph") || lower.includes("non_leaf");
+      const isUncertainRejection = lower.includes("verify this image") || lower.includes("clearer leaf photo") || lower.includes("uncertain");
+
+      if (isLeafRejection || isUncertainRejection) {
+        setValidationError({
+          message: msg,
+          isLeafError: isLeafRejection,
+          isUncertain: isUncertainRejection,
+        });
+      } else {
+        setErrorMessage(msg);
+      }
     } finally {
       setIsAnalyzing(false);
     }
@@ -287,8 +310,20 @@ export default function DiseaseDetectionPage() {
 
               {previewUrl ? (
                 <div className="space-y-4 animate-scale-up">
-                  <div className="relative overflow-hidden rounded-3xl border-2 border-[#49A078]/40 bg-slate-900 shadow-md group h-72 sm:h-80 flex items-center justify-center">
+                  <div className={`relative overflow-hidden rounded-3xl border-2 bg-slate-900 shadow-md group h-72 sm:h-80 flex items-center justify-center transition-all ${
+                    validationError
+                      ? "border-red-500 shadow-red-500/20 ring-4 ring-red-500/20"
+                      : "border-[#49A078]/40"
+                  }`}>
                     <Image src={previewUrl} alt="Leaf preview" fill sizes="(max-w-768px) 100vw, 600px" className="object-contain" />
+                    
+                    {validationError && (
+                      <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-600/95 text-white text-xs font-black shadow-lg backdrop-blur-md animate-bounce">
+                        <AlertTriangle className="w-3.5 h-3.5" />
+                        <span>{t.diseaseExtra?.invalidSpecimenTitle || "Invalid Specimen"}</span>
+                      </div>
+                    )}
+
                     {isAnalyzing && <div className="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#49A078] to-transparent shadow-[0_0_15px_#49A078] animate-scan z-20" />}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-5 z-10">
                       <div className="text-white">
@@ -528,6 +563,118 @@ export default function DiseaseDetectionPage() {
                   </div>
                 </div>
 
+              </div>
+            ) : validationError ? (
+              <div className="rounded-3xl border-2 border-red-300/80 bg-white p-6 sm:p-7 shadow-xl space-y-6 animate-shake">
+                {/* Header */}
+                <div className="flex items-start justify-between gap-4 pb-4 border-b border-red-100">
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-12 h-12 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <ShieldAlert className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="inline-block px-2.5 py-0.5 rounded-full bg-red-100 text-red-800 font-black text-[10px] uppercase tracking-wider mb-1">
+                        {t.diseaseExtra?.specimenRejectedBadge || "Specimen Rejected by AI Vision"}
+                      </span>
+                      <h3 className="text-xl font-black text-[#2B2118] tracking-tight">
+                        {validationError.isUncertain
+                          ? (t.disease?.errorUncertain || "Image Clarity Inconclusive")
+                          : (t.diseaseExtra?.invalidSpecimenTitle || "Invalid Specimen Detected")}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Primary Alert Banner */}
+                <div className="rounded-2xl bg-gradient-to-r from-red-50 via-rose-50 to-orange-50 border border-red-200 p-4 space-y-2">
+                  <div className="flex items-start gap-2.5">
+                    <AlertTriangle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <div className="space-y-1">
+                      <p className="text-sm font-black text-red-950">
+                        {validationError.message}
+                      </p>
+                      <p className="text-xs font-medium text-red-800/90 leading-relaxed">
+                        {t.diseaseExtra?.invalidImageHelp || "Our AI Vision pre-validation filter determined that this image does not contain a recognizable botanical crop leaf suitable for disease classification."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Why Blocked Callout */}
+                <div className="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-xs font-black text-[#216869]">
+                    <ShieldCheck className="w-4 h-4 text-[#49A078]" />
+                    <span>{t.diseaseExtra?.whyBlockedTitle || "Why was this blocked?"}</span>
+                  </div>
+                  <p className="text-xs text-[#475B63] font-medium leading-relaxed">
+                    {t.diseaseExtra?.whyBlockedDesc || "To protect farmers from fabricated or misleading treatment advice, KrishiMitra's AI only evaluates genuine plant leaf specimens."}
+                  </p>
+                </div>
+
+                {/* Visual Guidelines Checklist */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="rounded-2xl bg-emerald-50/70 border border-emerald-200/80 p-3.5 space-y-2">
+                    <span className="text-[11px] font-black uppercase text-emerald-800 flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      {t.diseaseExtra?.whatToUpload || "What to upload:"}
+                    </span>
+                    <ul className="text-xs font-medium text-emerald-950 space-y-1.5">
+                      <li className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                        <span>{t.diseaseExtra?.guidelineLeaf || "Single leaf or foliage close-up"}</span>
+                      </li>
+                      <li className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                        <span>{t.diseaseExtra?.guidelineLight || "Natural daylight without heavy glare"}</span>
+                      </li>
+                      <li className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                        <span>{t.diseaseExtra?.guidelineFocus || "Sharp focus on leaf surface or spots"}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="rounded-2xl bg-red-50/70 border border-red-200/80 p-3.5 space-y-2">
+                    <span className="text-[11px] font-black uppercase text-red-800 flex items-center gap-1">
+                      <XCircle className="w-3.5 h-3.5 text-red-600" />
+                      {t.diseaseExtra?.whatToAvoid || "What to avoid:"}
+                    </span>
+                    <ul className="text-xs font-medium text-red-950 space-y-1.5">
+                      <li className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-600" />
+                        <span>{t.diseaseExtra?.avoidNonLeaf || "Humans, animals, vehicles, soil alone"}</span>
+                      </li>
+                      <li className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-600" />
+                        <span>{t.diseaseExtra?.avoidGraphics || "Screenshots, digital banners, or drawings"}</span>
+                      </li>
+                      <li className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-600" />
+                        <span>{t.diseaseExtra?.avoidBlur || "Blurry, dark, or out-of-focus images"}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="space-y-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#216869] to-[#49A078] text-white font-black text-sm shadow-lg hover:from-[#1b5556] hover:to-[#3d8664] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <Camera className="w-4 h-4" />
+                    <span>{t.diseaseExtra?.uploadNewPhoto || "Upload New Leaf Photo"}</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleClearImage}
+                    className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-[#475B63] hover:text-[#2B2118] hover:bg-slate-100 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <RefreshCw className="w-3.5 h-3.5" />
+                    <span>{t.diseaseExtra?.clearAndRetry || "Clear & Select Another Photo"}</span>
+                  </button>
+                </div>
               </div>
             ) : (
               <div className="rounded-3xl border-2 border-dashed border-slate-200 bg-white/50 p-10 flex flex-col items-center justify-center min-h-[520px] text-center space-y-4">

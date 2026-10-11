@@ -17,6 +17,18 @@ import {
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
+export class ApiError extends Error {
+  status: number;
+  data?: any;
+
+  constructor(message: string, status: number, data?: any) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
+    this.data = data;
+  }
+}
+
 // ─── Firebase Auth Fetch Wrapper ───────────────
 export async function fetchWithAuth(
   endpoint: string,
@@ -71,19 +83,29 @@ export async function fetchWithAuth(
 
     if (!response.ok) {
       let errorMessage = `Server error: ${response.status}`;
+      let errorData: any = null;
       try {
-        const errorData = await response.json();
-        errorMessage = errorData.detail || errorData.message || errorMessage;
+        errorData = await response.json();
+        if (typeof errorData.detail === "string") {
+          errorMessage = errorData.detail;
+        } else if (errorData.detail && typeof errorData.detail === "object") {
+          errorMessage = errorData.detail.message || errorData.detail.reason || JSON.stringify(errorData.detail);
+        } else {
+          errorMessage = errorData.message || errorMessage;
+        }
       } catch (parseError) {
         console.error(
           "[API] Failed to parse error response as JSON. Backend may be returning HTML.",
         );
       }
-      throw new Error(errorMessage);
+      throw new ApiError(errorMessage, response.status, errorData);
     }
 
     return response;
   } catch (error: any) {
+    if (error instanceof ApiError) {
+      throw error;
+    }
     console.error(`[API] Network Error on ${url}:`, error.message);
     throw new Error(
       error.message || "Network Error: Unable to reach the backend.",
@@ -166,10 +188,17 @@ export async function predictDisease(
   });
 
   const data = await response.json();
-  if (!response.ok)
-    throw new Error(
-      data.detail || "Failed to analyze leaf image. Please try again.",
-    );
+  if (!response.ok) {
+    let msg = "Failed to analyze leaf image. Please try again.";
+    if (typeof data.detail === "string") {
+      msg = data.detail;
+    } else if (data.detail && typeof data.detail === "object") {
+      msg = data.detail.message || data.detail.reason || JSON.stringify(data.detail);
+    } else if (data.message) {
+      msg = data.message;
+    }
+    throw new Error(msg);
+  }
   if (!data.success)
     throw new Error(data.message || "Disease prediction failed.");
 

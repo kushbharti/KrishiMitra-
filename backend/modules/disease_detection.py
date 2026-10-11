@@ -1,6 +1,17 @@
 from fastapi import APIRouter, File, UploadFile, Form, HTTPException, Depends, Request
-from schemas.disease import SupportedCropsResponse, DiseasePredictionResponse
+from schemas.disease import SupportedCropsResponse, DiseasePredictionResponse, LeafValidationResult, LeafValidationStatus
 from services.disease_service import DiseaseModelService, get_disease_service
+from services.image_validation_service import (
+    ImageValidationService,
+    get_image_validation_service,
+    InvalidImageFileError,
+    ValidationAuthError,
+    ValidationRateLimitError,
+    ValidationTimeoutError,
+    ValidationServiceUnavailableError,
+    ValidationResponseError,
+    ImageValidationError,
+)
 from db.mongodb import get_database
 from utils.data_loader import load_json
 from datetime import datetime
@@ -19,24 +30,68 @@ async def get_supported_crops(service: DiseaseModelService = Depends(get_disease
         raise HTTPException(status_code=500, detail=f"Failed to load supported crops: {str(e)}")
 
 
+@router.post("/validate", response_model=LeafValidationResult)
+async def validate_image(
+    image: UploadFile = File(..., description="The image file to validate as a plant leaf"),
+    validation_service: ImageValidationService = Depends(get_image_validation_service),
+):
+    """
+    Dedicated endpoint to validate whether an image contains a recognizable plant leaf.
+    Fails closed if the validation service is unavailable or encounters an error.
+    """
+    try:
+        contents = await image.read()
+    except Exception:
+        raise HTTPException(status_code=500, detail="Failed to read the uploaded image file.")
+
+    try:
+        result = validation_service.validate_leaf_image(contents)
+        return result
+    except InvalidImageFileError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except ValidationAuthError as e:
+        raise HTTPException(status_code=503, detail="Image validation service authentication failed. Please check backend API configuration.")
+    except ValidationRateLimitError as e:
+        raise HTTPException(status_code=429, detail="Image validation rate limit reached. Please wait a moment and try again.")
+    except ValidationTimeoutError as e:
+        raise HTTPException(status_code=504, detail="Image validation timed out. Please try again.")
+    except ValidationServiceUnavailableError as e:
+        raise HTTPException(status_code=503, detail="Image validation service is currently unavailable. Please try again later.")
+    except ValidationResponseError as e:
+        raise HTTPException(status_code=502, detail="Image validation returned an invalid response. Please try again.")
+    except ImageValidationError as e:
+        raise HTTPException(status_code=500, detail=f"Image validation error: {str(e)}")
+
+
 @router.post("/predict", response_model=DiseasePredictionResponse)
 async def predict_disease(
     request: Request,
     crop: str = Form(..., description="The name of the selected supported crop"),
     image: UploadFile = File(..., description="The leaf image to analyze"),
     service: DiseaseModelService = Depends(get_disease_service),
+    validation_service: ImageValidationService = Depends(get_image_validation_service),
     db=Depends(get_database),
 ):
-    """Analyze uploaded leaf image against the selected crop model and return top 4 predictions."""
+    """
+    Analyze uploaded leaf image against the selected crop model and return predictions.
     
-    # 1. Crop Validation
-    if not service.validate_crop(crop):
-        raise HTTPException(
-            status_code=400,
-            detail=f"This crop '{crop}' is not supported by the current disease detection model."
-        )
+    Processing Order:
+    1. Read uploaded image bytes.
+    2. Validate file format, size, and decodability safely.
+    3. Call Gemini Vision API to validate leaf presence.
+    4. Parse and evaluate validation status.
+       - NON_LEAF: Stop inference, return farmer-friendly rejection error.
+       - UNCERTAIN: Stop inference, return image clarity guidance error.
+    5. Crop validation: Check if crop is supported by the disease model.
+    6. Disease inference (EfficientNet-B0): Only executed for validated LEAF images.
+    """
+    # 1. Read Uploaded Image Bytes
+    try:
+        contents = await image.read()
+    except Exception:
+        raise HTTPException(status_code=500, detail="Failed to read the uploaded image file.")
 
-    # 2. File Type & Extension Validation
+    # 2. File Format, Extension, and Integrity Pre-Validation
     allowed_extensions = {"jpg", "jpeg", "png", "webp"}
     file_ext = image.filename.split(".")[-1].lower() if image.filename else ""
     if file_ext not in allowed_extensions:
@@ -51,25 +106,71 @@ async def predict_disease(
             detail="Invalid content type. Please upload a valid image file."
         )
 
-    # 3. File Size Validation (Max 5 MB)
     try:
-        contents = await image.read()
-        if len(contents) > 5 * 1024 * 1024:
-            raise HTTPException(
-                status_code=400,
-                detail="File size exceeds the 5MB limit. Please compress or resize your image."
-            )
-        if len(contents) == 0:
-            raise HTTPException(
-                status_code=400,
-                detail="The uploaded image file is empty."
-            )
-    except HTTPException:
-        raise
-    except Exception:
-        raise HTTPException(status_code=500, detail="Failed to read the uploaded image file.")
+        # Validates structural integrity, supported format (JPEG, PNG, WEBP), and size limit
+        validation_service.verify_and_decode_image(contents)
+    except InvalidImageFileError as img_err:
+        raise HTTPException(status_code=400, detail=str(img_err))
 
-    # 4. Perform Inference
+    # 3 & 4. Gemini Vision Leaf Validation
+    try:
+        validation_result = validation_service.validate_leaf_image(contents)
+    except InvalidImageFileError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except ValidationAuthError:
+        raise HTTPException(
+            status_code=503,
+            detail="Image validation service authentication failed. Please check backend API configuration."
+        )
+    except ValidationRateLimitError:
+        raise HTTPException(
+            status_code=429,
+            detail="Image validation rate limit reached. Please wait a moment and try again."
+        )
+    except ValidationTimeoutError:
+        raise HTTPException(
+            status_code=504,
+            detail="Image validation timed out. Please try again."
+        )
+    except ValidationServiceUnavailableError:
+        raise HTTPException(
+            status_code=503,
+            detail="Image validation service is currently unavailable. Please try again later."
+        )
+    except ValidationResponseError:
+        raise HTTPException(
+            status_code=502,
+            detail="Image validation returned an invalid response. Please try again."
+        )
+    except ImageValidationError as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Image validation failed: {str(e)}"
+        )
+
+    # 5. Evaluate Validation Outcome
+    if validation_result.status == LeafValidationStatus.NON_LEAF:
+        logger.info(f"[Disease] Rejected NON_LEAF image: {validation_result.reason}")
+        raise HTTPException(
+            status_code=400,
+            detail="Please upload a clear plant leaf image for disease detection."
+        )
+
+    if validation_result.status == LeafValidationStatus.UNCERTAIN:
+        logger.info(f"[Disease] Rejected UNCERTAIN image: {validation_result.reason}")
+        raise HTTPException(
+            status_code=400,
+            detail="We could not verify this image. Please upload a clearer leaf photo."
+        )
+
+    # 6. Supported Crop Validation (executed after leaf image is confirmed valid)
+    if not service.validate_crop(crop):
+        raise HTTPException(
+            status_code=400,
+            detail=f"This crop '{crop}' is not supported by the current disease detection model."
+        )
+
+    # 7. Perform Disease Inference (EfficientNet-B0) — Invariant: Only reaches here if LEAF is valid
     try:
         result = service.predict(image_bytes=contents, selected_crop=crop)
         prediction_response = DiseasePredictionResponse(**result)

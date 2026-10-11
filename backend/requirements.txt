@@ -17,3 +17,5 @@ google-auth==2.23.0
 motor==3.7.1 
 pymongo==4.13.2
 firebase-admin
+google-genai>=2.0.0
+pytest>=8.0.0

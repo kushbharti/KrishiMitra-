@@ -140,7 +140,10 @@
     "analyzingSub": "Running full-spectrum inference across all classes to verify crop identity...",
     "errorLoadCrops": "Failed to load supported crop list from server. Please refresh.",
     "errorSelectCrop": "Please select a supported crop from the dropdown before analyzing.",
-    "errorUploadImage": "Please upload a leaf image to proceed with detection."
+    "errorUploadImage": "Please upload a leaf image to proceed with detection.",
+    "errorNonLeaf": "Please upload a clear plant leaf image for disease detection.",
+    "errorUncertain": "We could not verify this image. Please upload a clearer leaf photo.",
+    "errorUnsupportedCrop": "This crop is not supported by the current disease detection model."
   },
   "income": {
     "title": "Income & Crop Advisor",
@@ -242,7 +245,22 @@
     "chemIntervention": "Chemical Intervention",
     "dosage": "Dosage:",
     "orgAdvisory": "Organic Advisory",
-    "awaitingPhoto": "Awaiting Leaf Photograph"
+    "awaitingPhoto": "Awaiting Leaf Photograph",
+    "invalidSpecimenTitle": "Invalid Specimen Detected",
+    "specimenRejectedBadge": "Specimen Rejected by AI Vision",
+    "invalidImageHelp": "Our AI Vision pre-validation filter determined that this image does not contain a recognizable botanical crop leaf suitable for disease classification.",
+    "whyBlockedTitle": "Why was this blocked?",
+    "whyBlockedDesc": "To protect farmers from fabricated or misleading treatment advice, KrishiMitra's AI only evaluates genuine plant leaf specimens.",
+    "whatToUpload": "What to upload:",
+    "whatToAvoid": "What to avoid:",
+    "guidelineLeaf": "Single leaf or foliage close-up",
+    "guidelineLight": "Natural daylight without heavy glare",
+    "guidelineFocus": "Sharp focus on leaf surface or spots",
+    "avoidNonLeaf": "Humans, animals, vehicles, soil alone",
+    "avoidGraphics": "Screenshots, digital banners, or drawings",
+    "avoidBlur": "Blurry, dark, or out-of-focus images",
+    "uploadNewPhoto": "Upload New Leaf Photo",
+    "clearAndRetry": "Clear & Select Another Photo"
   },
   "schemesExtra": {
     "solapurContext": "Solapur District, MH • Single-Window Subsidy Discovery",
