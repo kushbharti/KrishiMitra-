@@ -57,7 +57,6 @@ async def lifespan(app: FastAPI):
     print("[KrishiMitra] Shutting down application... Closing DB connections.")
     await close_mongo_connection()
 
-
 app = FastAPI(
     title=settings.APP_NAME,
     description="AI-Powered Smart Agriculture Assistant — Backend API",
